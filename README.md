@@ -1,48 +1,44 @@
-# Group Project - *Parking Here*
+# Group Project - *ParkHere*
 
-**Parking Here** is a app to help drivers find a suitable parking lot for their car/motobycle.
+**ParkHere** is our solution for finding the most suitable parking zone based on user's location & user's criteria.
 
 ## User Stories
 
-The following **required** functionality is completed:
+We support these following required functions at our first version (1.0):
 
-- [ ] Home page: the first screen that user will see when opening the app.
-   - [ ] Display map with the marker for current location of user will be in the center.
-   - [ ] Display markers of the parking lots around user.
-   - [ ] There are 4 quick filter options (vehicle type, cheapest, nearest and open time) to limit the number of markers displayed around user.
-   - [ ] Allow to drag map to other location and display parking lots around the new location.
-   - [ ] Allow to input a specific address, then jump to that address and display parking lots around it.
-   - [ ] When user clicks on each marker, its detail info will be poped up included name, address, price, open/close time, rating and a link to comments page.
-   - [ ] Once user decides a parking lot, show the direction to it.
-- [ ] Comment page.
-   - [ ] Display an avatar and name of a parking lot that this comment is belong to.
-   - [ ] Display comments of a specific parking lot.
-   - [ ] Allow to add new comments as a guest or a loged user.
-   - [ ] Allow to rating a specific parking lot
-   - [ ] Allow to go back Home page
-- [ ] Setting page: 
-   - [ ] Set the vehicle type.
-   - [ ] Set the distance.
-   - [ ] Set the range of price.
-   - [ ] Set the time frame.
-   - [ ] Allow to go back Home page.
+- [ ] HOME screen
+   - [ ] Display a map with the user's current location as the central point.
+   - [ ] Display all the suitable parking zones that are around the central point.
+   - [ ] Support 4 quick filter options on the map directly: type of transport (in this version they are: bicycle, motorbike and car), the parking zone with the lowest fee, the parking zone that is nearest the central point and the parking zones that are still opening.
+   - [ ] Support selecting one parking zone by 2 ways: input the address into search textfield or choosing one parking zone on the map directly.
+   - [ ] Draw the route from the user's current location to one selected parking zone.
+   - [ ] Show the detail information of one parking zone under the popup form by clicking on the corresponding maker on the map.
+- [ ] COMMENT screen
+   - [ ] Display the selected parking zone on the mini map at the top.
+   - [ ] List all corresponding comments.
+   - [ ] Add new comments with text or photo (taking directly from camera phone or choosing one from gallery).
+   - [ ] Add rating. 
+   - [ ] Support commenting in anonymous mode (no need to login).
+   - [ ] Support commenting in login mode (login with Facebook or Google account).
+- [ ] FILTER SETTING screen 
+   - [ ] Set the default transport types (can select all).
+   - [ ] Set the default distance.
+   - [ ] Set the default expected range of fee.
+   - [ ] Set the default time frame.
 - [ ] User log in page
    - [ ] Allow to log in with facebook/google account.
    - [ ] The current signed in user will be persisted across restarts.
+- [ ] ADD PARKING ZONE screen (login required)
+   - [ ] Add new parking zone.
+- [ ] NON-FUNCTIONAL features
+   - [ ] Support multilingual.
 
-- [ ] Adding new parking lot page
-   - [ ] Require log in.
-   - [ ] Allow to input parking lot info: name, address, location, avatar, price, open/close time, description, available vehicle type.
-   - [ ] Save data to remote server.
+The following **optional** features will be considered in the first version:
 
-The following **optional** features are implemented:
-
-- [ ] Support log in with more social accounts.
-- [ ] Save histories of used parking lot.
-- [ ] Report the parking slot of each parking lot.
-- [ ] Support for more vehicle types.
-- [ ] Estimate the time from current location of user to the destination parking lot.
-- [ ] Support multiple language.
+- [ ] Save filter history of user.
+- [ ] Update status of the parking zone on real time (for i.e: now the parking zone is full filled).
+- [ ] Support for more transport types (for i.e: truck).
+- [ ] Change theme.
 
 ## Video Walkthrough
 
