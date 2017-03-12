@@ -15,6 +15,7 @@ We support these following required functions at our first version (1.0):
    - [ ] Support selecting one parking zone by 2 ways: input the address into search textfield or choosing one parking zone on the map directly.
    - [ ] Draw the route from the user's current location to one selected parking zone.
    - [ ] Show the detail information of one parking zone under the popup form by clicking on the corresponding maker on the map.
+   
 - [ ] COMMENT screen
    - [ ] Display the selected parking zone on the mini map at the top.
    - [ ] List all corresponding comments.
@@ -22,13 +23,16 @@ We support these following required functions at our first version (1.0):
    - [ ] Add rating. 
    - [ ] Support commenting in anonymous mode (no need to login).
    - [ ] Support commenting in login mode (login with Facebook or Google account).
+   
 - [ ] FILTER SETTING screen 
    - [ ] Set the default transport types (can select all).
    - [ ] Set the default distance.
    - [ ] Set the default expected range of fee.
    - [ ] Set the default time frame.
+   
 - [ ] ADD PARKING ZONE screen (login required)
    - [ ] Add new parking zone.
+   
 - [ ] NON-FUNCTIONAL features
    - [ ] Support multilingual.
    - [ ] Support social log-in with Facebook/Google account (the current signed in user will be persisted across restarts).
