@@ -1,5 +1,7 @@
 # Group Project - *ParkHere*
 
+![Appicon](parkhere.png)
+
 **ParkHere** is our solution for finding the most suitable parking zone based on user's location & user's criteria.
 
 ## User Stories
@@ -25,13 +27,11 @@ We support these following required functions at our first version (1.0):
    - [ ] Set the default distance.
    - [ ] Set the default expected range of fee.
    - [ ] Set the default time frame.
-- [ ] User log in page
-   - [ ] Allow to log in with facebook/google account.
-   - [ ] The current signed in user will be persisted across restarts.
 - [ ] ADD PARKING ZONE screen (login required)
    - [ ] Add new parking zone.
 - [ ] NON-FUNCTIONAL features
    - [ ] Support multilingual.
+   - [ ] Support social log-in with Facebook/Google account (the current signed in user will be persisted across restarts).
 
 The following **optional** features will be considered in the first version:
 
@@ -40,11 +40,15 @@ The following **optional** features will be considered in the first version:
 - [ ] Support for more transport types (for i.e: truck).
 - [ ] Change theme.
 
+## Core Flow
+
+![Core Flow](doc/ParkHere_Core Flow.png)
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Video Walkthrough](tippy_screensizes.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
