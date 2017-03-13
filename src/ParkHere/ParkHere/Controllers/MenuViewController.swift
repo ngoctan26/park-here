@@ -14,8 +14,9 @@ class MenuViewController: UIViewController {
     
     private var homeNavController: UIViewController!
     private var settingsNavController: UIViewController!
-    private var commentNavController: UIViewController!
     private var addingNavController: UIViewController!
+    
+    var hamburgerViewController: HamburgerViewController!
     
     var viewControllers: [UIViewController] = []
     
@@ -29,13 +30,13 @@ class MenuViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         settingsNavController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-        commentNavController = storyboard.instantiateViewController(withIdentifier: "CommentViewController")
         addingNavController = storyboard.instantiateViewController(withIdentifier: "AddingViewController")
         
         viewControllers.append(homeNavController)
         viewControllers.append(settingsNavController)
-        viewControllers.append(commentNavController)
         viewControllers.append(addingNavController)
+        
+        hamburgerViewController.contentViewController = homeNavController
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +76,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
 }
