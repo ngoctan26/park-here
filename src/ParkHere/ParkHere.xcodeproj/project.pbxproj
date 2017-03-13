@@ -42,8 +42,8 @@
 		8624AC731E71BF8900B92710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8624AC761E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8624AC781E71BF8900B92710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
-		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetttingUtil.swift; sourceTree = "<group>"; };
+		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageUtil.swift; path = Utils/ImageUtil.swift; sourceTree = "<group>"; };
+		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
 		BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.debug.xcconfig"; sourceTree = "<group>"; };
 		FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,7 +185,7 @@
 				TargetAttributes = {
 					8624AC681E71BF8900B92710 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = B77T45EXXL;
+						DevelopmentTeam = V7Z27TG6NM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -407,11 +407,11 @@
 			baseConfigurationReference = BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B77T45EXXL;
+				DEVELOPMENT_TEAM = V7Z27TG6NM;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -422,11 +422,11 @@
 			baseConfigurationReference = 610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B77T45EXXL;
+				DEVELOPMENT_TEAM = V7Z27TG6NM;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
