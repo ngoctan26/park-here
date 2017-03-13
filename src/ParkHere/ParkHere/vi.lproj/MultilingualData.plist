@@ -4,5 +4,13 @@
 <dict>
 	<key>lang</key>
 	<string>Ngôn ngữ</string>
+	<key>homeMenu</key>
+	<string>Màn hình chính</string>
+	<key>commentMenu</key>
+	<string>Nhận xét</string>
+	<key>addingMenu</key>
+	<string>Thêm mới</string>
+	<key>settingsMenu</key>
+	<string>Cấu hình</string>
 </dict>
 </plist>

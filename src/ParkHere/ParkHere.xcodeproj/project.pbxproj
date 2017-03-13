@@ -16,6 +16,7 @@
 		522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB631E76E7A4007DFEB6 /* AddingViewController.swift */; };
 		522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB651E76E7BB007DFEB6 /* SettingsViewController.swift */; };
 		522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */; };
+		522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 522DFB691E76F764007DFEB6 /* MultilingualData.plist */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
 		8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624AC6C1E71BF8900B92710 /* AppDelegate.swift */; };
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
@@ -36,6 +37,11 @@
 		522DFB631E76E7A4007DFEB6 /* AddingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddingViewController.swift; path = Controllers/AddingViewController.swift; sourceTree = "<group>"; };
 		522DFB651E76E7BB007DFEB6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Views/MenuViewCell.swift; sourceTree = "<group>"; };
+		522DFB6A1E76F764007DFEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/MultilingualData.plist; sourceTree = "<group>"; };
+		522DFB6C1E76F7E7007DFEB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/MultilingualData.plist; sourceTree = "<group>"; };
+		522DFB6D1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		522DFB6E1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		522DFB6F1E76F829007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = vi; path = vi.lproj/MultilingualData.plist; sourceTree = "<group>"; };
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
 		8624AC691E71BF8900B92710 /* ParkHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +105,7 @@
 				8624AC701E71BF8900B92710 /* Main.storyboard */,
 				8624AC731E71BF8900B92710 /* Assets.xcassets */,
 				8624AC751E71BF8900B92710 /* LaunchScreen.storyboard */,
+				522DFB691E76F764007DFEB6 /* MultilingualData.plist */,
 				8624AC781E71BF8900B92710 /* Info.plist */,
 				52D7B5731E73E70500436B64 /* GoogleService-Info.plist */,
 			);
@@ -200,6 +207,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 8624AC601E71BF8900B92710;
 			productRefGroup = 8624AC6A1E71BF8900B92710 /* Products */;
@@ -216,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */,
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
@@ -296,10 +305,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		522DFB691E76F764007DFEB6 /* MultilingualData.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				522DFB6A1E76F764007DFEB6 /* Base */,
+				522DFB6C1E76F7E7007DFEB6 /* en */,
+				522DFB6F1E76F829007DFEB6 /* vi */,
+			);
+			name = MultilingualData.plist;
+			sourceTree = "<group>";
+		};
 		8624AC701E71BF8900B92710 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8624AC711E71BF8900B92710 /* Base */,
+				522DFB6D1E76F81C007DFEB6 /* vi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -308,6 +328,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8624AC761E71BF8900B92710 /* Base */,
+				522DFB6E1E76F81C007DFEB6 /* vi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -319,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -368,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

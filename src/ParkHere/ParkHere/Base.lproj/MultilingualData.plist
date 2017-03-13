@@ -4,5 +4,13 @@
 <dict>
 	<key>lang</key>
 	<string>Language</string>
+	<key>homeMenu</key>
+	<string>Home</string>
+	<key>settingsMenu</key>
+	<string>Settings</string>
+	<key>addingMenu</key>
+	<string>New</string>
+	<key>commentMenu</key>
+	<string>Comment</string>
 </dict>
 </plist>
