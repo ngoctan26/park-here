@@ -24,6 +24,8 @@
 		8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC751E71BF8900B92710 /* LaunchScreen.storyboard */; };
 		8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA061E73019A00993E6D /* ImageUtil.swift */; };
 		8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA081E73024300993E6D /* SetttingUtil.swift */; };
+		8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */; };
+		8688F9421E77030300E49B0B /* GMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F9411E77030300E49B0B /* GMapClient.swift */; };
 		C73AAE2C38AADF0C06C0197D /* Pods_ParkHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		8624AC781E71BF8900B92710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageUtil.swift; path = Utils/ImageUtil.swift; sourceTree = "<group>"; };
 		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
+		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		8688F9411E77030300E49B0B /* GMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapClient.swift; sourceTree = "<group>"; };
 		BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.debug.xcconfig"; sourceTree = "<group>"; };
 		FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,8 +143,10 @@
 		8685FA0A1E73032F00993E6D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */,
+				8688F9411E77030300E49B0B /* GMapClient.swift */,
 			);
-			name = Services;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		8685FA0B1E73035400993E6D /* Views */ = {
@@ -297,6 +303,8 @@
 				522DFB5C1E76E6A6007DFEB6 /* Constants.swift in Sources */,
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,
 				522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */,
+				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
+				8688F9421E77030300E49B0B /* GMapClient.swift in Sources */,
 				522DFB601E76E777007DFEB6 /* MenuViewController.swift in Sources */,
 				522DFB621E76E787007DFEB6 /* CommentViewController.swift in Sources */,
 			);
