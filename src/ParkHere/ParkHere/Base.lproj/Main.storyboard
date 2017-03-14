@@ -23,6 +23,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-BE-OEb" userLabel="Menu View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="H30-Kr-bFk" appends="YES" id="heu-VE-s6j"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-ej-ZPO" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="70" width="320" height="498"/>
