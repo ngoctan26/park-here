@@ -46,6 +46,7 @@ playground.xcworkspace
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
+Podfile.lock
 
 # Carthage
 #
@@ -65,6 +66,3 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
-
-# Project info
-ParkHere.xcodeproj/project.pbxproj
