@@ -9,11 +9,11 @@
 import UIKit
 
 class HamburgerViewController: UIViewController {
-
+    
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var leftMarginConstraintHeaderView: NSLayoutConstraint!
     var menuViewController: UIViewController! {
         didSet {
             view.layoutIfNeeded()
@@ -37,8 +37,9 @@ class HamburgerViewController: UIViewController {
             
             contentViewController.didMove(toParentViewController: self)
             
-            UIView.animate(withDuration: 0.5) { 
+            UIView.animate(withDuration: 0.5) {
                 self.leftMarginConstraint.constant = 0
+                self.leftMarginConstraintHeaderView.constant = 0
                 self.view.layoutIfNeeded()
             }
         }
@@ -48,10 +49,10 @@ class HamburgerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,7 +67,7 @@ class HamburgerViewController: UIViewController {
         } else if sender.state == .changed {
             leftMarginConstraint.constant = originalLeftMargin + translation.x
         } else if sender.state == .ended {
-            UIView.animate(withDuration: 0.5, animations: { 
+            UIView.animate(withDuration: 0.5, animations: {
                 if velocity.x > 0 {
                     self.leftMarginConstraint.constant = self.view.frame.size.width - 50
                 } else {
@@ -76,15 +77,26 @@ class HamburgerViewController: UIViewController {
             })
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func onMenu(_ sender: UIButton) {
+        originalLeftMargin = leftMarginConstraint.constant
+        let by = leftMarginConstraint.constant != 0 ? -1 : 1
+        for x in 0...Int(self.view.frame.size.width - 50) {
+            UIView.animate(withDuration: 100, animations: {
+                self.leftMarginConstraint.constant = self.originalLeftMargin + CGFloat(by) * CGFloat(x)
+            })
+        }
+        leftMarginConstraintHeaderView.constant = leftMarginConstraint.constant
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

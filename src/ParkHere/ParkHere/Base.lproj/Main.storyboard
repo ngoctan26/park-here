@@ -35,14 +35,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-AE-kwL" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPX-3j-W5J">
-                                        <rect key="frame" x="8" y="10" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPX-3j-W5J">
+                                        <rect key="frame" x="10" y="13" width="78" height="24"/>
+                                        <state key="normal" title="Button" image="iconMenuBar"/>
+                                        <connections>
+                                            <action selector="onMenu:" destination="lIV-ba-IPq" eventType="touchUpInside" id="Ihq-Io-cBs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="BPX-3j-W5J" firstAttribute="leading" secondItem="XGT-AE-kwL" secondAttribute="leading" constant="10" id="CSC-vF-FZa"/>
+                                    <constraint firstItem="BPX-3j-W5J" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="fvv-Ld-BSB"/>
                                     <constraint firstAttribute="height" constant="50" id="rBU-FL-jJQ"/>
                                 </constraints>
                             </view>
@@ -64,6 +68,7 @@
                     <connections>
                         <outlet property="contentView" destination="SB0-ej-ZPO" id="D6c-bw-jc7"/>
                         <outlet property="leftMarginConstraint" destination="mKy-Ns-1QP" id="bbs-xt-kSh"/>
+                        <outlet property="leftMarginConstraintHeaderView" destination="ytp-tf-24M" id="QVh-hg-bE3"/>
                         <outlet property="menuView" destination="Hsf-BE-OEb" id="DJV-4X-urS"/>
                     </connections>
                 </viewController>
@@ -195,7 +200,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lz2-6O-Sbi" id="l9b-Al-FQI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2H-6G-aBi">
@@ -303,4 +308,7 @@
             <point key="canvasLocation" x="170" y="896"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconMenuBar" width="24" height="24"/>
+    </resources>
 </document>
