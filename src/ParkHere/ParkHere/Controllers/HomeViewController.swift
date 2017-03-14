@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var lblTestMultilingual: UILabel!
+    @IBOutlet var mapView: GMSMapView!
+    
+    var locationManager = CLLocationManager()
+    var isUpdateCurrentLocationEnable = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         lblTestMultilingual.text = "lang".localized
+        initMapView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,14 +31,32 @@ class HomeViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func initMapView() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        // At first, jump into current location
+        updateMapToCurrentPosition()
     }
-    */
+    
+    func updateMapToCurrentPosition() {
+        let currentLocation = locationManager.location
+        if let currentLocation = currentLocation {
+            mapView.camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: Constant.Normal_Zoom_Ratio)
+        }
+    }
+}
 
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // let location = locations[0]
+        // Update here when location changed
+        if isUpdateCurrentLocationEnable {
+            updateMapToCurrentPosition()
+            isUpdateCurrentLocationEnable = false
+        }
+    }
 }

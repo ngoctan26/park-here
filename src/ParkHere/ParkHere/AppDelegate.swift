@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Setup firebase
+        FIRApp.configure()
+        
+        // Setup google APIs
+        GMSServices.provideAPIKey(Constant.Google_Api_key)
+        
         // Setup hamburger menu
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -23,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         menuViewController.hamburgerViewController = hamburgerViewController
         hamburgerViewController.menuViewController = menuViewController
-        
-        // Setup firebase
-        FIRApp.configure()
         return true
     }
 

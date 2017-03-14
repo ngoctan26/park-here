@@ -18,6 +18,7 @@
 		522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */; };
 		522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 522DFB691E76F764007DFEB6 /* MultilingualData.plist */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
+		860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 860843461E777AC7001F35E1 /* nqntan_location.gpx */; };
 		8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624AC6C1E71BF8900B92710 /* AppDelegate.swift */; };
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
 		8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC731E71BF8900B92710 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		522DFB6F1E76F829007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = vi; path = vi.lproj/MultilingualData.plist; sourceTree = "<group>"; };
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
+		860843461E777AC7001F35E1 /* nqntan_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = nqntan_location.gpx; path = Resources/nqntan_location.gpx; sourceTree = SOURCE_ROOT; };
 		8624AC691E71BF8900B92710 /* ParkHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8624AC6C1E71BF8900B92710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8624AC711E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				8624AC751E71BF8900B92710 /* LaunchScreen.storyboard */,
 				522DFB691E76F764007DFEB6 /* MultilingualData.plist */,
 				8624AC781E71BF8900B92710 /* Info.plist */,
+				860843461E777AC7001F35E1 /* nqntan_location.gpx */,
 				52D7B5731E73E70500436B64 /* GoogleService-Info.plist */,
 			);
 			path = ParkHere;
@@ -234,6 +237,7 @@
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
+				860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */,
 				8624AC721E71BF8900B92710 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

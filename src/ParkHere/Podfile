@@ -9,5 +9,7 @@ target 'ParkHere' do
   pod 'Firebase/Core'
   pod 'AFNetworking', '~> 3.0'
   pod 'Firebase/Database'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end
