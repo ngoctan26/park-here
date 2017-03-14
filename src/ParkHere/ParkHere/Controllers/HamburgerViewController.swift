@@ -81,14 +81,11 @@ class HamburgerViewController: UIViewController {
     }
     
     @IBAction func onMenu(_ sender: UIButton) {
-        originalLeftMargin = leftMarginConstraint.constant
-        let by = leftMarginConstraint.constant != 0 ? -1 : 1
-        for x in 0...Int(self.view.frame.size.width - 50) {
-            UIView.animate(withDuration: 100, animations: {
-                self.leftMarginConstraint.constant = self.originalLeftMargin + CGFloat(by) * CGFloat(x)
-            })
+        UIView.animate(withDuration: 0.5) {
+            self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - 50
+            self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant
+            self.view.layoutIfNeeded()
         }
-        leftMarginConstraintHeaderView.constant = leftMarginConstraint.constant
     }
     
     /*
