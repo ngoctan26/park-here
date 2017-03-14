@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lIV-ba-IPq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lIV-ba-IPq">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,10 +22,24 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-BE-OEb" userLabel="Menu View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-AE-kwL" userLabel="Header View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="rBU-FL-jJQ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="XGT-AE-kwL" firstAttribute="leading" secondItem="Hsf-BE-OEb" secondAttribute="leading" id="M9k-DC-bAa"/>
+                                    <constraint firstAttribute="trailing" secondItem="XGT-AE-kwL" secondAttribute="trailing" id="Rlt-YU-U7d"/>
+                                    <constraint firstItem="XGT-AE-kwL" firstAttribute="top" secondItem="Hsf-BE-OEb" secondAttribute="top" id="eeN-4F-7Yn"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-ej-ZPO" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -39,8 +53,9 @@
                             <constraint firstItem="SB0-ej-ZPO" firstAttribute="width" secondItem="d00-y8-yTx" secondAttribute="width" id="Ccy-Ms-yLO"/>
                             <constraint firstItem="Hsf-BE-OEb" firstAttribute="top" secondItem="d00-y8-yTx" secondAttribute="top" id="Iwm-Ml-QGr"/>
                             <constraint firstAttribute="trailing" secondItem="Hsf-BE-OEb" secondAttribute="trailing" id="NFQ-Fu-kAr"/>
+                            <constraint firstItem="SB0-ej-ZPO" firstAttribute="top" secondItem="XGT-AE-kwL" secondAttribute="bottom" id="ixM-FI-tZ8"/>
                             <constraint firstItem="SB0-ej-ZPO" firstAttribute="leading" secondItem="d00-y8-yTx" secondAttribute="leading" id="mKy-Ns-1QP"/>
-                            <constraint firstItem="SB0-ej-ZPO" firstAttribute="top" secondItem="d00-y8-yTx" secondAttribute="top" id="pur-bN-swY"/>
+                            <constraint firstItem="SB0-ej-ZPO" firstAttribute="top" secondItem="d00-y8-yTx" secondAttribute="top" constant="50" id="pur-bN-swY"/>
                             <constraint firstItem="Hsf-BE-OEb" firstAttribute="leading" secondItem="d00-y8-yTx" secondAttribute="leading" id="zhJ-mD-5mZ"/>
                         </constraints>
                     </view>
@@ -57,7 +72,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1335.2" y="13.943028485757123"/>
+            <point key="canvasLocation" x="-1336.875" y="13.732394366197184"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="ym6-76-3lJ">
