@@ -19,6 +19,9 @@
 		522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 522DFB691E76F764007DFEB6 /* MultilingualData.plist */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
 		860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 860843461E777AC7001F35E1 /* nqntan_location.gpx */; };
+		861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */; };
+		861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */; };
+		861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B593B1E79A65B00D7817A /* FirebaseConstant.swift */; };
 		8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624AC6C1E71BF8900B92710 /* AppDelegate.swift */; };
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
 		8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC731E71BF8900B92710 /* Assets.xcassets */; };
@@ -48,6 +51,9 @@
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
 		860843461E777AC7001F35E1 /* nqntan_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = nqntan_location.gpx; path = Resources/nqntan_location.gpx; sourceTree = SOURCE_ROOT; };
+		861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindowView.swift; sourceTree = "<group>"; };
+		861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoWindowView.xib; sourceTree = "<group>"; };
+		861B593B1E79A65B00D7817A /* FirebaseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 		8624AC691E71BF8900B92710 /* ParkHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8624AC6C1E71BF8900B92710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8624AC711E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				522DFB5A1E76E6A6007DFEB6 /* Constants.swift */,
 				8685FA061E73019A00993E6D /* ImageUtil.swift */,
 				8685FA081E73024300993E6D /* SetttingUtil.swift */,
+				861B593B1E79A65B00D7817A /* FirebaseConstant.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -156,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */,
+				861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */,
+				861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -235,6 +244,7 @@
 			files = (
 				522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */,
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
+				861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */,
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
 				860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */,
@@ -308,6 +318,8 @@
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,
 				522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */,
 				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
+				861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */,
+				861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */,
 				8688F9421E77030300E49B0B /* GMapClient.swift in Sources */,
 				522DFB601E76E777007DFEB6 /* MenuViewController.swift in Sources */,
 				522DFB621E76E787007DFEB6 /* CommentViewController.swift in Sources */,
