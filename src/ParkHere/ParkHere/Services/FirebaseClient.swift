@@ -22,7 +22,7 @@ class FirebaseClient {
     /**
      Save value to firbase at specific path
     */
-    func saveVaule(path: String, value: [String: Any], failure: @escaping (_ error: Error?) -> ()) {
+    func saveValue(path: String, value: [String: Any], failure: @escaping (_ error: Error?) -> ()) {
         let ref = FIRDatabase.database().reference()
         ref.child(path).setValue(value) { (error, firebaseRef) in
             failure(error)

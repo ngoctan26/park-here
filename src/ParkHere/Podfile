@@ -11,5 +11,6 @@ target 'ParkHere' do
   pod 'Firebase/Database'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-
+  # to fix error [Permission denied]
+  pod 'Firebase/Auth'
 end
