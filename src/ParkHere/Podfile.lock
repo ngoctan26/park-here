@@ -14,6 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Alamofire (4.4.0)
+  - Firebase/Auth (3.14.0):
+    - Firebase/Core
+    - FirebaseAuth (= 3.1.1)
   - Firebase/Core (3.14.0):
     - FirebaseAnalytics (= 3.7.0)
     - FirebaseCore (= 3.5.1)
@@ -24,6 +28,10 @@ PODS:
     - FirebaseCore (~> 3.5)
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseAuth (3.1.1):
+    - FirebaseAnalytics (~> 3.7)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (3.5.1):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (3.1.2):
@@ -36,12 +44,22 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.2.0):
     - GoogleMaps/Base (= 2.2.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMSessionFetcher/Core (1.1.9)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Alamofire (~> 4.4)
+  - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - GoogleMaps
@@ -49,15 +67,18 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
+  FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
   FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
   FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
 
-PODFILE CHECKSUM: d4417b2cde8201454e212a5a55139627705f480e
+PODFILE CHECKSUM: 2d62b95205fd9117080d7fe5305ff2e0748e5bdd
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

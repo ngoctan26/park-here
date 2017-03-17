@@ -29,7 +29,7 @@
 		8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA061E73019A00993E6D /* ImageUtil.swift */; };
 		8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA081E73024300993E6D /* SetttingUtil.swift */; };
 		8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */; };
-		8688F9421E77030300E49B0B /* GMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F9411E77030300E49B0B /* GMapClient.swift */; };
+		8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F9411E77030300E49B0B /* GMapDirectionService.swift */; };
 		C73AAE2C38AADF0C06C0197D /* Pods_ParkHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageUtil.swift; path = Utils/ImageUtil.swift; sourceTree = "<group>"; };
 		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
 		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
-		8688F9411E77030300E49B0B /* GMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapClient.swift; sourceTree = "<group>"; };
+		8688F9411E77030300E49B0B /* GMapDirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapDirectionService.swift; sourceTree = "<group>"; };
 		BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.debug.xcconfig"; sourceTree = "<group>"; };
 		FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */,
-				8688F9411E77030300E49B0B /* GMapClient.swift */,
+				8688F9411E77030300E49B0B /* GMapDirectionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -320,7 +320,7 @@
 				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
 				861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */,
 				861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */,
-				8688F9421E77030300E49B0B /* GMapClient.swift in Sources */,
+				8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */,
 				522DFB601E76E777007DFEB6 /* MenuViewController.swift in Sources */,
 				522DFB621E76E787007DFEB6 /* CommentViewController.swift in Sources */,
 			);
