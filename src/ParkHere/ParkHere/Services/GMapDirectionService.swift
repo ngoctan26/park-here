@@ -17,8 +17,8 @@ class GMapDirectionService {
         - parameter origin: The address, textual latitude/longitude value, or place ID from which you wish to calculate directions.
         - parameter destination: The address, textual latitude/longitude value, or place ID to which you wish to calculate directions.
     */
-    func getDirection(origin: String, destination: String, success: @escaping () -> (), failure: @escaping (_ error: Error?) -> ()) {
-        var parameters: [String: Any] = [:]
+    func getDirection(origin: String, destination: String, success: @escaping (_ route: GMapRoute) -> (), failure: @escaping (_ error: Error?) -> ()) {
+        var parameters: [String : Any] = [:]
         parameters["origin"] = origin
         parameters["destination"] = destination
         parameters["waypoints"] = "optimize:true"
@@ -34,7 +34,15 @@ class GMapDirectionService {
             guard let json = response.result.value as? [String : AnyObject] else {
                 return
             }
-            
+            let status = json["status"] as! String
+            if status != "OK" {
+                return
+            }
+            guard let jsonRoute = json["routes"] as? [String : AnyObject] else {
+                return
+            }
+            let resultRoute = GMapRoute(routeResponse: jsonRoute)
+            success(resultRoute)
         }
     }
 }

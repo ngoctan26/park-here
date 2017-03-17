@@ -19,6 +19,7 @@
 		522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 522DFB691E76F764007DFEB6 /* MultilingualData.plist */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
 		860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 860843461E777AC7001F35E1 /* nqntan_location.gpx */; };
+		8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618810B1E7C5CD200D5250A /* GMapRoute.swift */; };
 		861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */; };
 		861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */; };
 		861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B593B1E79A65B00D7817A /* FirebaseConstant.swift */; };
@@ -51,6 +52,7 @@
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
 		860843461E777AC7001F35E1 /* nqntan_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = nqntan_location.gpx; path = Resources/nqntan_location.gpx; sourceTree = SOURCE_ROOT; };
+		8618810B1E7C5CD200D5250A /* GMapRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapRoute.swift; sourceTree = "<group>"; };
 		861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindowView.swift; sourceTree = "<group>"; };
 		861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoWindowView.xib; sourceTree = "<group>"; };
 		861B593B1E79A65B00D7817A /* FirebaseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8618810A1E7C5C6100D5250A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8618810B1E7C5CD200D5250A /* GMapRoute.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8624AC601E71BF8900B92710 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		8624AC6B1E71BF8900B92710 /* ParkHere */ = {
 			isa = PBXGroup;
 			children = (
+				8618810A1E7C5C6100D5250A /* Model */,
 				8685FA0B1E73035400993E6D /* Views */,
 				8685FA0A1E73032F00993E6D /* Services */,
 				8685FA051E73018700993E6D /* Utils */,
@@ -318,6 +329,7 @@
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,
 				522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */,
 				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
+				8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */,
 				861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */,
 				861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */,
 				8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */,
