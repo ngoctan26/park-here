@@ -12,5 +12,7 @@
 	<string>Thêm mới</string>
 	<key>settingsMenu</key>
 	<string>Cấu hình</string>
+	<key>signInMenu</key>
+	<string>Đăng nhập</string>
 </dict>
 </plist>

@@ -6,12 +6,15 @@ target 'ParkHere' do
   use_frameworks!
 
   # Pods for ParkHere
+  pod 'Firebase'
   pod 'Firebase/Core'
-  pod 'AFNetworking', '~> 3.0'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'AFNetworking', '~> 3.0'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GoogleSignIn'
   # to fix error [Permission denied]
-  pod 'Firebase/Auth'
   pod 'Alamofire', '~> 4.4'
+  
 end

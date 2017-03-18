@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 import GoogleMaps
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
-
+    var databaseRef: FIRDatabaseReference!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Setup firebase
@@ -23,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup google APIs
         GMSServices.provideAPIKey(Constant.Google_Api_key)
         
+        // Setup Google Sign In
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+
         // Setup hamburger menu
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -31,6 +36,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuViewController.hamburgerViewController = hamburgerViewController
         hamburgerViewController.menuViewController = menuViewController
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: [:])
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        print("User sign in to Google")
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+        
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user: FIRUser?, error: Error?) in
+            print("User sign in to Firebase")
+            self.databaseRef = FIRDatabase.database().reference()
+            self.databaseRef.child("user_profiles").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                let snapshot = snapshot.value as? NSDictionary
+                if(snapshot == nil)
+                {
+                    self.databaseRef.child("user_profiles").child(user!.uid).child("name").setValue(user?.displayName)
+                    self.databaseRef.child("user_profiles").child(user!.uid).child("email").setValue(user?.email)
+                }
+                
+                self.window?.rootViewController?.performSegue(withIdentifier: "HomeViewSegue", sender: nil)
+            })
+            self.databaseRef.child("user_profiles").child(user!.uid).child("name").setValue(user?.displayName)
+        })
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // do something
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -54,7 +97,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

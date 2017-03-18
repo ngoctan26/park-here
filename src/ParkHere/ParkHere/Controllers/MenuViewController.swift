@@ -15,6 +15,7 @@ class MenuViewController: UIViewController {
     private var homeNavController: UIViewController!
     private var settingsNavController: UIViewController!
     private var addingNavController: UIViewController!
+    private var signInNavController: UIViewController!
     
     var hamburgerViewController: HamburgerViewController!
     
@@ -31,10 +32,12 @@ class MenuViewController: UIViewController {
         homeNavController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         settingsNavController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
         addingNavController = storyboard.instantiateViewController(withIdentifier: "AddingViewController")
+        signInNavController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         
         viewControllers.append(homeNavController)
         viewControllers.append(settingsNavController)
         viewControllers.append(addingNavController)
+        viewControllers.append(signInNavController)
         
         hamburgerViewController.contentViewController = homeNavController
     }
@@ -63,13 +66,13 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuViewCell", for: indexPath) as! MenuViewCell
         
-        let titles = [Constant.Home_Menu_Title_Key.localized, Constant.Settings_Menu_Title_Key.localized, Constant.Adding_Menu_Title_Key.localized]
+        let titles = [Constant.Home_Menu_Title_Key.localized, Constant.Settings_Menu_Title_Key.localized, Constant.Adding_Menu_Title_Key.localized,Constant.SignIn_Menu_Title_Key.localized]
         
         cell.lblMenuTitle.text = titles[indexPath.row]
         return cell
