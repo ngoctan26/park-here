@@ -17,12 +17,15 @@
 		522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB651E76E7BB007DFEB6 /* SettingsViewController.swift */; };
 		522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */; };
 		522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 522DFB691E76F764007DFEB6 /* MultilingualData.plist */; };
+		525141EA1E7D95D2004E8092 /* ParkingZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141E91E7D95D2004E8092 /* ParkingZoneModel.swift */; };
+		525141EC1E7D9612004E8092 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141EB1E7D9612004E8092 /* CommentModel.swift */; };
+		525141EE1E7D9623004E8092 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141ED1E7D9623004E8092 /* UserModel.swift */; };
+		525141F01E7D9654004E8092 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141EF1E7D9654004E8092 /* FirebaseService.swift */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
 		860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 860843461E777AC7001F35E1 /* nqntan_location.gpx */; };
 		8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618810B1E7C5CD200D5250A /* GMapRoute.swift */; };
 		861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */; };
 		861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */; };
-		861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B593B1E79A65B00D7817A /* FirebaseConstant.swift */; };
 		8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624AC6C1E71BF8900B92710 /* AppDelegate.swift */; };
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
 		8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC731E71BF8900B92710 /* Assets.xcassets */; };
@@ -49,13 +52,16 @@
 		522DFB6D1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		522DFB6E1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		522DFB6F1E76F829007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = vi; path = vi.lproj/MultilingualData.plist; sourceTree = "<group>"; };
+		525141E91E7D95D2004E8092 /* ParkingZoneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingZoneModel.swift; sourceTree = "<group>"; };
+		525141EB1E7D9612004E8092 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		525141ED1E7D9623004E8092 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		525141EF1E7D9654004E8092 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = ../FirebaseService.swift; sourceTree = "<group>"; };
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
 		860843461E777AC7001F35E1 /* nqntan_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = nqntan_location.gpx; path = Resources/nqntan_location.gpx; sourceTree = SOURCE_ROOT; };
 		8618810B1E7C5CD200D5250A /* GMapRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapRoute.swift; sourceTree = "<group>"; };
 		861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindowView.swift; sourceTree = "<group>"; };
 		861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoWindowView.xib; sourceTree = "<group>"; };
-		861B593B1E79A65B00D7817A /* FirebaseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 		8624AC691E71BF8900B92710 /* ParkHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8624AC6C1E71BF8900B92710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8624AC711E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,7 +70,7 @@
 		8624AC781E71BF8900B92710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageUtil.swift; path = Utils/ImageUtil.swift; sourceTree = "<group>"; };
 		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
-		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = Services/FirebaseClient.swift; sourceTree = "<group>"; };
 		8688F9411E77030300E49B0B /* GMapDirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapDirectionService.swift; sourceTree = "<group>"; };
 		BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.debug.xcconfig"; sourceTree = "<group>"; };
 		FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,11 +96,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8618810A1E7C5C6100D5250A /* Model */ = {
+		8618810A1E7C5C6100D5250A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8618810B1E7C5CD200D5250A /* GMapRoute.swift */,
+				525141E91E7D95D2004E8092 /* ParkingZoneModel.swift */,
+				525141EB1E7D9612004E8092 /* CommentModel.swift */,
+				525141ED1E7D9623004E8092 /* UserModel.swift */,
 			);
+			name = Models;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -119,7 +129,7 @@
 		8624AC6B1E71BF8900B92710 /* ParkHere */ = {
 			isa = PBXGroup;
 			children = (
-				8618810A1E7C5C6100D5250A /* Model */,
+				8618810A1E7C5C6100D5250A /* Models */,
 				8685FA0B1E73035400993E6D /* Views */,
 				8685FA0A1E73032F00993E6D /* Services */,
 				8685FA051E73018700993E6D /* Utils */,
@@ -152,11 +162,11 @@
 		8685FA051E73018700993E6D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */,
 				522DFB591E76E6A6007DFEB6 /* Localizator.swift */,
 				522DFB5A1E76E6A6007DFEB6 /* Constants.swift */,
 				8685FA061E73019A00993E6D /* ImageUtil.swift */,
 				8685FA081E73024300993E6D /* SetttingUtil.swift */,
-				861B593B1E79A65B00D7817A /* FirebaseConstant.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -164,7 +174,7 @@
 		8685FA0A1E73032F00993E6D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */,
+				525141EF1E7D9654004E8092 /* FirebaseService.swift */,
 				8688F9411E77030300E49B0B /* GMapDirectionService.swift */,
 			);
 			path = Services;
@@ -224,7 +234,7 @@
 				TargetAttributes = {
 					8624AC681E71BF8900B92710 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = V7Z27TG6NM;
+						DevelopmentTeam = B77T45EXXL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -318,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525141EA1E7D95D2004E8092 /* ParkingZoneModel.swift in Sources */,
 				8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */,
 				8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */,
 				522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */,
@@ -327,13 +338,15 @@
 				522DFB5B1E76E6A6007DFEB6 /* Localizator.swift in Sources */,
 				522DFB5C1E76E6A6007DFEB6 /* Constants.swift in Sources */,
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,
+				525141EC1E7D9612004E8092 /* CommentModel.swift in Sources */,
 				522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */,
 				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
 				8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */,
 				861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */,
-				861B593C1E79A65B00D7817A /* FirebaseConstant.swift in Sources */,
+				525141F01E7D9654004E8092 /* FirebaseService.swift in Sources */,
 				8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */,
 				522DFB601E76E777007DFEB6 /* MenuViewController.swift in Sources */,
+				525141EE1E7D9623004E8092 /* UserModel.swift in Sources */,
 				522DFB621E76E787007DFEB6 /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,11 +483,11 @@
 			baseConfigurationReference = BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7Z27TG6NM;
+				DEVELOPMENT_TEAM = B77T45EXXL;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -485,11 +498,11 @@
 			baseConfigurationReference = 610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7Z27TG6NM;
+				DEVELOPMENT_TEAM = B77T45EXXL;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

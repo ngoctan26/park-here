@@ -40,6 +40,7 @@ class AddingViewController: UIViewController {
                 FirebaseClient.getInstance().saveValue(path: "parking_zone/7_vien_ngoc_rong", value: messageData, failure: { (error) in
                     print(error.debugDescription)
                 })
+                try! FIRAuth.auth()!.signOut()
             } else {
                 print("error")
             }

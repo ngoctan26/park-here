@@ -20,4 +20,7 @@ class Constant {
     // Map configuration
     static let Google_Api_key = "AIzaSyCVy3nim32ev3LFpmGVC-RVvKeE6SwRWuE"
     static let Normal_Zoom_Ratio: Float = 16.0
+    
+    // Firebase 
+    
 }
