@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         lblTestMultilingual.text = "lang".localized
         initMapView()
+        addMarkerForSampleDestination()
+        showRouteSample()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +50,29 @@ class HomeViewController: UIViewController {
             mapView.camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: Constant.Normal_Zoom_Ratio)
         }
     }
+    
+    func addMarkerForSampleDestination() {
+        let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
+        let destinationMarker = GMSMarker(position: sampleDesCoordinate)
+        destinationMarker.map = mapView
+        destinationMarker.icon = GMSMarker.markerImage(with: UIColor.red)
+    }
+    
+    func showRouteSample() {
+        let currentCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
+        let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.758599, longitude: 106.681230)
+        GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: sampleDesCoordinate.getLocationsAsString(), success: { (route) in
+            self.drawRoute(points: route.routeAsPoints)
+        }, failure: { (error) in
+            print("Get route from server failed. \(error?.localizedDescription)")
+        })
+    }
+    
+    func drawRoute(points: String) {
+        let path: GMSPath = GMSPath(fromEncodedPath: points)!
+        let sampleRoute = GMSPolyline(path: path)
+        sampleRoute.map = mapView
+    }
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
@@ -58,5 +83,11 @@ extension HomeViewController: CLLocationManagerDelegate {
             updateMapToCurrentPosition()
             isUpdateCurrentLocationEnable = false
         }
+    }
+}
+
+extension CLLocationCoordinate2D {
+    func getLocationsAsString() -> String {
+        return "\(String(latitude)),\(String(longitude))"
     }
 }
