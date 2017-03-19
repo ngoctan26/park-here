@@ -16,6 +16,7 @@ class Constant {
     static let Comment_Menu_Title_Key = "commentMenu"
     static let Adding_Menu_Title_Key = "addingMenu"
     static let Settings_Menu_Title_Key = "settingsMenu"
+    static let SignIn_Menu_Title_Key = "signInMenu"
     
     // Map configuration
     static let Google_Api_key = "AIzaSyCVy3nim32ev3LFpmGVC-RVvKeE6SwRWuE"

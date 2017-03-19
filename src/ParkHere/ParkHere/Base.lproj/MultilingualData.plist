@@ -12,5 +12,7 @@
 	<string>New</string>
 	<key>commentMenu</key>
 	<string>Comment</string>
+	<key>signInMenu</key>
+	<string>Sign In</string>
 </dict>
 </plist>
