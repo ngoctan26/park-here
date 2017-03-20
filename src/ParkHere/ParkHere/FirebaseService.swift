@@ -33,7 +33,11 @@ class FirebaseService {
     }
     
     func addParkingZone(newParkingZone: ParkingZoneModel, success: @escaping (ParkingZoneModel) -> Void) {
-        success(ParkingZoneModel())
+        success(newParkingZone)
+    }
+    
+    func getParkingZoneRating(parkingZoneId: Int) -> Double {
+        return 0.0
     }
     
     // <!-- Comment -->
@@ -42,7 +46,7 @@ class FirebaseService {
     }
     
     func addComment(newComment: CommentModel,  success: @escaping (CommentModel) -> Void) {
-        success(CommentModel())
+        success(newComment)
     }
     
     // <!-- User -->

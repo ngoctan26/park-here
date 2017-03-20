@@ -22,6 +22,7 @@
 		525141EC1E7D9612004E8092 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141EB1E7D9612004E8092 /* CommentModel.swift */; };
 		525141EE1E7D9623004E8092 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141ED1E7D9623004E8092 /* UserModel.swift */; };
 		525141F01E7D9654004E8092 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141EF1E7D9654004E8092 /* FirebaseService.swift */; };
+		525141F21E8029F3004E8092 /* TransportTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141F11E8029F3004E8092 /* TransportTypeEnum.swift */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
 		860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 860843461E777AC7001F35E1 /* nqntan_location.gpx */; };
 		8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618810B1E7C5CD200D5250A /* GMapRoute.swift */; };
@@ -58,6 +59,7 @@
 		525141EB1E7D9612004E8092 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		525141ED1E7D9623004E8092 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		525141EF1E7D9654004E8092 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = ../FirebaseService.swift; sourceTree = "<group>"; };
+		525141F11E8029F3004E8092 /* TransportTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportTypeEnum.swift; sourceTree = "<group>"; };
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
 		860843461E777AC7001F35E1 /* nqntan_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = nqntan_location.gpx; path = Resources/nqntan_location.gpx; sourceTree = SOURCE_ROOT; };
@@ -105,6 +107,7 @@
 				525141E91E7D95D2004E8092 /* ParkingZoneModel.swift */,
 				525141EB1E7D9612004E8092 /* CommentModel.swift */,
 				525141ED1E7D9623004E8092 /* UserModel.swift */,
+				525141F11E8029F3004E8092 /* TransportTypeEnum.swift */,
 			);
 			name = Models;
 			path = Model;
@@ -339,6 +342,7 @@
 				8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */,
 				522DFB581E76E665007DFEB6 /* HomeViewController.swift in Sources */,
 				522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */,
+				525141F21E8029F3004E8092 /* TransportTypeEnum.swift in Sources */,
 				522DFB5B1E76E6A6007DFEB6 /* Localizator.swift in Sources */,
 				522DFB5C1E76E6A6007DFEB6 /* Constants.swift in Sources */,
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,

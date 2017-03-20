@@ -7,7 +7,47 @@
 //
 
 import Foundation
+import NSDate_TimeAgo
 
-class CommentModel {
+class CommentModel: NSObject {
+    var id: Int?
+    var createdAt: Date?
+    var imageUrl: URL?
+    var parkingZoneId: Int?
+    var rating: Double?
+    var text: String?
+    var longitude: Double?
+    var latitude: Double?
+    var userId: Int?
+    var timeAgo: String {
+        return (createdAt as NSDate?)?.timeAgo() ?? Constant.Empty_String
+    }
     
+    override init() {}
+    
+    init(dictionary: NSDictionary) {
+        text = dictionary["text"] as? String
+        rating = dictionary["rating"] as? Double
+        userId = dictionary["user_id"] as? Int
+        parkingZoneId = dictionary["parking_zone_id"] as? Int
+        
+        let imageURLString = dictionary["image_url"] as? String
+        imageUrl = imageURLString != nil ? URL(string: imageURLString!)! : nil
+        
+        let coordinate = dictionary["coordinate"] as? NSDictionary
+        if coordinate != nil {
+            latitude = coordinate?["latitude"] as? Double
+            longitude = coordinate?["longitude"] as? Double
+        }
+        
+        if let timestampString = dictionary["created_at"] as? String {
+            let timeFormater = DateFormatter()
+            timeFormater.dateFormat = "EEE MMM d HH:mm:ss" // Tue Aug 28 21:16:23
+            createdAt = timeFormater.date(from: timestampString)
+        }
+    }
+    
+    class func comments(dictionaries: [NSDictionary]) -> [CommentModel] {
+        return dictionaries.map { CommentModel(dictionary: $0) }
+    }
 }
