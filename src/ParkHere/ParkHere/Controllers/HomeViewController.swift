@@ -12,12 +12,14 @@ import GoogleMaps
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var lblTestMultilingual: UILabel!
-    @IBOutlet var mapView: GMSMapView!
+    @IBOutlet var mapView: MapView!
     
     var locationManager = CLLocationManager()
     var isUpdateCurrentLocationEnable = true;
     var infoWindow = MarkerInfoWindowView(frame: CGRect(x: 0, y: 0, width: 150, height: 200))
     var sampleMarker: GMSMarker!
+    var sampleMarker2nd: GMSMarker!
+    var selectedMarker: GMSMarker?
     var sampleDesCoordinate: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
@@ -40,9 +42,10 @@ class HomeViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        mapView.delegate = self
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
+        
+        // Add delegate for map view
+        mapView.showingMap.delegate = self
+        //mapView.settings.myLocationButton = true
         // At first, jump into current location
         updateMapToCurrentPosition()
     }
@@ -50,32 +53,29 @@ class HomeViewController: UIViewController {
     func updateMapToCurrentPosition() {
         let currentLocation = locationManager.location
         if let currentLocation = currentLocation {
-            mapView.camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: Constant.Normal_Zoom_Ratio)
+            mapView.moveCamera(inputLocation: currentLocation.coordinate)
         }
     }
     
     func addMarkerForSampleDestination() {
         sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-        sampleMarker = GMSMarker(position: sampleDesCoordinate)
-        sampleMarker.map = mapView
-        sampleMarker.icon = GMSMarker.markerImage(with: UIColor.red)
+        sampleMarker = mapView.addMarker(lat: sampleDesCoordinate.latitude, long: sampleDesCoordinate.longitude, textInfo: nil, markerIcon: nil)
+        
+        // Add second marker
+        let sample2ndCoordinate = CLLocationCoordinate2D(latitude: 10.761096, longitude: 106.682230)
+        sampleMarker2nd = mapView.addMarker(lat: sample2ndCoordinate.latitude, long: sample2ndCoordinate.longitude, textInfo: nil, markerIcon: nil)
     }
     
     func showRouteSample() {
         let currentCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
         let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.758599, longitude: 106.681230)
         GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: sampleDesCoordinate.getLocationsAsString(), success: { (route) in
-            self.drawRoute(points: route.routeAsPoints)
+            self.mapView.drawRoute(points: route.routeAsPoints)
         }, failure: { (error) in
             print("Get route from server failed. \(error?.localizedDescription)")
         })
     }
     
-    func drawRoute(points: String) {
-        let path: GMSPath = GMSPath(fromEncodedPath: points)!
-        let sampleRoute = GMSPolyline(path: path)
-        sampleRoute.map = mapView
-    }
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
@@ -111,20 +111,25 @@ extension HomeViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        let location = CLLocationCoordinate2D(latitude: sampleDesCoordinate.latitude, longitude: sampleDesCoordinate.longitude)
+        if selectedMarker != nil {
+            infoWindow.removeFromSuperview()
+            selectedMarker = nil
+        }
         infoWindow.removeFromSuperview()
         infoWindow.delegate = self
         infoWindow.markerInfo = "info"
-        infoWindow.center = mapView.projection.point(for: location)
+        infoWindow.center = mapView.projection.point(for: marker.position)
         infoWindow.center.y -= 150 // Place infowindow above marker
+        selectedMarker = marker
         self.view.addSubview(infoWindow)
         return false
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        let location = CLLocationCoordinate2D(latitude: sampleDesCoordinate.latitude, longitude: sampleDesCoordinate.longitude)
-        infoWindow.center = mapView.projection.point(for: location)
-        infoWindow.center.y -= 150
+        if selectedMarker != nil {
+            infoWindow.center = mapView.projection.point(for: (selectedMarker?.position)!)
+            infoWindow.center.y -= 150
+        }
     }
     
     // take care of the close event
