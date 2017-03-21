@@ -16,6 +16,9 @@ class HomeViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     var isUpdateCurrentLocationEnable = true;
+    var infoWindow = MarkerInfoWindowView(frame: CGRect(x: 0, y: 0, width: 150, height: 200))
+    var sampleMarker: GMSMarker!
+    var sampleDesCoordinate: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,6 @@ class HomeViewController: UIViewController {
         lblTestMultilingual.text = "lang".localized
         initMapView()
         addMarkerForSampleDestination()
-        showRouteSample()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +40,7 @@ class HomeViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         // At first, jump into current location
@@ -52,10 +55,10 @@ class HomeViewController: UIViewController {
     }
     
     func addMarkerForSampleDestination() {
-        let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-        let destinationMarker = GMSMarker(position: sampleDesCoordinate)
-        destinationMarker.map = mapView
-        destinationMarker.icon = GMSMarker.markerImage(with: UIColor.red)
+        sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
+        sampleMarker = GMSMarker(position: sampleDesCoordinate)
+        sampleMarker.map = mapView
+        sampleMarker.icon = GMSMarker.markerImage(with: UIColor.red)
     }
     
     func showRouteSample() {
@@ -89,5 +92,43 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension CLLocationCoordinate2D {
     func getLocationsAsString() -> String {
         return "\(String(latitude)),\(String(longitude))"
+    }
+}
+
+extension HomeViewController: MarkerInfoWindowViewDelegate {
+    func onBtnDrawRouteClicked() {
+        showRouteSample()
+    }
+    
+    func onBtnDetailClicked() {
+        // TODO: Move to details
+    }
+}
+
+extension HomeViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        return UIView()
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        let location = CLLocationCoordinate2D(latitude: sampleDesCoordinate.latitude, longitude: sampleDesCoordinate.longitude)
+        infoWindow.removeFromSuperview()
+        infoWindow.delegate = self
+        infoWindow.markerInfo = "info"
+        infoWindow.center = mapView.projection.point(for: location)
+        infoWindow.center.y -= 150 // Place infowindow above marker
+        self.view.addSubview(infoWindow)
+        return false
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let location = CLLocationCoordinate2D(latitude: sampleDesCoordinate.latitude, longitude: sampleDesCoordinate.longitude)
+        infoWindow.center = mapView.projection.point(for: location)
+        infoWindow.center.y -= 150
+    }
+    
+    // take care of the close event
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        infoWindow.removeFromSuperview()
     }
 }
