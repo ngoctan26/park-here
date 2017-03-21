@@ -6,7 +6,9 @@
 
 ## User Stories
 
-We support these following required functions at our first version (1.0):
+We support these following required functions at our first version (1.0):  
+
+**REQUIRED**  
 
 - [ ] HOME screen
    - [ ] Display a map with the user's current location as the central point.
@@ -22,7 +24,7 @@ We support these following required functions at our first version (1.0):
    - [ ] Add new comments with text or photo (taking directly from camera phone or choosing one from gallery).
    - [ ] Add rating. 
    - [ ] Support commenting in anonymous mode (no need to login).
-   - [ ] Support commenting in login mode (login with Facebook or Google account).
+   - [ ] Support commenting in login mode (login by Google account).
    
 - [ ] FILTER SETTING screen 
    - [ ] Set the default transport types (can select all).
@@ -31,18 +33,22 @@ We support these following required functions at our first version (1.0):
    - [ ] Set the default time frame.
    
 - [ ] ADD PARKING ZONE screen (login required)
-   - [ ] Add new parking zone.
-   
-- [ ] NON-FUNCTIONAL features
-   - [ ] Support multilingual.
-   - [ ] Support social log-in with Facebook/Google account (the current signed in user will be persisted across restarts).
+   - [ ] Add new parking zone.  
+
+**OPTIONAL**  
 
 The following **optional** features will be considered in the first version:
 
+- [ ] Support multilingual.
 - [ ] Save filter history of user.
 - [ ] Update status of the parking zone on real time (for i.e: now the parking zone is full filled).
 - [ ] Support for more transport types (for i.e: truck).
 - [ ] Change theme.
+- [ ] Support social log-in with Facebook/Google account (the current signed in user will be persisted across restarts).
+
+## Wireframe
+
+![Wireframe](doc/WireframeDemo.gif)
 
 ## Core Flow
 
