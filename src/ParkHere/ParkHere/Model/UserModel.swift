@@ -8,6 +8,13 @@
 
 import Foundation
 
-class UserModel {
+class UserModel: NSObject {
+    var id: Int?
+    var isAnonymous: Bool?
     
+    override init() {}
+    
+    init(dictionary: NSDictionary) {
+        isAnonymous = dictionary["is_anonymous"] as? Bool ?? false
+    }
 }
