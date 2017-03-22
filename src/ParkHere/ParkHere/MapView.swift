@@ -10,10 +10,18 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
+@objc protocol MapViewDelegate {
+    @objc optional func onLongPressed(locationOnMap: CLLocationCoordinate2D)
+}
+
 class MapView: UIView {
 
     @IBOutlet var containerView: UIView!
     @IBOutlet var showingMap: GMSMapView!
+    
+    weak var mapViewDelegate: MapViewDelegate!
+    var isLongPressedEnable = false
+    lazy var longPressRecognizer: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(recognizer:)))
     
 
     override init(frame: CGRect) {
@@ -36,6 +44,25 @@ class MapView: UIView {
     
     private func initMapView() {
         showingMap.isMyLocationEnabled = true
+    }
+
+    /**
+     Enable long press to add marker in map view. Should add delegate to hanlde longpress result
+    */
+    func setLongPressEnable(isEnable: Bool) {
+        if isEnable {
+            showingMap.addGestureRecognizer(longPressRecognizer)
+        } else {
+            showingMap.removeGestureRecognizer(longPressRecognizer)
+        }
+    }
+    
+    func handleLongPress(recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == .began {
+            let longPressPoint = recognizer.location(in: showingMap)
+            let coordinate = showingMap.projection.coordinate(for: longPressPoint)
+            mapViewDelegate.onLongPressed!(locationOnMap: coordinate)
+        }
     }
     
     /**
