@@ -46,15 +46,11 @@ The following **optional** features will be considered in the first version:
 - [ ] Change theme.
 - [ ] Support social log-in with Facebook/Google account (the current signed in user will be persisted across restarts).
 
-## Wireframe
+## Core Flow & Main Wireframes
 
 ![Wireframe](doc/WireframeDemo.gif)
 
-## Core Flow
-
-![Core Flow](doc/ParkHere_Core Flow.png)
-
-## Video Walkthrough
+## Video Walkthrough (Not Available Now)
 
 Here's a walkthrough of implemented user stories:
 
