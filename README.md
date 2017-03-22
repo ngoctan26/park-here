@@ -50,6 +50,10 @@ The following **optional** features will be considered in the first version:
 
 ![Wireframe](doc/WireframeDemo.gif)
 
+## Object Models  
+
+Now we have a draft version [@here](https://github.com/ngoctan26/park-here/tree/master/src/ParkHere/ParkHere/Model)
+
 ## Video Walkthrough (Not Available Now)
 
 Here's a walkthrough of implemented user stories:
