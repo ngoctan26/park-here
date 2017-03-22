@@ -24,26 +24,22 @@ class AddingViewController: UIViewController {
     }
     
     @IBAction func onAdd(_ sender: UIButton) {
-        FIRAuth.auth()!.signIn(withEmail: "toicodedoec@gmail.com", password: "parkhere") { (user, error) in
-            if error == nil {
-                
-//                let messageRef: FIRDatabaseReference = FIRDatabase.database().reference().child("parking_zone")
-//                let newMessageRef = messageRef.childByAutoId()
-                let messageData: [String: Any] = [
-                    "senderId": "songoku",
-                    "email": "songoku@namec.com",
-                    "content": "kadic stupid",
-                    "createdAt": [".sv": "timestamp"]
-                ]
-//                newMessageRef.setValue(messageData)
-                
-                FirebaseClient.getInstance().saveValue(path: "parking_zone/7_vien_ngoc_rong", value: messageData, failure: { (error) in
-                    print(error.debugDescription)
-                })
-                try! FIRAuth.auth()!.signOut()
-            } else {
-                print("error")
-            }
+        let newComment: CommentModel = CommentModel()
+        newComment.id = 1
+        newComment.longitude = 123
+        newComment.latitude = 123
+        newComment.text = "Test Comment"
+        newComment.parkingZoneId = 1
+        newComment.rating = 4.5
+        newComment.userId = 1
+        newComment.createdAt = Date.init()
+        
+        FirebaseService.getInstance().addComment(newComment: newComment) { (_) in
+            print("OK")
+        }
+        
+        FirebaseService.getInstance().getCommentsByPage(parkingZoneId: 1, page: 1) { (comments) in
+            print(comments.count)
         }
     }
     

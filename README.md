@@ -46,15 +46,15 @@ The following **optional** features will be considered in the first version:
 - [ ] Change theme.
 - [ ] Support social log-in with Facebook/Google account (the current signed in user will be persisted across restarts).
 
-## Wireframe
+## Core Flow & Main Wireframes
 
 ![Wireframe](doc/WireframeDemo.gif)
 
-## Core Flow
+## Object Models  
 
-![Core Flow](doc/ParkHere_Core Flow.png)
+Now we have a draft version [@here](https://github.com/ngoctan26/park-here/tree/master/src/ParkHere/ParkHere/Model)
 
-## Video Walkthrough
+## Video Walkthrough (Not Available Now)
 
 Here's a walkthrough of implemented user stories:
 

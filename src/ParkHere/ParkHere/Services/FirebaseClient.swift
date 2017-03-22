@@ -24,7 +24,7 @@ class FirebaseClient {
     */
     func saveValue(path: String, value: [String: Any], failure: @escaping (_ error: Error?) -> ()) {
         let ref = FIRDatabase.database().reference()
-        ref.child(path).setValue(value) { (error, firebaseRef) in
+        ref.child(path).childByAutoId().setValue(value) { (error, firebaseRef) in
             failure(error)
         }
     }
