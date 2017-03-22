@@ -1,0 +1,85 @@
+//
+//  MapView.swift
+//  ParkHere
+//
+//  Created by Nguyen Quang Ngoc Tan on 3/21/17.
+//  Copyright © 2017 Nguyen Quang Ngoc Tan. All rights reserved.
+//
+
+import UIKit
+import GoogleMaps
+import CoreLocation
+
+class MapView: UIView {
+
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var showingMap: GMSMapView!
+    
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initSubviews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initSubviews()
+    }
+    
+    private func initSubviews() {
+        let nib = UINib(nibName: "MapView", bundle: nil)
+        nib.instantiate(withOwner: self, options: nil)
+        containerView.frame = bounds
+        addSubview(containerView)
+        initMapView()
+    }
+    
+    private func initMapView() {
+        showingMap.isMyLocationEnabled = true
+    }
+    
+    /**
+     Drawing route from points.
+     - parameter points: Get from overview_polyline in direction APIs
+    */
+    func drawRoute(points: String) {
+        let path: GMSPath = GMSPath(fromEncodedPath: points)!
+        let sampleRoute = GMSPolyline(path: path)
+        sampleRoute.map = showingMap
+    }
+    
+    func moveCamera(inputLocation: CLLocationCoordinate2D) {
+        showingMap.camera = GMSCameraPosition.camera(withLatitude: inputLocation.latitude, longitude: inputLocation.longitude, zoom: Constant.Normal_Zoom_Ratio)
+    }
+    
+    func addMarker(parkingZones: [ParkingZoneModel], textInfo: String?, markerIcon: UIImage?) -> [GMSMarker] {
+        var markerList: [GMSMarker] = []
+        for parkingZone in parkingZones {
+            let coordinate = CLLocationCoordinate2D(latitude: parkingZone.latitude!, longitude: parkingZone.longitude!)
+            let createdMarker = addMarker(coordinate: coordinate, textInfo: nil, markerIcon: nil)
+            markerList.append(createdMarker)
+        }
+        return markerList
+    }
+    
+    func addMarker(lat: Double, long: Double, textInfo: String?, markerIcon: UIImage?) -> GMSMarker {
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        return addMarker(coordinate: coordinate, textInfo: textInfo, markerIcon: nil)
+    }
+    
+    private func addMarker(coordinate: CLLocationCoordinate2D, textInfo: String?, markerIcon: UIImage?) -> GMSMarker {
+        let marker = GMSMarker(position: coordinate)
+        marker.map = showingMap
+        if textInfo != nil {
+            // add small text above marker. Can be addresses
+            marker.snippet = textInfo
+        }
+        if markerIcon == nil {
+            // Add default icon red marker
+            marker.icon = GMSMarker.markerImage(with: UIColor.red)
+        } else {
+            marker.icon = markerIcon
+        }
+        return marker
+    }
+}

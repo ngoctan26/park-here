@@ -28,6 +28,8 @@
 		8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618810B1E7C5CD200D5250A /* GMapRoute.swift */; };
 		861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */; };
 		861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */; };
+		861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861D44B01E81836C00BF3DA2 /* MapView.xib */; };
+		861D44B31E81838000BF3DA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D44B21E81838000BF3DA2 /* MapView.swift */; };
 		8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624AC6C1E71BF8900B92710 /* AppDelegate.swift */; };
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
 		8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC731E71BF8900B92710 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		8618810B1E7C5CD200D5250A /* GMapRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapRoute.swift; sourceTree = "<group>"; };
 		861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindowView.swift; sourceTree = "<group>"; };
 		861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoWindowView.xib; sourceTree = "<group>"; };
+		861D44B01E81836C00BF3DA2 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		861D44B21E81838000BF3DA2 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8624AC691E71BF8900B92710 /* ParkHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8624AC6C1E71BF8900B92710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8624AC711E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */,
 				861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */,
 				861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */,
+				861D44B01E81836C00BF3DA2 /* MapView.xib */,
+				861D44B21E81838000BF3DA2 /* MapView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */,
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
+				861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */,
 				860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */,
 				8624AC721E71BF8900B92710 /* Main.storyboard in Resources */,
 			);
@@ -343,6 +350,7 @@
 				522DFB581E76E665007DFEB6 /* HomeViewController.swift in Sources */,
 				522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */,
 				525141F21E8029F3004E8092 /* TransportTypeEnum.swift in Sources */,
+				861D44B31E81838000BF3DA2 /* MapView.swift in Sources */,
 				522DFB5B1E76E6A6007DFEB6 /* Localizator.swift in Sources */,
 				522DFB5C1E76E6A6007DFEB6 /* Constants.swift in Sources */,
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,
