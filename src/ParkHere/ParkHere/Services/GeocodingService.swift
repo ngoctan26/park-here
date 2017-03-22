@@ -1,31 +1,24 @@
 //
-//  GMapDirectionService.swift
+//  GeocodingService.swift
 //  ParkHere
 //
-//  Created by Nguyen Quang Ngoc Tan on 3/13/17.
+//  Created by Nguyen Quang Ngoc Tan on 3/23/17.
 //  Copyright © 2017 Nguyen Quang Ngoc Tan. All rights reserved.
 //
 
 import Foundation
+import CoreLocation
 import Alamofire
 
-class GMapDirectionService {
-    let baseURLString = "https://maps.googleapis.com/maps/api/directions/json?"
+class GeocodingService {
+    let baseURLString = "https://maps.googleapis.com/maps/api/geocode/json?"
     
     static var sharedInstance: GMapDirectionService = GMapDirectionService()
-
-    /**
-        Get direction from origin to destination
-        - parameter origin: The address, textual latitude/longitude value, or place ID from which you wish to calculate directions.
-        - parameter destination: The address, textual latitude/longitude value, or place ID to which you wish to calculate directions.
-    */
-    func getDirection(origin: String, destination: String, success: @escaping (_ route: GMapRoute) -> (), failure: @escaping (_ error: Error?) -> ()) {
+    
+    func getAddress(coordinate: CLLocationCoordinate2D, success: @escaping (_ address: [String]) -> (), failure: @escaping (_ error: Error?) -> ()) {
         var parameters: [String : String] = [:]
-        parameters["origin"] = origin
-        parameters["destination"] = destination
-        parameters["waypoints"] = "optimize:true|via:" + origin
+        parameters["latlng"] = coordinate.getLocationsAsString()
         parameters["key"] = Constant.Google_Api_key
-        
         let request = Alamofire.request(baseURLString, method: .get, parameters: parameters)
         request.responseJSON { (response) in
             if response.result.isFailure {
@@ -45,12 +38,17 @@ class GMapDirectionService {
                 failure(APIError.responseStatusNOK)
                 return
             }
-            guard let jsonRoute = json["routes"] as? [[String : AnyObject]] else {
+            guard let jsonResults = json["results"] as? [[String : AnyObject]] else {
                 failure(APIError.wrongFormattedResponse)
                 return
             }
-            let resultRoute = GMapRoute(routeResponse: jsonRoute[0])
-            success(resultRoute)
+            var addresses: [String] = []
+            for jsonResults in jsonResults {
+                if let addressFormatted = jsonResults["formatted_address"] as? String {
+                    addresses.append(addressFormatted)
+                }
+            }
+            success(addresses)
         }
     }
 }

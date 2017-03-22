@@ -38,6 +38,8 @@
 		8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA081E73024300993E6D /* SetttingUtil.swift */; };
 		8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */; };
 		8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F9411E77030300E49B0B /* GMapDirectionService.swift */; };
+		869927E51E82E9B9002E3745 /* GeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869927E41E82E9B9002E3745 /* GeocodingService.swift */; };
+		869927E71E82EDA3002E3745 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869927E61E82EDA3002E3745 /* APIError.swift */; };
 		C73AAE2C38AADF0C06C0197D /* Pods_ParkHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
 		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = Services/FirebaseClient.swift; sourceTree = "<group>"; };
 		8688F9411E77030300E49B0B /* GMapDirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapDirectionService.swift; sourceTree = "<group>"; };
+		869927E41E82E9B9002E3745 /* GeocodingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodingService.swift; sourceTree = "<group>"; };
+		869927E61E82EDA3002E3745 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.debug.xcconfig"; sourceTree = "<group>"; };
 		FA39E092F6BEA3FECD80F11E /* Pods_ParkHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +116,7 @@
 				525141EB1E7D9612004E8092 /* CommentModel.swift */,
 				525141ED1E7D9623004E8092 /* UserModel.swift */,
 				525141F11E8029F3004E8092 /* TransportTypeEnum.swift */,
+				869927E61E82EDA3002E3745 /* APIError.swift */,
 			);
 			name = Models;
 			path = Model;
@@ -186,6 +191,7 @@
 			children = (
 				525141EF1E7D9654004E8092 /* FirebaseService.swift */,
 				8688F9411E77030300E49B0B /* GMapDirectionService.swift */,
+				869927E41E82E9B9002E3745 /* GeocodingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -358,11 +364,13 @@
 				522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */,
 				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
 				8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */,
+				869927E51E82E9B9002E3745 /* GeocodingService.swift in Sources */,
 				861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */,
 				525141F01E7D9654004E8092 /* FirebaseService.swift in Sources */,
 				8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */,
 				522DFB601E76E777007DFEB6 /* MenuViewController.swift in Sources */,
 				525141EE1E7D9623004E8092 /* UserModel.swift in Sources */,
+				869927E71E82EDA3002E3745 /* APIError.swift in Sources */,
 				522DFB621E76E787007DFEB6 /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
