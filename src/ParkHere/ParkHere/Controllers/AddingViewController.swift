@@ -34,13 +34,17 @@ class AddingViewController: UIViewController {
         newComment.userId = 1
         newComment.createdAt = Date.init()
         
-        FirebaseService.getInstance().addComment(newComment: newComment) { (_) in
-            print("OK")
+//        FirebaseService.getInstance().addComment(newComment: newComment) { (_) in
+//            print("OK")
+//        }
+//        
+//        FirebaseService.getInstance().getCommentsByPage(parkingZoneId: 1, page: 1) { (comments) in
+//            print(comments.count)
+//        }
+        FirebaseService.getInstance().getParkingZoneRating(parkingZoneId: 1) { (rating) in
+            print(rating)
         }
         
-        FirebaseService.getInstance().getCommentsByPage(parkingZoneId: 1, page: 1) { (comments) in
-            print(comments.count)
-        }
     }
     
     /*

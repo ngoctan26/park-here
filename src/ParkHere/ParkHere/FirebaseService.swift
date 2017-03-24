@@ -22,24 +22,98 @@ class FirebaseService {
     }
     
     // <!-- ParkingZone -->
-    func getAllParkingZones() -> [ParkingZoneModel] {
-        return []
+    func getAllParkingZones(success: @escaping ([ParkingZoneModel]) -> Void) {
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                FirebaseClient.getInstance().retreiveData(path: Constant.Parking_Zones_Node, sussess: { (result) in
+                    let results: NSDictionary = result as! NSDictionary
+                    success(ParkingZoneModel.parkingZones(dictionaries: results.allValues as! [NSDictionary]))
+                })
+            } else {
+                print("error")
+            }
+        }
     }
     
     func getParkingZonesByDistance() -> [ParkingZoneModel] {
         return []
     }
     
-    func getParkingZonesById() -> ParkingZoneModel {
-        return ParkingZoneModel()
+    func getParkingZonesById(parkingZoneId: Int!, success: @escaping (ParkingZoneModel) -> Void) {
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                FirebaseClient.getInstance().retreiveData(path: Constant.Parking_Zones_Node + "\(parkingZoneId!)", sussess: { (result) in
+                    success(ParkingZoneModel(dictionary: result as! NSDictionary))
+                })
+            } else {
+                print("error")
+            }
+        }
     }
     
-    func addParkingZone(newParkingZone: ParkingZoneModel, success: @escaping (ParkingZoneModel) -> Void) {
-        success(newParkingZone)
+    func addParkingZone(newParkingZone: ParkingZoneModel, success: @escaping () -> Void) {
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                
+                var params = [String: AnyObject]()
+                
+                params["address"] = newParkingZone.address as AnyObject
+                params["description"] = newParkingZone.desc as AnyObject
+                params["image_url"] = newParkingZone.imageUrl?.absoluteString as AnyObject
+                params["created_at"] = newParkingZone.createdAt as AnyObject
+                
+                if let openTime = newParkingZone.openTime {
+                    if let closeTime = newParkingZone.closeTime {
+                        let workingTime: [String : AnyObject] = [
+                            "opening_time": openTime as AnyObject,
+                            "closing_time": closeTime as AnyObject
+                        ]
+                        params["working_time"] = workingTime as AnyObject?
+                    }
+                }
+                
+                if let longitude = newParkingZone.longitude {
+                    if let latitude = newParkingZone.latitude {
+                        let coordinate: [String : AnyObject] = [
+                            "longitude": longitude as AnyObject,
+                            "latitude": latitude as AnyObject
+                        ]
+                        params["coordinate"] = coordinate as AnyObject?
+                    }
+                }
+                
+                if let transportTypes = newParkingZone.transportTypes {
+                    var transportTypeStr = Constant.Empty_String
+                    transportTypes.forEach { transportTypeStr = transportTypeStr + Constant.Comma_Char + $0.rawValue}
+                    params["transport_types"] = transportTypeStr as AnyObject
+                }
+                
+                FirebaseClient.getInstance().saveValue(path: Constant.Parking_Zones_Node, value: params, failure: { (error) in
+                    print(error.debugDescription)
+                })
+                try! FIRAuth.auth()!.signOut()
+                success()
+            } else {
+                print("error")
+            }
+        }
     }
     
-    func getParkingZoneRating(parkingZoneId: Int) -> Double {
-        return 0.0
+    func getParkingZoneRating(parkingZoneId: Int!, success: @escaping (Double) -> Void) {
+        var sum: Double = 0.0
+        var count: Int = 0
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                FIRDatabase.database().reference().child("comments/1/").queryOrdered(byChild: "rating").observe(.childAdded, with: { (snapshot) -> Void in
+                    
+                    print(snapshot.value)
+                    //sum += snapshot.value["rating"] as! Double
+                    count += 1
+                })
+            } else {
+                print("error")
+            }
+        }
     }
     
     // <!-- Comment -->

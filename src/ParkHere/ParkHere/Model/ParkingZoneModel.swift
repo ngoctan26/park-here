@@ -52,8 +52,8 @@ class ParkingZoneModel: NSObject {
         }
         
         if let workingTime = dictionary["working_time"] as? NSDictionary {
-            openTime = workingTime["open"] as? Int
-            closeTime = workingTime["close"] as? Int
+            openTime = workingTime["opening_time"] as? Int
+            closeTime = workingTime["closing_time"] as? Int
         }
     }
     
