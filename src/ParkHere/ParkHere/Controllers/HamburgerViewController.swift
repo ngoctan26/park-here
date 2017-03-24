@@ -14,6 +14,11 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftMarginConstraintHeaderView: NSLayoutConstraint!
+    
+    @IBOutlet weak var languageSegment: UISegmentedControl!
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var headerView: UIView!
+    
     var menuViewController: UIViewController! {
         didSet {
             view.layoutIfNeeded()
@@ -39,7 +44,7 @@ class HamburgerViewController: UIViewController {
             
             UIView.animate(withDuration: 0.5) {
                 self.leftMarginConstraint.constant = 0
-                self.leftMarginConstraintHeaderView.constant = 0
+                self.leftMarginConstraintHeaderView.constant = 10
                 self.view.layoutIfNeeded()
             }
         }
@@ -51,6 +56,8 @@ class HamburgerViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        leftMarginConstraintHeaderView.constant = 10
+        headerView.backgroundColor = Constant.Header_View_Background_Color
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,11 +77,11 @@ class HamburgerViewController: UIViewController {
         } else if sender.state == .ended {
             UIView.animate(withDuration: 0.5, animations: {
                 if velocity.x > 0 {
-                    self.leftMarginConstraint.constant = self.view.frame.size.width - 50
+                    self.leftMarginConstraint.constant = self.view.frame.size.width - self.view.frame.size.width/2
                 } else {
                     self.leftMarginConstraint.constant = 0
                 }
-                self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant
+                self.leftMarginConstraintHeaderView.constant = 10
                 self.view.layoutIfNeeded()
             })
         }
@@ -82,8 +89,13 @@ class HamburgerViewController: UIViewController {
     
     @IBAction func onMenu(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5) {
-            self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - 50
-            self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant
+            self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - self.view.frame.size.width/2
+            if self.leftMarginConstraint.constant != 0 && self.view.frame.size.width / 2 < CGFloat(Constant.Width_Of_Space_For_Icon_On_Header_View) {
+                self.logo.isHidden = true
+            } else {
+                self.logo.isHidden = false
+            }
+            self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant == 0 ? 10 : self.leftMarginConstraint.constant
             self.view.layoutIfNeeded()
         }
     }
