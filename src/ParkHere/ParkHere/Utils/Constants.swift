@@ -21,7 +21,7 @@ class Constant {
     static let Settings_Menu_Title_Key = "settingsMenu"
     static let SignIn_Menu_Title_Key = "signInMenu"
     
-    static let Width_Of_Space_For_Icon_On_Header_View = 170
+    static let Width_Of_Space_For_Icon_On_Header_View = 100
     
     static let Header_View_Background_Color = UIColor(red:0.65, green:0.80, blue:0.36, alpha:1.0)
     

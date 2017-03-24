@@ -15,7 +15,6 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftMarginConstraintHeaderView: NSLayoutConstraint!
     
-    @IBOutlet weak var languageSegment: UISegmentedControl!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var headerView: UIView!
     

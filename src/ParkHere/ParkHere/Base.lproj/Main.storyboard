@@ -56,19 +56,10 @@
                                             <constraint firstAttribute="width" constant="30" id="yGf-x3-exY"/>
                                         </constraints>
                                     </imageView>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TSf-Zd-Wet">
-                                        <rect key="frame" x="671" y="6" width="67" height="29"/>
-                                        <segments>
-                                            <segment title="VN"/>
-                                            <segment title="EN"/>
-                                        </segments>
-                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="TSf-Zd-Wet" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="9yg-5f-r1S"/>
                                     <constraint firstItem="BPX-3j-W5J" firstAttribute="leading" secondItem="XGT-AE-kwL" secondAttribute="leading" constant="10" id="CSC-vF-FZa"/>
-                                    <constraint firstAttribute="trailing" secondItem="TSf-Zd-Wet" secondAttribute="trailing" constant="10" id="Dj9-Gn-Q3i"/>
                                     <constraint firstItem="i2W-hm-dBn" firstAttribute="centerX" secondItem="XGT-AE-kwL" secondAttribute="centerX" id="Vw5-Mo-KBb"/>
                                     <constraint firstItem="BPX-3j-W5J" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="fvv-Ld-BSB"/>
                                     <constraint firstItem="i2W-hm-dBn" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="hpF-zN-7mH"/>
@@ -93,7 +84,6 @@
                     <connections>
                         <outlet property="contentView" destination="SB0-ej-ZPO" id="D6c-bw-jc7"/>
                         <outlet property="headerView" destination="XGT-AE-kwL" id="QAj-qP-idr"/>
-                        <outlet property="languageSegment" destination="TSf-Zd-Wet" id="dE2-sj-H9A"/>
                         <outlet property="leftMarginConstraint" destination="mKy-Ns-1QP" id="bbs-xt-kSh"/>
                         <outlet property="leftMarginConstraintHeaderView" destination="ytp-tf-24M" id="QVh-hg-bE3"/>
                         <outlet property="logo" destination="i2W-hm-dBn" id="eW7-Lq-bS1"/>
@@ -314,7 +304,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CVd-kJ-FhS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mXV-mo-q8p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXV-mo-q8p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -332,7 +322,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="paF-mJ-HGU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="02i-sb-ZKc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="02i-sb-ZKc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -350,7 +340,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HaG-oP-Z4b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8uG-lp-z6g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8uG-lp-z6g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -368,7 +358,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vk8-Cd-4Sb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z1e-qG-enP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z1e-qG-enP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -386,7 +376,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5cr-PT-FuI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vpS-O3-RAD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vpS-O3-RAD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
