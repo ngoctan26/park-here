@@ -36,6 +36,8 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         lblTestMultilingual.text = "lang".localized
         initMapView()
+        
+        addMarkerForSampleDestination()
     }
 
     override func didReceiveMemoryWarning() {
@@ -160,6 +162,7 @@ extension HomeViewController: MarkerInfoWindowViewDelegate {
     
     func onBtnDetailClicked() {
         // TODO: Move to details
+        performSegue(withIdentifier: "CommentSegue", sender: nil)
     }
 }
 
