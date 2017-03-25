@@ -36,5 +36,7 @@ class Constant {
     // Firebase Db Node
     static let Comments_Node = "comments/"
     static let Parking_Zones_Node = "parking_zones/"
-    
+    // locations
+    static let Locations_Node = "locations/"
+    static let Current_User_Loc_Node = "current_user"
 }

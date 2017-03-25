@@ -9,8 +9,10 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import GeoFire
 
 class FirebaseService {
+    let fireBaseDefaultRef = FIRDatabase.database().reference()
     
     private static var instance: FirebaseService?
     
@@ -89,7 +91,9 @@ class FirebaseService {
                 }
                 
                 FirebaseClient.getInstance().saveValue(path: Constant.Parking_Zones_Node, value: params, failure: { (error) in
-                    print(error.debugDescription)
+                    if error != nil {
+                        print(error.debugDescription)
+                    }
                 })
                 try! FIRAuth.auth()!.signOut()
                 success()
@@ -165,5 +169,14 @@ class FirebaseService {
     // <!-- User -->
     func getUserById(userId: Int) -> UserModel {
         return UserModel()
+    }
+    
+    // Locations
+    
+    func updateUserLocation(currentLocation: CLLocation, failure: @escaping (_ error: Error?) -> ()) {
+        let geoRef = GeoFire(firebaseRef: fireBaseDefaultRef.child(Constant.Locations_Node))
+        geoRef?.setLocation(currentLocation, forKey: Constant.Current_User_Loc_Node) { (error) in
+            failure(error)
+        }
     }
 }
