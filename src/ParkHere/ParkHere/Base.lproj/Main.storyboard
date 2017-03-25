@@ -224,7 +224,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWu-yU-Try">
-                                <rect key="frame" x="274" y="69" width="40" height="40"/>
+                                <rect key="frame" x="274" y="114" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2sE-dX-uix"/>
                                     <constraint firstAttribute="width" constant="40" id="P46-Dk-JJi"/>
@@ -235,7 +235,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-3F-abo">
-                                <rect key="frame" x="274" y="119" width="40" height="40"/>
+                                <rect key="frame" x="274" y="164" width="40" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="DSY-ZX-wFw"/>
@@ -253,12 +253,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1450980392" green="0.58039215690000001" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="BWu-yU-Try" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="5K1-Ew-8eE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BWu-yU-Try" secondAttribute="trailing" constant="-10" id="8Eh-t4-2Fo"/>
                             <constraint firstItem="AH2-PX-TZB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Gl3-YW-bAC"/>
                             <constraint firstAttribute="trailing" secondItem="AH2-PX-TZB" secondAttribute="trailing" id="RA7-IG-LVu"/>
                             <constraint firstItem="zkE-3F-abo" firstAttribute="trailing" secondItem="BWu-yU-Try" secondAttribute="trailing" id="SfU-27-yJs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XcG-ae-ZJP" secondAttribute="bottom" constant="10" id="X7C-vp-XcQ"/>
-                            <constraint firstItem="BWu-yU-Try" firstAttribute="top" secondItem="AH2-PX-TZB" secondAttribute="top" constant="5" id="YQX-r0-gq8"/>
                             <constraint firstItem="zkE-3F-abo" firstAttribute="top" secondItem="BWu-yU-Try" secondAttribute="bottom" constant="10" id="bK4-J8-lXD"/>
                             <constraint firstItem="AH2-PX-TZB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kjx-Ld-qvq"/>
                             <constraint firstAttribute="trailing" secondItem="XcG-ae-ZJP" secondAttribute="trailing" constant="10" id="v4I-mA-nX0"/>
