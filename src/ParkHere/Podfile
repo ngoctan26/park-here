@@ -17,5 +17,6 @@ target 'ParkHere' do
   # to fix error [Permission denied]
   pod 'Alamofire', '~> 4.4'
   pod 'NSDate+TimeAgo'
+  pod 'TextFieldEffects'
   
 end

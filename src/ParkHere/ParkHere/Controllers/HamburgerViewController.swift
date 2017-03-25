@@ -64,28 +64,6 @@ class HamburgerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: view)
-        let velocity = sender.velocity(in: view)
-        
-        if sender.state == .began {
-            originalLeftMargin = leftMarginConstraint.constant
-        } else if sender.state == .changed {
-            leftMarginConstraint.constant = originalLeftMargin + translation.x
-            leftMarginConstraintHeaderView.constant = leftMarginConstraint.constant
-        } else if sender.state == .ended {
-            UIView.animate(withDuration: 0.5, animations: {
-                if velocity.x > 0 {
-                    self.leftMarginConstraint.constant = self.view.frame.size.width - self.view.frame.size.width/2
-                } else {
-                    self.leftMarginConstraint.constant = 0
-                }
-                self.leftMarginConstraintHeaderView.constant = 10
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
-    
     @IBAction func onMenu(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5) {
             self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - self.view.frame.size.width/2

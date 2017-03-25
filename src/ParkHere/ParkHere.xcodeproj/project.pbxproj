@@ -23,6 +23,8 @@
 		525141EE1E7D9623004E8092 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141ED1E7D9623004E8092 /* UserModel.swift */; };
 		525141F01E7D9654004E8092 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141EF1E7D9654004E8092 /* FirebaseService.swift */; };
 		525141F21E8029F3004E8092 /* TransportTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141F11E8029F3004E8092 /* TransportTypeEnum.swift */; };
+		525141F61E8606CF004E8092 /* NewParkingZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141F41E8606CF004E8092 /* NewParkingZone.swift */; };
+		525141F71E8606CF004E8092 /* NewParkingZone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525141F51E8606CF004E8092 /* NewParkingZone.xib */; };
 		52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D7B5731E73E70500436B64 /* GoogleService-Info.plist */; };
 		860843471E777AC7001F35E1 /* nqntan_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 860843461E777AC7001F35E1 /* nqntan_location.gpx */; };
 		8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618810B1E7C5CD200D5250A /* GMapRoute.swift */; };
@@ -65,6 +67,8 @@
 		525141EF1E7D9654004E8092 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = ../FirebaseService.swift; sourceTree = "<group>"; };
 		525141F11E8029F3004E8092 /* TransportTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportTypeEnum.swift; sourceTree = "<group>"; };
 		525141F31E8577F2004E8092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		525141F41E8606CF004E8092 /* NewParkingZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewParkingZone.swift; path = Views/NewParkingZone.swift; sourceTree = "<group>"; };
+		525141F51E8606CF004E8092 /* NewParkingZone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewParkingZone.xib; path = Views/NewParkingZone.xib; sourceTree = "<group>"; };
 		52D7B5731E73E70500436B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkHere/Pods-ParkHere.release.xcconfig"; sourceTree = "<group>"; };
 		860843461E777AC7001F35E1 /* nqntan_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = nqntan_location.gpx; path = Resources/nqntan_location.gpx; sourceTree = SOURCE_ROOT; };
@@ -205,6 +209,8 @@
 				861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */,
 				861D44B01E81836C00BF3DA2 /* MapView.xib */,
 				861D44B21E81838000BF3DA2 /* MapView.swift */,
+				525141F41E8606CF004E8092 /* NewParkingZone.swift */,
+				525141F51E8606CF004E8092 /* NewParkingZone.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */,
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
 				861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */,
+				525141F71E8606CF004E8092 /* NewParkingZone.xib in Resources */,
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
 				861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */,
@@ -351,6 +358,7 @@
 				525141EA1E7D95D2004E8092 /* ParkingZoneModel.swift in Sources */,
 				31AB448C1E79B4B000296E0C /* SignInViewController.swift in Sources */,
 				8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */,
+				525141F61E8606CF004E8092 /* NewParkingZone.swift in Sources */,
 				8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */,
 				522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */,
 				8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */,

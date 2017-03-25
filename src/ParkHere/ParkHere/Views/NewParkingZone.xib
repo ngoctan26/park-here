@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewParkingZone" customModule="ParkHere" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="i5M-Pr-FkT" id="PkO-Sr-TVz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="NewParkingZone" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="880"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lCH-sr-boL" userLabel="name">
+                    <rect key="frame" x="10" y="10" width="355" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="RH3-Qs-ZHg"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9ib-WY-wbP" userLabel="desc">
+                    <rect key="frame" x="10" y="80" width="355" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="wIv-Rn-rHK"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgE-k1-HM5" userLabel="transportTypeCtrView">
+                    <rect key="frame" x="10" y="150" width="355" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="To9-KU-nYz"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1T-5R-vVa" userLabel="mapCtrView">
+                    <rect key="frame" x="10" y="190" width="355" height="240"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="Xwb-5n-XlH"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Phr-0a-VnA" userLabel="address">
+                    <rect key="frame" x="10" y="440" width="355" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="6dj-WJ-Rsr"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHv-JZ-4pU" userLabel="workingTimeCtrView">
+                    <rect key="frame" x="10" y="510" width="355" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Iir-RP-RDp"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X31-2j-5vd" userLabel="imageCtrlView">
+                    <rect key="frame" x="10" y="580" width="355" height="240"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkhere" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-PU-7b4">
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="240"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="b0l-PU-7b4" firstAttribute="top" secondItem="X31-2j-5vd" secondAttribute="top" id="HTf-gp-PVx"/>
+                        <constraint firstAttribute="height" constant="240" id="Qn5-Gc-uee"/>
+                        <constraint firstAttribute="trailing" secondItem="b0l-PU-7b4" secondAttribute="trailing" id="TkF-cc-BsK"/>
+                        <constraint firstItem="b0l-PU-7b4" firstAttribute="leading" secondItem="X31-2j-5vd" secondAttribute="leading" id="oxh-Hh-N5f"/>
+                        <constraint firstAttribute="bottom" secondItem="b0l-PU-7b4" secondAttribute="bottom" id="p8Y-66-7n8"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDn-q9-fBP" userLabel="actionView">
+                    <rect key="frame" x="10" y="830" width="355" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="SQc-6a-dTP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="b1T-5R-vVa" firstAttribute="top" secondItem="OgE-k1-HM5" secondAttribute="bottom" constant="10" id="3k7-TK-VHR"/>
+                <constraint firstItem="X31-2j-5vd" firstAttribute="top" secondItem="JHv-JZ-4pU" secondAttribute="bottom" constant="10" id="4QF-W2-1Ox"/>
+                <constraint firstItem="YDn-q9-fBP" firstAttribute="top" secondItem="X31-2j-5vd" secondAttribute="bottom" constant="10" id="6cu-gJ-HOR"/>
+                <constraint firstAttribute="trailing" secondItem="9ib-WY-wbP" secondAttribute="trailing" constant="10" id="7sP-Zq-WbH"/>
+                <constraint firstAttribute="trailing" secondItem="JHv-JZ-4pU" secondAttribute="trailing" constant="10" id="8L5-NZ-9xI"/>
+                <constraint firstItem="X31-2j-5vd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="8ve-Dd-xXM"/>
+                <constraint firstItem="OgE-k1-HM5" firstAttribute="top" secondItem="9ib-WY-wbP" secondAttribute="bottom" constant="10" id="9ER-yt-pu0"/>
+                <constraint firstItem="YDn-q9-fBP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="AWB-GN-hln"/>
+                <constraint firstItem="lCH-sr-boL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="GM4-gZ-OXI"/>
+                <constraint firstAttribute="trailing" secondItem="X31-2j-5vd" secondAttribute="trailing" constant="10" id="J5b-qW-Jtf"/>
+                <constraint firstAttribute="trailing" secondItem="OgE-k1-HM5" secondAttribute="trailing" constant="10" id="J6U-7j-stX"/>
+                <constraint firstItem="b1T-5R-vVa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="QK6-zB-bNz"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YDn-q9-fBP" secondAttribute="bottom" constant="10" id="R1i-KN-O4A"/>
+                <constraint firstAttribute="trailing" secondItem="b1T-5R-vVa" secondAttribute="trailing" constant="10" id="SFq-zb-RRT"/>
+                <constraint firstItem="Phr-0a-VnA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="TX8-aV-89w"/>
+                <constraint firstItem="JHv-JZ-4pU" firstAttribute="top" secondItem="Phr-0a-VnA" secondAttribute="bottom" constant="10" id="UWC-Ng-dMi"/>
+                <constraint firstItem="OgE-k1-HM5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="ZUp-BW-M55"/>
+                <constraint firstItem="9ib-WY-wbP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="bZQ-Zw-r4N"/>
+                <constraint firstAttribute="trailing" secondItem="lCH-sr-boL" secondAttribute="trailing" constant="10" id="bpt-SE-vvC"/>
+                <constraint firstItem="9ib-WY-wbP" firstAttribute="top" secondItem="lCH-sr-boL" secondAttribute="bottom" constant="10" id="dft-n6-4tv"/>
+                <constraint firstAttribute="trailing" secondItem="Phr-0a-VnA" secondAttribute="trailing" constant="10" id="eWz-Wk-vRg"/>
+                <constraint firstItem="lCH-sr-boL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="gsI-uH-dlf"/>
+                <constraint firstItem="Phr-0a-VnA" firstAttribute="top" secondItem="b1T-5R-vVa" secondAttribute="bottom" constant="10" id="hhQ-Wu-xHr"/>
+                <constraint firstAttribute="trailing" secondItem="YDn-q9-fBP" secondAttribute="trailing" constant="10" id="nOs-DQ-9gB"/>
+                <constraint firstItem="JHv-JZ-4pU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="yT9-2k-Ev7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="61.5" y="175"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="parkhere" width="114" height="114"/>
+    </resources>
+</document>
