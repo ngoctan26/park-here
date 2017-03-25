@@ -29,6 +29,11 @@ class FirebaseClient {
         }
     }
     
+    func getAutoId(path: String) -> String {
+        let ref = FIRDatabase.database().reference()
+        return ref.child(path).childByAutoId().key
+    }
+    
     /**
      Update child data in node. Make sure that child data have full properties and value otherwise child data structure will be changed
      */

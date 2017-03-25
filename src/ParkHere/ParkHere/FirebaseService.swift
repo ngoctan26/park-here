@@ -56,7 +56,10 @@ class FirebaseService {
     func addParkingZone(newParkingZone: ParkingZoneModel, success: @escaping () -> Void) {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
+                // At first get key for new parking zone
+                newParkingZone.id = FirebaseClient.getInstance().getAutoId(path: Constant.Parking_Zones_Node)
                 
+                // Add value for child node in parking zone
                 var params = [String: AnyObject]()
                 
                 params["address"] = newParkingZone.address as AnyObject
@@ -93,10 +96,19 @@ class FirebaseService {
                 FirebaseClient.getInstance().saveValue(path: Constant.Parking_Zones_Node, value: params, failure: { (error) in
                     if error != nil {
                         print(error.debugDescription)
+                    } else {
+                        // Starting push location for this zone by key with GeoFire
+                        let pushedLocation = CLLocation(latitude: newParkingZone.latitude!, longitude: newParkingZone.longitude!)
+                        self.saveLocation(key: newParkingZone.id!, location: pushedLocation, failure: { (error) in
+                            if let error = error {
+                                print("Pushed location failed: \(error)")
+                            } else {
+                                success()
+                            }
+                        })
                     }
                 })
                 try! FIRAuth.auth()!.signOut()
-                success()
             } else {
                 print("error")
             }
@@ -174,9 +186,21 @@ class FirebaseService {
     // Locations
     
     func updateUserLocation(currentLocation: CLLocation, failure: @escaping (_ error: Error?) -> ()) {
-        let geoRef = GeoFire(firebaseRef: fireBaseDefaultRef.child(Constant.Locations_Node))
-        geoRef?.setLocation(currentLocation, forKey: Constant.Current_User_Loc_Node) { (error) in
+        saveLocation(key: Constant.Current_User_Loc_Node, location: currentLocation) { (error) in
             failure(error)
         }
+    }
+    
+    func saveLocation(key: String, location: CLLocation, failure: @escaping (_ error: Error?) -> ()) {
+        let geoRef = GeoFire(firebaseRef: fireBaseDefaultRef.child(Constant.Locations_Node))
+        geoRef?.setLocation(location, forKey: key) { (error) in
+            failure(error)
+        }
+    }
+    
+    func getCircleQuery(centerLocation: CLLocation) -> GFCircleQuery? {
+        let geoRef = GeoFire(firebaseRef: fireBaseDefaultRef.child(Constant.Locations_Node))
+        // Query locations at [37.7832889, -122.4056973] with a radius of 600 meters
+        return geoRef?.query(at: centerLocation, withRadius: 2.0)
     }
 }

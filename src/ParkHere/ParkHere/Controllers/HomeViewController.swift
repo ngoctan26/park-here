@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import GeoFire
 
 class HomeViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class HomeViewController: UIViewController {
     var sampleMarker2nd: GMSMarker!
     var selectedMarker: GMSMarker?
     var sampleDesCoordinate: CLLocationCoordinate2D!
+    var geoFireStartObserve: Bool = false
     
     // Action references
     
@@ -34,7 +36,6 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         lblTestMultilingual.text = "lang".localized
         initMapView()
-        addMarkerForSampleDestination()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,10 +52,8 @@ class HomeViewController: UIViewController {
         
         // Add delegate for map view
         mapView.showingMap.delegate = self
-        //mapView.settings.myLocationButton = true
         // At first, jump into current location
         updateMapToCurrentPosition(animate: false)
-        addSampleParkingZone()
     }
     
     func updateMapToCurrentPosition(animate: Bool) {
@@ -62,6 +61,12 @@ class HomeViewController: UIViewController {
         if let currentLocation = currentLocation {
             mapView.moveCamera(inputLocation: currentLocation.coordinate, animate: animate)
         }
+    }
+ 
+    // TODO: Remove sample when finished test
+    func createSampleForTest() {
+        addMarkerForSampleDestination()
+        addSampleParkingZone()
     }
     
     func addMarkerForSampleDestination() {
@@ -84,10 +89,41 @@ class HomeViewController: UIViewController {
     }
     
     func addSampleParkingZone() {
-//        var newParkingZone = ParkingZoneModel()
+//        let newParkingZone = ParkingZoneModel()
+//        newParkingZone.desc = "sample description for park 1"
+//        newParkingZone.address = "227 Nguyễn Văn Cừ, phường 4, Quận 5, Hồ Chí Minh, Việt Nam"
+//        newParkingZone.imageUrl = URL(fileURLWithPath: "http://sample.url")
+//        newParkingZone.latitude = 10.762639
+//        newParkingZone.longitude = 106.682027
+//        let currentDateTime = Date()
+//        newParkingZone.createdAt = DateTimeUtil.stringFromDate(date: currentDateTime)
+//        newParkingZone.closeTime = 1120
+//        newParkingZone.id = FirebaseClient.getInstance().getAutoId(path: Constant.Parking_Zones_Node)
 //        FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
 //            // TODO: update something when complete
+//            
 //        }
+    }
+    
+    func saveSampleLocation() {
+//        let savedLocation = CLLocation(latitude: 10.762639, longitude: 106.682027)
+//        FirebaseService.getInstance().saveLocation(key: "Kg3s2sGsK502j_xrk9h", location: savedLocation) { (error) in
+//            if let error = error {
+//                print("Save sample location failed: \(error)")
+//            }
+//        }
+    }
+    
+    func startQueryForParkingZone(centerLocation: CLLocation) {
+            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation)
+            if let geoQuery = geoQuery {
+                geoQuery.observeReady({
+                    print("All initial data has been loaded and events have been fired!")
+                })
+                geoQuery.observe(.keyEntered, with: { (key, parkingLocation) in
+                    print("Parking lot found: \(key) location: \(parkingLocation?.coordinate.latitude) \(parkingLocation?.coordinate.longitude)")
+                })
+            }
     }
 }
 
@@ -103,6 +139,10 @@ extension HomeViewController: CLLocationManagerDelegate {
                 }
             })
             isUpdateCurrentLocationEnable = false
+        }
+        if !geoFireStartObserve && location != nil {
+            startQueryForParkingZone(centerLocation: location!)
+            geoFireStartObserve = true
         }
     }
 }

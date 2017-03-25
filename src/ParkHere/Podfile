@@ -10,6 +10,7 @@ target 'ParkHere' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  #GeoFire using to query nearby location
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc'
   pod 'AFNetworking', '~> 3.0'
   pod 'GoogleMaps'

@@ -10,8 +10,8 @@ import Foundation
 import NSDate_TimeAgo
 
 class ParkingZoneModel: NSObject {
-    var id: Int?
-    var createdAt: Date?
+    var id: String?
+    var createdAt: String?
     var imageUrl: URL?
     var rating: Double = 0.0
     var desc: String?
@@ -20,7 +20,8 @@ class ParkingZoneModel: NSObject {
     var address: String?
     var transportTypes: [TransportTypeEnum]?
     var timeAgo: String {
-        return (createdAt as NSDate?)?.timeAgo() ?? Constant.Empty_String
+        let createdAtDate = DateTimeUtil.dateFromString(dateAsString: createdAt!)
+        return (createdAtDate as NSDate?)?.timeAgo() ?? Constant.Empty_String
     }
     var openTime: Int?
     var closeTime: Int?
@@ -42,9 +43,7 @@ class ParkingZoneModel: NSObject {
         }
         
         if let timestampString = dictionary["created_at"] as? String {
-            let timeFormater = DateFormatter()
-            timeFormater.dateFormat = "EEE MMM d HH:mm:ss" // Tue Aug 28 21:16:23
-            createdAt = timeFormater.date(from: timestampString)
+            createdAt = timestampString
         }
         
         if let transportTypeStr = dictionary["transport_types"] as? String {

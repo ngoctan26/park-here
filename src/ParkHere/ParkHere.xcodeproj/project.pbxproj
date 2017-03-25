@@ -38,6 +38,7 @@
 		8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC751E71BF8900B92710 /* LaunchScreen.storyboard */; };
 		866159541E8597EE0047B2F0 /* MapActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866159531E8597EE0047B2F0 /* MapActionBarView.swift */; };
 		866159561E8597FF0047B2F0 /* MapActionBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866159551E8597FF0047B2F0 /* MapActionBarView.xib */; };
+		866159581E8671F60047B2F0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866159571E8671F60047B2F0 /* DateTimeUtil.swift */; };
 		8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA061E73019A00993E6D /* ImageUtil.swift */; };
 		8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA081E73024300993E6D /* SetttingUtil.swift */; };
 		8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */; };
@@ -87,6 +88,7 @@
 		8624AC781E71BF8900B92710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		866159531E8597EE0047B2F0 /* MapActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapActionBarView.swift; sourceTree = "<group>"; };
 		866159551E8597FF0047B2F0 /* MapActionBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapActionBarView.xib; sourceTree = "<group>"; };
+		866159571E8671F60047B2F0 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageUtil.swift; path = Utils/ImageUtil.swift; sourceTree = "<group>"; };
 		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
 		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = Services/FirebaseClient.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				522DFB5A1E76E6A6007DFEB6 /* Constants.swift */,
 				8685FA061E73019A00993E6D /* ImageUtil.swift */,
 				8685FA081E73024300993E6D /* SetttingUtil.swift */,
+				866159571E8671F60047B2F0 /* DateTimeUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -268,7 +271,7 @@
 				TargetAttributes = {
 					8624AC681E71BF8900B92710 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = B77T45EXXL;
+						DevelopmentTeam = V7Z27TG6NM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -372,6 +375,7 @@
 				31AB448C1E79B4B000296E0C /* SignInViewController.swift in Sources */,
 				8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */,
 				525141F61E8606CF004E8092 /* NewParkingZone.swift in Sources */,
+				866159581E8671F60047B2F0 /* DateTimeUtil.swift in Sources */,
 				8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */,
 				522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */,
 				866159541E8597EE0047B2F0 /* MapActionBarView.swift in Sources */,
@@ -531,11 +535,11 @@
 			baseConfigurationReference = BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B77T45EXXL;
+				DEVELOPMENT_TEAM = V7Z27TG6NM;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -548,11 +552,11 @@
 			baseConfigurationReference = 610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B77T45EXXL;
+				DEVELOPMENT_TEAM = V7Z27TG6NM;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
