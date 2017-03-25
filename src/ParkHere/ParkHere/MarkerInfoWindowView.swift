@@ -18,7 +18,7 @@ class MarkerInfoWindowView: UIView {
     weak var delegate: MarkerInfoWindowViewDelegate!
     
     // TODO: defined object model for marker info
-    var markerInfo: Any! {
+    var markerInfo: ParkingZoneModel! {
         didSet {
             // Just add hardcode for demo
             name.text = "DH Khoa Hoc Tu Nhien"

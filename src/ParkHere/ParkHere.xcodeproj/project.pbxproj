@@ -36,6 +36,8 @@
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
 		8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC731E71BF8900B92710 /* Assets.xcassets */; };
 		8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC751E71BF8900B92710 /* LaunchScreen.storyboard */; };
+		866159541E8597EE0047B2F0 /* MapActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866159531E8597EE0047B2F0 /* MapActionBarView.swift */; };
+		866159561E8597FF0047B2F0 /* MapActionBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866159551E8597FF0047B2F0 /* MapActionBarView.xib */; };
 		8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA061E73019A00993E6D /* ImageUtil.swift */; };
 		8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685FA081E73024300993E6D /* SetttingUtil.swift */; };
 		8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */; };
@@ -83,6 +85,8 @@
 		8624AC731E71BF8900B92710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8624AC761E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8624AC781E71BF8900B92710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		866159531E8597EE0047B2F0 /* MapActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapActionBarView.swift; sourceTree = "<group>"; };
+		866159551E8597FF0047B2F0 /* MapActionBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapActionBarView.xib; sourceTree = "<group>"; };
 		8685FA061E73019A00993E6D /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageUtil.swift; path = Utils/ImageUtil.swift; sourceTree = "<group>"; };
 		8685FA081E73024300993E6D /* SetttingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetttingUtil.swift; path = Utils/SetttingUtil.swift; sourceTree = "<group>"; };
 		8688F93F1E7702DB00E49B0B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = Services/FirebaseClient.swift; sourceTree = "<group>"; };
@@ -209,8 +213,13 @@
 				861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */,
 				861D44B01E81836C00BF3DA2 /* MapView.xib */,
 				861D44B21E81838000BF3DA2 /* MapView.swift */,
+
 				525141F41E8606CF004E8092 /* NewParkingZone.swift */,
 				525141F51E8606CF004E8092 /* NewParkingZone.xib */,
+
+				866159531E8597EE0047B2F0 /* MapActionBarView.swift */,
+				866159551E8597FF0047B2F0 /* MapActionBarView.xib */,
+
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -291,7 +300,11 @@
 				522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */,
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
 				861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */,
+
 				525141F71E8606CF004E8092 /* NewParkingZone.xib in Resources */,
+
+				866159561E8597FF0047B2F0 /* MapActionBarView.xib in Resources */,
+
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
 				861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */,
@@ -361,6 +374,7 @@
 				525141F61E8606CF004E8092 /* NewParkingZone.swift in Sources */,
 				8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */,
 				522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */,
+				866159541E8597EE0047B2F0 /* MapActionBarView.swift in Sources */,
 				8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */,
 				522DFB581E76E665007DFEB6 /* HomeViewController.swift in Sources */,
 				522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */,

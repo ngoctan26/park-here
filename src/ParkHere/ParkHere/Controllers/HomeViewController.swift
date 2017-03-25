@@ -22,6 +22,12 @@ class HomeViewController: UIViewController {
     var selectedMarker: GMSMarker?
     var sampleDesCoordinate: CLLocationCoordinate2D!
     
+    // Action references
+    
+    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
+        updateMapToCurrentPosition(animate: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,13 +53,14 @@ class HomeViewController: UIViewController {
         mapView.showingMap.delegate = self
         //mapView.settings.myLocationButton = true
         // At first, jump into current location
-        updateMapToCurrentPosition()
+        updateMapToCurrentPosition(animate: false)
+        addSampleParkingZone()
     }
     
-    func updateMapToCurrentPosition() {
+    func updateMapToCurrentPosition(animate: Bool) {
         let currentLocation = locationManager.location
         if let currentLocation = currentLocation {
-            mapView.moveCamera(inputLocation: currentLocation.coordinate)
+            mapView.moveCamera(inputLocation: currentLocation.coordinate, animate: animate)
         }
     }
     
@@ -76,14 +83,25 @@ class HomeViewController: UIViewController {
         })
     }
     
+    func addSampleParkingZone() {
+//        var newParkingZone = ParkingZoneModel()
+//        FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
+//            // TODO: update something when complete
+//        }
+    }
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // let location = locations[0]
+        let location = locations.last
         // Update here when location changed
         if isUpdateCurrentLocationEnable {
-            updateMapToCurrentPosition()
+            mapView.moveCamera(inputLocation: (location?.coordinate)!, animate: false)
+            FirebaseService.getInstance().updateUserLocation(currentLocation: location!, failure: { (error) in
+                if let error = error {
+                    print("Update user location to firebase failed: \(error.localizedDescription)")
+                }
+            })
             isUpdateCurrentLocationEnable = false
         }
     }
@@ -117,7 +135,8 @@ extension HomeViewController: GMSMapViewDelegate {
         }
         infoWindow.removeFromSuperview()
         infoWindow.delegate = self
-        infoWindow.markerInfo = "info"
+        let sampleParkingZone = ParkingZoneModel(dictionary: ["": ""])
+        infoWindow.markerInfo = sampleParkingZone
         infoWindow.center = mapView.projection.point(for: marker.position)
         infoWindow.center.y -= 150 // Place infowindow above marker
         selectedMarker = marker

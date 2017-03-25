@@ -75,8 +75,13 @@ class MapView: UIView {
         sampleRoute.map = showingMap
     }
     
-    func moveCamera(inputLocation: CLLocationCoordinate2D) {
-        showingMap.camera = GMSCameraPosition.camera(withLatitude: inputLocation.latitude, longitude: inputLocation.longitude, zoom: Constant.Normal_Zoom_Ratio)
+    func moveCamera(inputLocation: CLLocationCoordinate2D, animate: Bool) {
+        let positionCamera = GMSCameraPosition.camera(withLatitude: inputLocation.latitude, longitude: inputLocation.longitude, zoom: Constant.Normal_Zoom_Ratio)
+        if animate {
+            showingMap.animate(to: positionCamera)
+        } else {
+            showingMap.camera = positionCamera
+        }
     }
     
     func addMarker(parkingZones: [ParkingZoneModel], textInfo: String?, markerIcon: UIImage?) -> [GMSMarker] {
