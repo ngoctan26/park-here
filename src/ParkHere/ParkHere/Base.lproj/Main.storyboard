@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lIV-ba-IPq">
-    <device id="ipad9_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lIV-ba-IPq">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,18 +18,18 @@
                         <viewControllerLayoutGuide type="bottom" id="9hx-xB-49t"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d00-y8-yTx">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-BE-OEb" userLabel="Menu View">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="H30-Kr-bFk" appends="YES" id="heu-VE-s6j"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-ej-ZPO" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -37,7 +37,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-AE-kwL" userLabel="Header View">
-                                <rect key="frame" x="10" y="30" width="748" height="40"/>
+                                <rect key="frame" x="10" y="30" width="300" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPX-3j-W5J">
                                         <rect key="frame" x="10" y="6" width="28" height="28"/>
@@ -51,7 +51,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkhere" translatesAutoresizingMaskIntoConstraints="NO" id="i2W-hm-dBn">
-                                        <rect key="frame" x="359" y="5" width="30" height="30"/>
+                                        <rect key="frame" x="135" y="5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="mzS-65-HHj"/>
                                             <constraint firstAttribute="width" constant="30" id="yGf-x3-exY"/>
@@ -109,7 +109,7 @@
                         <viewControllerLayoutGuide type="bottom" id="W3A-aw-LKD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j1S-qO-eke">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Out-AD-Dy3">
@@ -142,7 +142,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Us1-fD-j55"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gNW-AO-yAe">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.42636984589999999" green="0.6893977523" blue="0.94280797240000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -161,7 +161,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Gch-es-Xo3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gAA-7c-Rk8">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08R-dR-uo8">
@@ -190,7 +190,7 @@
                         <viewControllerLayoutGuide type="bottom" id="d9h-ZH-00g"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LV9-UB-toC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.79607843140000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -209,15 +209,15 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AH2-PX-TZB" customClass="MapView" customModule="ParkHere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-ae-ZJP" customClass="MapActionBarView" customModule="ParkHere" customModuleProvider="target">
-                                <rect key="frame" x="10" y="458" width="300" height="50"/>
+                                <rect key="frame" x="10" y="508" width="300" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7Wt-gq-3PC"/>
@@ -257,7 +257,7 @@
                             <constraint firstItem="AH2-PX-TZB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Gl3-YW-bAC"/>
                             <constraint firstAttribute="trailing" secondItem="AH2-PX-TZB" secondAttribute="trailing" id="RA7-IG-LVu"/>
                             <constraint firstItem="zkE-3F-abo" firstAttribute="trailing" secondItem="BWu-yU-Try" secondAttribute="trailing" id="SfU-27-yJs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XcG-ae-ZJP" secondAttribute="bottom" constant="60" id="X7C-vp-XcQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XcG-ae-ZJP" secondAttribute="bottom" constant="10" id="X7C-vp-XcQ"/>
                             <constraint firstItem="BWu-yU-Try" firstAttribute="top" secondItem="AH2-PX-TZB" secondAttribute="top" constant="5" id="YQX-r0-gq8"/>
                             <constraint firstItem="zkE-3F-abo" firstAttribute="top" secondItem="BWu-yU-Try" secondAttribute="bottom" constant="10" id="bK4-J8-lXD"/>
                             <constraint firstItem="AH2-PX-TZB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kjx-Ld-qvq"/>
