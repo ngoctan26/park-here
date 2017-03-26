@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,29 +25,62 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5du-xC-uKw">
                             <rect key="frame" x="0.0" y="0.0" width="576" height="40"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvJ-MF-xdI">
-                                    <rect key="frame" x="0.0" y="0.0" width="32" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnBike" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvJ-MF-xdI">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="BvJ-MF-xdI" secondAttribute="height" multiplier="4:4" id="xkw-bp-oFi"/>
+                                    </constraints>
                                     <state key="normal" image="ic_btn_bicycle"/>
+                                    <connections>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="s0h-2N-UBR"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Ua-pWG">
-                                    <rect key="frame" x="109" y="0.0" width="32" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnMoto" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Ua-pWG">
+                                    <rect key="frame" x="107" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="LZV-Ua-pWG" secondAttribute="height" multiplier="4:4" id="RCx-tR-hG5"/>
+                                    </constraints>
                                     <state key="normal" image="ic_btn_moto"/>
+                                    <connections>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="8Sq-Zf-Tl4"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBY-Cp-tWu">
-                                    <rect key="frame" x="217.5" y="0.0" width="32" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnCar" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBY-Cp-tWu">
+                                    <rect key="frame" x="214.5" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="mBY-Cp-tWu" secondAttribute="height" multiplier="4:4" id="u5l-Ap-z8o"/>
+                                    </constraints>
                                     <state key="normal" image="ic_btn_car"/>
+                                    <connections>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="NnT-V1-SU7"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdy-ZY-ze8">
-                                    <rect key="frame" x="326.5" y="0.0" width="32" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnPrice" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdy-ZY-ze8">
+                                    <rect key="frame" x="321.5" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="kdy-ZY-ze8" secondAttribute="height" multiplier="4:4" id="Hc4-Mm-bkg"/>
+                                    </constraints>
                                     <state key="normal" image="ic_btn_price"/>
+                                    <connections>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="z9g-33-Z7B"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-A5-d9v">
-                                    <rect key="frame" x="435" y="0.0" width="32" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnNearest" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-A5-d9v">
+                                    <rect key="frame" x="429" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="jzr-A5-d9v" secondAttribute="height" multiplier="4:4" id="jK1-dO-6aS"/>
+                                    </constraints>
                                     <state key="normal" image="ic_btn_nearest"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aE-xG-b5U">
-                                    <rect key="frame" x="544" y="0.0" width="32" height="40"/>
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRating" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aE-xG-b5U">
+                                    <rect key="frame" x="536" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="0aE-xG-b5U" secondAttribute="height" multiplier="4:4" id="apo-27-hu4"/>
+                                    </constraints>
                                     <state key="normal" image="ic_btn_rating"/>
+                                    <connections>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="YHw-9Z-z8v"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

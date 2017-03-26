@@ -12,10 +12,10 @@ class SettingUtil {
     
     static func loadSetting(key: String, defaultValue: Any?) -> Any? {
         let defaults = UserDefaults.standard
-        guard let returnValue = defaults.object(forKey: key) else {
+        guard let returnValue = defaults.object(forKey: key) as? Data else {
             return defaultValue
         }
-        return NSKeyedUnarchiver.unarchiveObject(with: returnValue as! Data)
+        return NSKeyedUnarchiver.unarchiveObject(with: returnValue)
     }
     
     static func saveSetting(configurations: [String : Any]) {

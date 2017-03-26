@@ -154,7 +154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQr-VB-HDO" userLabel="NewParkingZoneScrollView">
-                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
+             <rect key="frame" x="0.0" y="124" width="320" height="444"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,9 +185,41 @@
                     <view key="view" contentMode="scaleToFill" id="LV9-UB-toC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.21176470589999999" green="0.79607843140000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E20-zj-jX0">
+                                <rect key="frame" x="55" y="538" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="onGoogleLoginButton:" destination="S5k-A0-dwY" eventType="touchUpInside" id="8DU-su-ZpR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfI-rP-Ca6">
+                                <rect key="frame" x="227" y="538" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="onLogoutButton:" destination="S5k-A0-dwY" eventType="touchUpInside" id="nGL-I5-zUa"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPs-g5-pob" customClass="MapView" customModule="ParkHere" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uTM-x5-VfY"/>
+                    <navigationItem key="navigationItem" id="uTM-x5-VfY">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Xqz-Nb-0eT">
+                            <connections>
+                                <action selector="onBackButton:" destination="S5k-A0-dwY" id="H1N-3p-2Jw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentMapView" destination="YPs-g5-pob" id="nqE-Gw-dev"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewb-xD-qhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,7 +254,7 @@
                                     <constraint firstAttribute="height" constant="40" id="2sE-dX-uix"/>
                                     <constraint firstAttribute="width" constant="40" id="P46-Dk-JJi"/>
                                 </constraints>
-                                <state key="normal" image="ic_current_location"/>
+                                <state key="normal" image="ic_location"/>
                                 <connections>
                                     <action selector="onBtnCurrentLocationClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kmg-Vv-IZ7"/>
                                 </connections>
@@ -261,8 +293,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="CR5-kU-94j"/>
                     <connections>
+                        <outlet property="actionBar" destination="XcG-ae-ZJP" id="xB9-ZM-Rhv"/>
                         <outlet property="lblTestMultilingual" destination="fOr-0W-SkI" id="l6i-As-KEc"/>
                         <outlet property="mapView" destination="AH2-PX-TZB" id="FIM-XK-Yhn"/>
+                        <segue destination="HaG-oP-Z4b" kind="showDetail" identifier="CommentSegue" id="2og-RE-kTX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -420,7 +454,7 @@
     </scenes>
     <resources>
         <image name="ic_btn_unroute" width="32" height="32"/>
-        <image name="ic_current_location" width="32" height="32"/>
+        <image name="ic_location" width="32" height="32"/>
         <image name="iconMenuBar" width="24" height="24"/>
         <image name="parkhere" width="114" height="114"/>
     </resources>

@@ -56,17 +56,27 @@ class FirebaseClient {
         }
     }
     
+    func retreiveData(path: String, sussess: @escaping (_ data: Any?) -> ()) {
+        self.retreiveData(path: path, key: nil) { (result) in
+            sussess(result)
+        }
+    }
+    
     /**
      Retreive value at once. It is not tracking the changed from firebase
      */
-    func retreiveData(path: String, sussess: @escaping (_ data: Any?) -> ()) {
-        let ref = FIRDatabase.database().reference()
+    func retreiveData(path: String, key: String?, sussess: @escaping (_ data: Any?) -> ()) {
+        var ref = FIRDatabase.database().reference().child(path)
+        if let key = key {
+            ref = ref.child(key)
+        }
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if !snapshot.exists() {
                 sussess(nil)
+                print("Retreive date at path \(path) is not existed")
+                return
             }
-            let result = snapshot.childSnapshot(forPath: path)
-            sussess(result.value)
+            sussess(snapshot.value)
         })
     }
 }

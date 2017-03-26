@@ -8,6 +8,7 @@
 
 import Foundation
 import NSDate_TimeAgo
+import GoogleMaps
 
 class ParkingZoneModel: NSObject {
     var id: String?
@@ -25,6 +26,7 @@ class ParkingZoneModel: NSObject {
     }
     var openTime: Int?
     var closeTime: Int?
+    var markerRef: Int?
     
     override init() {}
     

@@ -18,11 +18,14 @@ class AddingViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        /* Die
         let newParkingZoneXib = Bundle.main.loadNibNamed("NewParkingZone", owner: self, options: nil)?.first as? NewParkingZone
-        
         newParkingZoneView.contentSize = CGSize(width: (newParkingZoneXib?.frame.size.width)!, height: (newParkingZoneXib?.frame.size.height)!)
-        
         newParkingZoneView.addSubview(newParkingZoneXib!)
+        */
+        let newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: newParkingZoneView.frame.size.width, height: 880))
+        newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height)
+        newParkingZoneView.addSubview(newParkingZoneSubView)
     }
     
     override func didReceiveMemoryWarning() {

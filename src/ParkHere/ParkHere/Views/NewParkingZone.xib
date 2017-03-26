@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewParkingZone" customModule="ParkHere" customModuleProvider="target">
             <connections>
-                <outlet property="actionView" destination="YDn-q9-fBP" id="MBd-vh-CTM"/>
-                <outlet property="containerView" destination="i5M-Pr-FkT" id="PkO-Sr-TVz"/>
-                <outlet property="imgCtrView" destination="X31-2j-5vd" id="QT1-n5-Kzr"/>
-                <outlet property="mapView" destination="b1T-5R-vVa" id="elM-4m-tFA"/>
-                <outlet property="transportTypeView" destination="OgE-k1-HM5" id="MRu-6w-4dM"/>
-                <outlet property="txtAddress" destination="Phr-0a-VnA" id="7d3-sM-hgt"/>
-                <outlet property="txtDesc" destination="9ib-WY-wbP" id="SGc-i9-pmh"/>
-                <outlet property="txtName" destination="lCH-sr-boL" id="eke-TW-Imr"/>
-                <outlet property="workingTimeView" destination="JHv-JZ-4pU" id="fNJ-L1-mtt"/>
+                <outlet property="buttonCtrlView" destination="YDn-q9-fBP" id="ieg-M3-gyI"/>
+                <outlet property="containerCtrlView" destination="i5M-Pr-FkT" id="wYO-l1-hjl"/>
+                <outlet property="imageCtrlView" destination="X31-2j-5vd" id="aPj-qG-yga"/>
+                <outlet property="mapView" destination="b1T-5R-vVa" id="VjP-An-pQb"/>
+                <outlet property="transportTypeView" destination="OgE-k1-HM5" id="A0R-Ko-NTh"/>
+                <outlet property="txtAddress" destination="Phr-0a-VnA" id="cRG-m8-WzM"/>
+                <outlet property="txtDesc" destination="9ib-WY-wbP" id="39N-gR-uEm"/>
+                <outlet property="txtName" destination="lCH-sr-boL" id="SKx-SA-HZz"/>
+                <outlet property="workingTimeView" destination="X31-2j-5vd" id="RaS-5W-e9e"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -53,7 +53,7 @@
                         <constraint firstAttribute="height" constant="30" id="To9-KU-nYz"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="b1T-5R-vVa" userLabel="mapCtrView">
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="b1T-5R-vVa" userLabel="mapCtrView" customClass="MapView" customModule="ParkHere" customModuleProvider="target">
                     <rect key="frame" x="10" y="190" width="355" height="240"/>
                     <color key="backgroundColor" red="0.42636984589999999" green="0.6893977523" blue="0.94280797240000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -93,7 +93,7 @@
                         <constraint firstAttribute="bottom" secondItem="b0l-PU-7b4" secondAttribute="bottom" id="p8Y-66-7n8"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDn-q9-fBP" userLabel="actionView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDn-q9-fBP" userLabel="buttonCtrlView">
                     <rect key="frame" x="10" y="830" width="355" height="30"/>
                     <color key="backgroundColor" red="0.21176470589999999" green="0.79607843140000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

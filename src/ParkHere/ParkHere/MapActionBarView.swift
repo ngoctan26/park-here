@@ -8,9 +8,20 @@
 
 import UIKit
 
+@objc protocol MapActionBarViewDelegate {
+    @objc func btnBikeClicked()
+    @objc func btnMotoClicked()
+    @objc func btnCarClicked()
+    @objc func btnPriceClicked()
+    @objc func btnNearestClicked()
+    @objc func btnRatingClicked()
+}
+
 class MapActionBarView: UIView {
     // View references
     @IBOutlet var containerView: UIView!
+    
+    weak var delegate: MapActionBarViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,4 +42,31 @@ class MapActionBarView: UIView {
         containerView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.backgroundColor = UIColor.clear
     }
+    
+    // Action references
+    @IBAction func onBtnClicked(_ sender: UIButton) {
+        switch sender.restorationIdentifier! {
+        case "btnBike":
+            delegate?.btnBikeClicked()
+            break
+        case "btnMoto":
+            delegate?.btnMotoClicked()
+            break
+        case "btnCar":
+            delegate?.btnCarClicked()
+            break
+        case "btnPrice":
+            delegate?.btnPriceClicked()
+            break
+        case "btnNearest":
+            delegate?.btnNearestClicked()
+            break
+        case "btnRating":
+            delegate?.btnRatingClicked()
+            break
+        default:
+            return
+        }
+    }
+    
 }
