@@ -36,6 +36,7 @@
 		8624AC721E71BF8900B92710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC701E71BF8900B92710 /* Main.storyboard */; };
 		8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC731E71BF8900B92710 /* Assets.xcassets */; };
 		8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624AC751E71BF8900B92710 /* LaunchScreen.storyboard */; };
+		865260F61E87E5D400B69117 /* FilterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865260F51E87E5D400B69117 /* FilterState.swift */; };
 		866159541E8597EE0047B2F0 /* MapActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866159531E8597EE0047B2F0 /* MapActionBarView.swift */; };
 		866159561E8597FF0047B2F0 /* MapActionBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866159551E8597FF0047B2F0 /* MapActionBarView.xib */; };
 		866159581E8671F60047B2F0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866159571E8671F60047B2F0 /* DateTimeUtil.swift */; };
@@ -86,6 +87,7 @@
 		8624AC731E71BF8900B92710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8624AC761E71BF8900B92710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8624AC781E71BF8900B92710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		865260F51E87E5D400B69117 /* FilterState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterState.swift; sourceTree = "<group>"; };
 		866159531E8597EE0047B2F0 /* MapActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapActionBarView.swift; sourceTree = "<group>"; };
 		866159551E8597FF0047B2F0 /* MapActionBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapActionBarView.xib; sourceTree = "<group>"; };
 		866159571E8671F60047B2F0 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				525141ED1E7D9623004E8092 /* UserModel.swift */,
 				525141F11E8029F3004E8092 /* TransportTypeEnum.swift */,
 				869927E61E82EDA3002E3745 /* APIError.swift */,
+				865260F51E87E5D400B69117 /* FilterState.swift */,
 			);
 			name = Models;
 			path = Model;
@@ -216,13 +219,10 @@
 				861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */,
 				861D44B01E81836C00BF3DA2 /* MapView.xib */,
 				861D44B21E81838000BF3DA2 /* MapView.swift */,
-
 				525141F41E8606CF004E8092 /* NewParkingZone.swift */,
 				525141F51E8606CF004E8092 /* NewParkingZone.xib */,
-
 				866159531E8597EE0047B2F0 /* MapActionBarView.swift */,
 				866159551E8597FF0047B2F0 /* MapActionBarView.xib */,
-
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -303,11 +303,8 @@
 				522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */,
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
 				861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */,
-
 				525141F71E8606CF004E8092 /* NewParkingZone.xib in Resources */,
-
 				866159561E8597FF0047B2F0 /* MapActionBarView.xib in Resources */,
-
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
 				861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */,
@@ -377,6 +374,7 @@
 				525141F61E8606CF004E8092 /* NewParkingZone.swift in Sources */,
 				866159581E8671F60047B2F0 /* DateTimeUtil.swift in Sources */,
 				8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */,
+				865260F61E87E5D400B69117 /* FilterState.swift in Sources */,
 				522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */,
 				866159541E8597EE0047B2F0 /* MapActionBarView.swift in Sources */,
 				8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */,

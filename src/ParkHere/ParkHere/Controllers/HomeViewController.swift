@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     var parkingZones: [String: ParkingZoneModel] = [:]
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
     var markersRef: [GMSMarker] = []
+    var filterState = FilterState.None
     
     // Sample variable
     var sampleMarker: GMSMarker!
@@ -136,14 +137,8 @@ class HomeViewController: UIViewController {
                             if let parkingModel = parkingModel {
                                 // Set id for model
                                 parkingModel.id = key
-                                // Set marker for model
-                                let addedMarker = self.mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: nil)
-                                addedMarker[0].userData = parkingModel
                                 self.parkingZones[key!] = parkingModel
-                                
-                                // Add marker reference by position in order to be retreive later
-                                parkingModel.markerRef = self.markersRef.count
-                                self.markersRef.append(addedMarker[0])
+                                self.updateShowingParkingByState(state: self.filterState, parkingModel: parkingModel, key: key!)
                             }
                         })
                     }
@@ -151,38 +146,121 @@ class HomeViewController: UIViewController {
                 currentGeoQuery.observe(.keyExited, with: { (key, parkingLocation) in
                     if key != Constant.Current_User_Loc_Key {
                         // Get maker and Model reference by key
-                        let parkingModel = self.parkingZones[key!]
-                        let markerRefPos = (parkingModel?.markerRef)!
-                        let marker = self.markersRef[markerRefPos]
-                        // Remove marker from map
-                        marker.map = nil
-                        // Remove all reference from maker list and parking zone list
-                        self.markersRef.remove(at: markerRefPos)
                         self.parkingZones.removeValue(forKey: key!)
-                        
+                        let showingModel = self.filteredParkingZones[key!]
+                        if let showingModel = showingModel {
+                            // Data is in showing model. Removing it and marker
+                            let markerPos = showingModel.markerRef
+                            let showingMarker = self.markersRef[markerPos!]
+                            showingMarker.map = nil
+                            
+                            // Remove in all reference list
+                            self.filteredParkingZones.removeValue(forKey: key!)
+                            self.markersRef.remove(at: markerPos!)
+                        }
                     }
                 })
                 currentGeoQuery.observe(.keyMoved, with: { (key, parkingLocation) in
                     if key != Constant.Current_User_Loc_Key {
                         // Get maker and Model reference by key
                         let parkingModel = self.parkingZones[key!]
-                        let markerRefPos = (parkingModel?.markerRef)!
-                        let marker = self.markersRef[markerRefPos]
-                        marker.position = CLLocationCoordinate2D(latitude: (parkingLocation?.coordinate.latitude)!, longitude: (parkingLocation?.coordinate.longitude)!)
-                        parkingModel?.longitude = parkingLocation?.coordinate.latitude
+                        parkingModel?.latitude = parkingLocation?.coordinate.latitude
                         parkingModel?.longitude = parkingLocation?.coordinate.longitude
+                        // Update if this parking zone is in showing list
+                        let showingModel = self.filteredParkingZones[key!]
+                        if let showingModel = showingModel {
+                            showingModel.latitude = parkingLocation?.coordinate.latitude
+                            showingModel.longitude = parkingLocation?.coordinate.longitude
+                            let markerPos = showingModel.markerRef
+                            let marker = self.markersRef[markerPos!]
+                            marker.position = CLLocationCoordinate2D(latitude: (parkingLocation?.coordinate.latitude)!, longitude: (parkingLocation?.coordinate.longitude)!)
+                        }
                     }
                 })
             }
     }
     
-    func filterByTransporter(types: [TransportTypeEnum]) -> [String : ParkingZoneModel]{
+    func updateShowingParkingByState(state: FilterState, parkingModel: ParkingZoneModel, key: String) {
+        var isValidData = false
+        switch state {
+        case .Transport_Car:
+            isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Car))!
+            break
+        case .Transport_Bike:
+            isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Bicycle))!
+            break
+        case .Transport_Moto:
+            isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Motorbike))!
+            break
+        case .Rating:
+            // TODO: Handle later
+            break
+        case .Nearest:
+            // TODO: Handle later
+            break
+        case .Price:
+            // TODO: Handle later
+            break
+        default:
+            isValidData = true
+            break
+        }
+        // Update to showing parking zone and add marker
+        if isValidData {
+            let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: nil)[0]
+            addedMarker.userData = parkingModel
+            parkingModel.markerRef = markersRef.count
+            filteredParkingZones[key] = parkingModel
+            markersRef.append(addedMarker)
+        }
+    }
+    
+    func updateShowingParkings(data: [String : ParkingZoneModel]) {
+        // Clear all current marker
+        mapView.showingMap.clear()
+        markersRef.removeAll()
+        filteredParkingZones = data
+        for (_, value) in filteredParkingZones {
+            let addedMarker = mapView.addMarker(parkingZones: [value], textInfo: nil, markerIcon: nil)[0]
+            addedMarker.userData = value
+            value.markerRef = markersRef.count
+            markersRef.append(addedMarker)
+        }
+    }
+    
+    func filterDataByState(state: FilterState) -> [String : ParkingZoneModel] {
+        if state == .None {
+            return parkingZones
+        }
         var resultFilter: [String : ParkingZoneModel] = [:]
         for (key, value) in parkingZones {
-            for type in types {
-                if (value.transportTypes?.contains(type))! {
+            switch state {
+            case .Transport_Car:
+                if (value.transportTypes?.contains(TransportTypeEnum.Car))! {
                     resultFilter[key] = value
                 }
+                break
+            case .Transport_Bike:
+                if (value.transportTypes?.contains(TransportTypeEnum.Bicycle))! {
+                    resultFilter[key] = value
+                }
+                break
+            case .Transport_Moto:
+                if (value.transportTypes?.contains(TransportTypeEnum.Motorbike))! {
+                    resultFilter[key] = value
+                }
+                break
+            case .Rating:
+                // TODO: Handle later
+                break
+            case .Nearest:
+                // TODO: Handle later
+                break
+            case .Price:
+                // TODO: Handle later
+                break
+            default:
+                break
             }
         }
         return resultFilter
@@ -264,26 +342,38 @@ extension HomeViewController: GMSMapViewDelegate {
 
 extension HomeViewController: MapActionBarViewDelegate {
     func btnRatingClicked() {
-        
+        filterState = .Rating
+        let filterdData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterdData)
     }
     
     func btnCarClicked() {
-        
+        filterState = .Transport_Car
+        let filterdData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterdData)
     }
     
     func btnMotoClicked() {
-        
+        filterState = .Transport_Moto
+        let filterdData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterdData)
     }
     
     func btnPriceClicked() {
-        
+        filterState = .Price
+        let filterdData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterdData)
     }
     
     func btnNearestClicked() {
-        
+        filterState = .Nearest
+        let filterdData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterdData)
     }
     
     func btnBikeClicked() {
-        
+        filterState = .Transport_Bike
+        let filterdData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterdData)
     }
 }
