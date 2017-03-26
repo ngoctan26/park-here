@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		31AB448C1E79B4B000296E0C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AB448B1E79B4B000296E0C /* SignInViewController.swift */; };
+		31B551871E8798190026C869 /* CommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B551861E8798190026C869 /* CommentViewCell.swift */; };
+		31B551891E87AB7A0026C869 /* AddCommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B551881E87AB7A0026C869 /* AddCommentViewCell.swift */; };
 		522DFB581E76E665007DFEB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB571E76E665007DFEB6 /* HomeViewController.swift */; };
 		522DFB5B1E76E6A6007DFEB6 /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB591E76E6A6007DFEB6 /* Localizator.swift */; };
 		522DFB5C1E76E6A6007DFEB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB5A1E76E6A6007DFEB6 /* Constants.swift */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		31AB448B1E79B4B000296E0C /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Controllers/SignInViewController.swift; sourceTree = "<group>"; };
+		31B551861E8798190026C869 /* CommentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewCell.swift; sourceTree = "<group>"; };
+		31B551881E87AB7A0026C869 /* AddCommentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewCell.swift; sourceTree = "<group>"; };
 		522DFB571E76E665007DFEB6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/HomeViewController.swift; sourceTree = "<group>"; };
 		522DFB591E76E6A6007DFEB6 /* Localizator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Localizator.swift; path = Utils/Localizator.swift; sourceTree = "<group>"; };
 		522DFB5A1E76E6A6007DFEB6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				525141F51E8606CF004E8092 /* NewParkingZone.xib */,
 				866159531E8597EE0047B2F0 /* MapActionBarView.swift */,
 				866159551E8597FF0047B2F0 /* MapActionBarView.xib */,
+				31B551861E8798190026C869 /* CommentViewCell.swift */,
+				31B551881E87AB7A0026C869 /* AddCommentViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				31AB448C1E79B4B000296E0C /* SignInViewController.swift in Sources */,
 				8685FA071E73019A00993E6D /* ImageUtil.swift in Sources */,
 				525141F61E8606CF004E8092 /* NewParkingZone.swift in Sources */,
+				31B551891E87AB7A0026C869 /* AddCommentViewCell.swift in Sources */,
 				866159581E8671F60047B2F0 /* DateTimeUtil.swift in Sources */,
 				8685FA091E73024300993E6D /* SetttingUtil.swift in Sources */,
 				865260F61E87E5D400B69117 /* FilterState.swift in Sources */,
@@ -391,6 +398,7 @@
 				8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */,
 				869927E51E82E9B9002E3745 /* GeocodingService.swift in Sources */,
 				861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */,
+				31B551871E8798190026C869 /* CommentViewCell.swift in Sources */,
 				525141F01E7D9654004E8092 /* FirebaseService.swift in Sources */,
 				8688F9421E77030300E49B0B /* GMapDirectionService.swift in Sources */,
 				522DFB601E76E777007DFEB6 /* MenuViewController.swift in Sources */,

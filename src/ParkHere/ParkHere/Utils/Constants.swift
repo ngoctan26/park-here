@@ -38,5 +38,10 @@ class Constant {
     static let Parking_Zones_Node = "parking_zones"
     // locations
     static let Locations_Node = "locations/"
+    // user
     static let Current_User_Loc_Key = "current_user"
+    static let Current_User_Loc_Node = "current_user"
+    static let User_Node = "user_profiles/"
+    static let Anonymous = "Anonymous"
+
 }

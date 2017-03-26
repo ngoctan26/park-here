@@ -13,7 +13,7 @@ class CommentModel: NSObject {
     var id: Int?
     var createdAt: Date?
     var imageUrl: URL?
-    var parkingZoneId: Int?
+    var parkingZoneId: String?
     var rating: Double?
     var text: String?
     var longitude: Double?
@@ -29,7 +29,7 @@ class CommentModel: NSObject {
         text = dictionary["text"] as? String
         rating = dictionary["rating"] as? Double
         userId = dictionary["user_id"] as? Int
-        parkingZoneId = dictionary["parking_zone_id"] as? Int
+        parkingZoneId = dictionary["parking_zone_id"] as? String
         
         let imageURLString = dictionary["image_url"] as? String
         imageUrl = imageURLString != nil ? URL(string: imageURLString!)! : nil

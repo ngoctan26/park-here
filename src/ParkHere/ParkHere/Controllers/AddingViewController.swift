@@ -39,7 +39,7 @@ class AddingViewController: UIViewController {
         newComment.longitude = 123
         newComment.latitude = 123
         newComment.text = "Test Comment"
-        newComment.parkingZoneId = 1
+        newComment.parkingZoneId = "1"
         newComment.rating = 4.5
         newComment.userId = 1
         newComment.createdAt = Date.init()

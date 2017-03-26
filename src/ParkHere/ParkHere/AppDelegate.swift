@@ -54,29 +54,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let currentUser = UserModel(googleUser: user)
         UserModel.currentUser = currentUser
         
-        //guard let authentication = user.authentication else { return }
-        //let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
-        //                                                   accessToken: authentication.accessToken)
-        
-        //FIRAuth.auth()?.signIn(with: credential, completion: { (user: FIRUser?, error: Error?) in
-          //  print("User sign in to Firebase")
-            //self.databaseRef = FIRDatabase.database().reference()
-            //self.databaseRef.child("user_profiles").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-              //  let snapshot = snapshot.value as? NSDictionary
-                //if(snapshot == nil)
-                //{
-                  //  self.databaseRef.child("user_profiles").child(user!.uid).child("name").setValue(user?.displayName)
-                    //self.databaseRef.child("user_profiles").child(user!.uid).child("email").setValue(user?.email)
-                //}
-                
-                //self.window?.rootViewController?.performSegue(withIdentifier: "HomeViewSegue", sender: nil)
-            //})
-            //self.databaseRef.child("user_profiles").child(user!.uid).child("name").setValue(user?.displayName)
-        //})
+        FirebaseService.getInstance().getUserById(userId: currentUser.id!, success: { (user:UserModel) in
+            print("User is existing")
+        }) { (error: Error?) in
+            FirebaseService.getInstance().addUser(userModel: currentUser) {
+                print("Add or Update a user")
+            }
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // do something
+        print("Google is disconnected")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

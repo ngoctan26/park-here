@@ -21,6 +21,12 @@ class UserModel: NSObject, NSCoding {
         isAnonymous = false
     }
     
+    init(dictionary: NSDictionary) {
+        let userDictionary = dictionary.allValues[0] as! NSDictionary
+        name = userDictionary["name"] as? String
+        email = userDictionary["email"] as? String
+    }
+
     required init(coder decoder: NSCoder) {
         self.id = decoder.decodeObject(forKey: "userid") as? String
         self.name = decoder.decodeObject(forKey: "username") as? String

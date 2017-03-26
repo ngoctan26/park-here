@@ -138,7 +138,7 @@ class FirebaseService {
     }
     
     // <!-- Comment -->
-    func getCommentsByPage(parkingZoneId: Int!, page: Int!, success: @escaping ([CommentModel]) -> Void) {
+    func getCommentsByPage(parkingZoneId: String!, page: Int!, success: @escaping ([CommentModel]) -> Void) {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
                 FirebaseClient.getInstance().retreiveData(path: Constant.Comments_Node + "\(parkingZoneId!)", sussess: { (result) in
@@ -161,6 +161,7 @@ class FirebaseService {
                 params["rating"] = newComment.rating as AnyObject
                 params["user_id"] = newComment.userId as AnyObject
                 params["parking_zone_id"] = newComment.parkingZoneId as AnyObject
+                params["create_at"] = newComment.createdAt as AnyObject
                 
                 if let longitude = newComment.longitude {
                     if let latitude = newComment.latitude {
@@ -184,9 +185,41 @@ class FirebaseService {
     }
     
     // <!-- User -->
-    func getUserById(userId: Int) -> UserModel {
-        return UserModel()
+    func getUserById(userId: String!, success: @escaping (UserModel) -> (), failure: @escaping (Error?) -> ()) -> Void {
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                FirebaseClient.getInstance().retreiveData(path: Constant.User_Node + "\(userId!)", sussess: { (result) in
+                    if let userDictionary = result as? NSDictionary{
+                        success(UserModel(dictionary: userDictionary))
+                    } else {
+                        failure(nil)
+                    }
+                })
+            } else {
+                failure(error!)
+            }
+        }
     }
+    
+    func addUser(userModel: UserModel,  success: @escaping () -> Void) {
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                
+                var params = [String: AnyObject]()
+                params["name"] = userModel.name as AnyObject
+                params["email"] = userModel.email as AnyObject
+                
+                FirebaseClient.getInstance().saveValue(path: Constant.User_Node + "\(userModel.id!)", value: params, failure: { (error) in
+                    print(error.debugDescription)
+                })
+                try! FIRAuth.auth()!.signOut()
+                success()
+            } else {
+                print("error")
+            }
+        }
+    }
+
     
     // Locations
     
