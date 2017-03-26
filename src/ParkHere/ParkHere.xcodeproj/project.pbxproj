@@ -216,13 +216,10 @@
 				861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */,
 				861D44B01E81836C00BF3DA2 /* MapView.xib */,
 				861D44B21E81838000BF3DA2 /* MapView.swift */,
-
 				525141F41E8606CF004E8092 /* NewParkingZone.swift */,
 				525141F51E8606CF004E8092 /* NewParkingZone.xib */,
-
 				866159531E8597EE0047B2F0 /* MapActionBarView.swift */,
 				866159551E8597FF0047B2F0 /* MapActionBarView.xib */,
-
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -271,7 +268,7 @@
 				TargetAttributes = {
 					8624AC681E71BF8900B92710 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = V7Z27TG6NM;
+						DevelopmentTeam = B77T45EXXL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -303,11 +300,8 @@
 				522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */,
 				8624AC771E71BF8900B92710 /* LaunchScreen.storyboard in Resources */,
 				861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */,
-
 				525141F71E8606CF004E8092 /* NewParkingZone.xib in Resources */,
-
 				866159561E8597FF0047B2F0 /* MapActionBarView.xib in Resources */,
-
 				52D7B5741E73E70500436B64 /* GoogleService-Info.plist in Resources */,
 				8624AC741E71BF8900B92710 /* Assets.xcassets in Resources */,
 				861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */,
@@ -535,11 +529,11 @@
 			baseConfigurationReference = BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7Z27TG6NM;
+				DEVELOPMENT_TEAM = B77T45EXXL;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -552,11 +546,11 @@
 			baseConfigurationReference = 610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7Z27TG6NM;
+				DEVELOPMENT_TEAM = B77T45EXXL;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

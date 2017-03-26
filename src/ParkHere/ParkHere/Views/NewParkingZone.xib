@@ -10,7 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewParkingZone" customModule="ParkHere" customModuleProvider="target">
             <connections>
+                <outlet property="actionView" destination="YDn-q9-fBP" id="MBd-vh-CTM"/>
                 <outlet property="containerView" destination="i5M-Pr-FkT" id="PkO-Sr-TVz"/>
+                <outlet property="imgCtrView" destination="X31-2j-5vd" id="QT1-n5-Kzr"/>
+                <outlet property="mapView" destination="b1T-5R-vVa" id="elM-4m-tFA"/>
+                <outlet property="transportTypeView" destination="OgE-k1-HM5" id="MRu-6w-4dM"/>
+                <outlet property="txtAddress" destination="Phr-0a-VnA" id="7d3-sM-hgt"/>
+                <outlet property="txtDesc" destination="9ib-WY-wbP" id="SGc-i9-pmh"/>
+                <outlet property="txtName" destination="lCH-sr-boL" id="eke-TW-Imr"/>
+                <outlet property="workingTimeView" destination="JHv-JZ-4pU" id="fNJ-L1-mtt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -40,14 +48,14 @@
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgE-k1-HM5" userLabel="transportTypeCtrView">
                     <rect key="frame" x="10" y="150" width="355" height="30"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="To9-KU-nYz"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1T-5R-vVa" userLabel="mapCtrView">
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="b1T-5R-vVa" userLabel="mapCtrView">
                     <rect key="frame" x="10" y="190" width="355" height="240"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.42636984589999999" green="0.6893977523" blue="0.94280797240000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="Xwb-5n-XlH"/>
                     </constraints>
@@ -64,7 +72,7 @@
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHv-JZ-4pU" userLabel="workingTimeCtrView">
                     <rect key="frame" x="10" y="510" width="355" height="60"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Iir-RP-RDp"/>
                     </constraints>
@@ -87,7 +95,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDn-q9-fBP" userLabel="actionView">
                     <rect key="frame" x="10" y="830" width="355" height="30"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.21176470589999999" green="0.79607843140000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SQc-6a-dTP"/>
                     </constraints>

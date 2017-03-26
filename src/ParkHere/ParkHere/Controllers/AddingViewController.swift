@@ -12,13 +12,17 @@ import FirebaseAuth
 
 class AddingViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: NewParkingZone!
+    @IBOutlet weak var newParkingZoneView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: scrollView.frame.origin.y + scrollView.frame.size.height)
+        let newParkingZoneXib = Bundle.main.loadNibNamed("NewParkingZone", owner: self, options: nil)?.first as? NewParkingZone
+        
+        newParkingZoneView.contentSize = CGSize(width: (newParkingZoneXib?.frame.size.width)!, height: (newParkingZoneXib?.frame.size.height)!)
+        
+        newParkingZoneView.addSubview(newParkingZoneXib!)
     }
     
     override func didReceiveMemoryWarning() {
