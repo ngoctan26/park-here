@@ -254,7 +254,7 @@
                                     <constraint firstAttribute="height" constant="40" id="2sE-dX-uix"/>
                                     <constraint firstAttribute="width" constant="40" id="P46-Dk-JJi"/>
                                 </constraints>
-                                <state key="normal" image="ic_current_location"/>
+                                <state key="normal" image="ic_location"/>
                                 <connections>
                                     <action selector="onBtnCurrentLocationClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kmg-Vv-IZ7"/>
                                 </connections>
@@ -454,7 +454,7 @@
     </scenes>
     <resources>
         <image name="ic_btn_unroute" width="32" height="32"/>
-        <image name="ic_current_location" width="32" height="32"/>
+        <image name="ic_location" width="32" height="32"/>
         <image name="iconMenuBar" width="24" height="24"/>
         <image name="parkhere" width="114" height="114"/>
     </resources>
