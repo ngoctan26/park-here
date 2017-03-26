@@ -13,6 +13,7 @@
                 <outlet property="buttonCtrlView" destination="YDn-q9-fBP" id="ieg-M3-gyI"/>
                 <outlet property="containerCtrlView" destination="i5M-Pr-FkT" id="wYO-l1-hjl"/>
                 <outlet property="imageCtrlView" destination="X31-2j-5vd" id="aPj-qG-yga"/>
+                <outlet property="imgOnCapture" destination="b0l-PU-7b4" id="cgD-ln-QWf"/>
                 <outlet property="mapView" destination="b1T-5R-vVa" id="VjP-An-pQb"/>
                 <outlet property="transportTypeView" destination="OgE-k1-HM5" id="A0R-Ko-NTh"/>
                 <outlet property="txtAddress" destination="Phr-0a-VnA" id="cRG-m8-WzM"/>
@@ -83,12 +84,25 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkhere" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-PU-7b4">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="240"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3C-bW-ioZ">
+                            <rect key="frame" x="331" y="216" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="1vh-he-xEg"/>
+                                <constraint firstAttribute="width" constant="24" id="TfB-OX-7gB"/>
+                            </constraints>
+                            <state key="normal" image="iconCamera"/>
+                            <connections>
+                                <action selector="onCaptureImage:" destination="-1" eventType="touchUpInside" id="2Mv-Ix-z3g"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="F3C-bW-ioZ" secondAttribute="bottom" id="8RA-Dg-Rwv"/>
                         <constraint firstItem="b0l-PU-7b4" firstAttribute="top" secondItem="X31-2j-5vd" secondAttribute="top" id="HTf-gp-PVx"/>
                         <constraint firstAttribute="height" constant="240" id="Qn5-Gc-uee"/>
                         <constraint firstAttribute="trailing" secondItem="b0l-PU-7b4" secondAttribute="trailing" id="TkF-cc-BsK"/>
+                        <constraint firstAttribute="trailing" secondItem="F3C-bW-ioZ" secondAttribute="trailing" id="Whk-93-kvx"/>
                         <constraint firstItem="b0l-PU-7b4" firstAttribute="leading" secondItem="X31-2j-5vd" secondAttribute="leading" id="oxh-Hh-N5f"/>
                         <constraint firstAttribute="bottom" secondItem="b0l-PU-7b4" secondAttribute="bottom" id="p8Y-66-7n8"/>
                     </constraints>
@@ -134,6 +148,7 @@
         </view>
     </objects>
     <resources>
+        <image name="iconCamera" width="24" height="24"/>
         <image name="parkhere" width="114" height="114"/>
     </resources>
 </document>

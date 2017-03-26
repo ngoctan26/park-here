@@ -23,6 +23,8 @@ class NewParkingZone: UIView {
     @IBOutlet weak var txtDesc: UITextView!
     @IBOutlet weak var txtAddress: UITextView!
     
+    @IBOutlet weak var imgOnCapture: UIImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSubView()
@@ -44,10 +46,23 @@ class NewParkingZone: UIView {
         addSubview(containerCtrlView)
     }
     
+    @IBAction func onCaptureImage(_ sender: UIButton) {
+    }
+    
     func loadTransportTypeView() {
-//        let segmentedControl = MultiSelectionSegmentedControl(items: ["Segment 1", "Segment 2", "Segment 3"])
-//        segmentedControl.frame = CGRect(x: transportTypeView.frame.origin.x, y: transportTypeView.frame.origin.y, width: transportTypeView.frame.size.width/2, height: transportTypeView.frame.size.height)
-//        transportTypeView.addSubview(segmentedControl)
+        let segmentedControl = MultiSelectionSegmentedControl(items: ["1", "2", "3"])
+        
+        segmentedControl.frame = CGRect(x: 0, y: 0, width: transportTypeView.frame.size.width - 40, height: transportTypeView.frame.size.height)
+        
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        transportTypeView.addSubview(segmentedControl)
+        
+        self.transportTypeView.layoutIfNeeded()
+        
+        let widthConstraint = NSLayoutConstraint(item: segmentedControl, attribute: .width, relatedBy: .equal, toItem: transportTypeView, attribute: .width, multiplier: 1.0, constant: 0.0)
+        
+//        NSLayoutConstraint.activate([widthConstraint])
     }
 
 }
