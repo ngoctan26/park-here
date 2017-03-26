@@ -41,11 +41,16 @@ class FirebaseService {
         return []
     }
     
-    func getParkingZonesById(parkingZoneId: Int!, success: @escaping (ParkingZoneModel) -> Void) {
+    func getParkingZonesById(parkingZoneId: String, success: @escaping (ParkingZoneModel?) -> Void) {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
-                FirebaseClient.getInstance().retreiveData(path: Constant.Parking_Zones_Node + "\(parkingZoneId!)", sussess: { (result) in
-                    success(ParkingZoneModel(dictionary: result as! NSDictionary))
+                FirebaseClient.getInstance().retreiveData(path: Constant.Parking_Zones_Node, key: parkingZoneId, sussess: { (result) in
+                    let rawValue = result as? NSDictionary
+                    if let rawValue = rawValue {
+                        success(ParkingZoneModel(dictionary: rawValue))
+                    } else {
+                        success(nil)
+                    }
                 })
             } else {
                 print("error")
@@ -186,7 +191,7 @@ class FirebaseService {
     // Locations
     
     func updateUserLocation(currentLocation: CLLocation, failure: @escaping (_ error: Error?) -> ()) {
-        saveLocation(key: Constant.Current_User_Loc_Node, location: currentLocation) { (error) in
+        saveLocation(key: Constant.Current_User_Loc_Key, location: currentLocation) { (error) in
             failure(error)
         }
     }

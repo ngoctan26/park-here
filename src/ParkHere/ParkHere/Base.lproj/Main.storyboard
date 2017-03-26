@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lIV-ba-IPq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lIV-ba-IPq">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -154,7 +154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQr-VB-HDO" userLabel="NewParkingZoneScrollView" customClass="NewParkingZone" customModule="ParkHere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="124" width="768" height="900"/>
+                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -293,6 +293,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CR5-kU-94j"/>
                     <connections>
+                        <outlet property="actionBar" destination="XcG-ae-ZJP" id="xB9-ZM-Rhv"/>
                         <outlet property="lblTestMultilingual" destination="fOr-0W-SkI" id="l6i-As-KEc"/>
                         <outlet property="mapView" destination="AH2-PX-TZB" id="FIM-XK-Yhn"/>
                         <segue destination="HaG-oP-Z4b" kind="showDetail" identifier="CommentSegue" id="2og-RE-kTX"/>
@@ -365,7 +366,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CVd-kJ-FhS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mXV-mo-q8p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXV-mo-q8p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -383,7 +384,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="paF-mJ-HGU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="02i-sb-ZKc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="02i-sb-ZKc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -401,7 +402,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HaG-oP-Z4b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8uG-lp-z6g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8uG-lp-z6g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -419,7 +420,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vk8-Cd-4Sb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z1e-qG-enP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z1e-qG-enP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -437,7 +438,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5cr-PT-FuI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vpS-O3-RAD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vpS-O3-RAD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

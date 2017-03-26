@@ -21,8 +21,8 @@ class MarkerInfoWindowView: UIView {
     var markerInfo: ParkingZoneModel! {
         didSet {
             // Just add hardcode for demo
-            name.text = "DH Khoa Hoc Tu Nhien"
-            addressLabel.text = "227 Nguyễn Văn Cừ, phường 4, Quận 5, Hồ Chí Minh, Việt Nam"
+            name.text = markerInfo.desc
+            addressLabel.text = markerInfo.address
         }
     }
 
