@@ -70,5 +70,9 @@ class UserModel: NSObject, NSCoding {
             SettingUtil.saveSetting(configurations: userDictionary)
         }
     }
+    
+    class var anonymousUser: UserModel?{
+        get{ return UserModel() }
+    }
 }
 

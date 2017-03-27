@@ -41,7 +41,7 @@ class AddingViewController: UIViewController {
         newComment.text = "Test Comment"
         newComment.parkingZoneId = "1"
         newComment.rating = 4.5
-        newComment.userId = 1
+        newComment.userId = "1"
         newComment.createdAt = Date.init()
         
 //        FirebaseService.getInstance().addComment(newComment: newComment) { (_) in

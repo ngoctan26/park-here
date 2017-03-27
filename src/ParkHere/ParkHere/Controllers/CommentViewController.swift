@@ -15,37 +15,38 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var commentMapView: MapView!
     @IBOutlet weak var commentTableView: UITableView!
     
+    var parkingZone: ParkingZoneModel?
+    
     var comments: [CommentModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance().signOut()
-        
+                
         commentTableView.delegate = self
         commentTableView.dataSource = self
-        commentTableView.estimatedRowHeight = 50
+        commentTableView.estimatedRowHeight = 100
         commentTableView.rowHeight = UITableViewAutomaticDimension
 
         
         initMapView()
-        getAllComments(parkingId: "-Kg5QJT0Iat8uxuDMFiJ")
+        getAllComments() //parkingId: "-Kg5QJT0Iat8uxuDMFiJ"
     }
 
     func initMapView() {
-        
-        //commentMapView.showingMap.delegate = self
-        let currentLocation = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-        commentMapView.moveCamera(inputLocation: currentLocation, animate: false)
-        let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-        commentMapView.addMarker(lat: sampleDesCoordinate.latitude, long: sampleDesCoordinate.longitude, textInfo: nil, markerIcon: nil)
-
+        if parkingZone != nil {
+            let currentLocation = CLLocationCoordinate2D(latitude: (parkingZone?.latitude)!, longitude: (parkingZone?.longitude)!)
+            commentMapView.moveCamera(inputLocation: currentLocation, animate: false)
+            commentMapView.addMarker(lat: currentLocation.latitude, long: currentLocation.longitude, textInfo: nil, markerIcon: nil)
+        }
     }
     
-    func getAllComments(parkingId: String) {
-        FirebaseService.getInstance().getCommentsByPage(parkingZoneId: parkingId, page: 0) { (comments: [CommentModel]) in
-            self.comments = comments
-            self.commentTableView.reloadData()
+    func getAllComments() {
+        if parkingZone != nil {
+            FirebaseService.getInstance().getCommentsByPage(parkingZoneId: parkingZone?.id, page: 0) { (comments: [CommentModel]) in
+                self.comments = comments
+                self.commentTableView.reloadData()
+            }
         }
     }
     
@@ -82,15 +83,6 @@ extension CommentViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//        case 0: return ""
-//        case 1: return "Distance"
-//        case 2: return "Sort By"
-//        case 3: return "Category"
-//        default: return ""
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -146,17 +138,19 @@ extension CommentViewController: AddCommentViewCellDelagate{
         GIDSignIn.sharedInstance().signIn()
     }
     func addCommentViewCell(addCommentViewCell: AddCommentViewCell, didSendComment text: String) {
+        var userId = UserModel.anonymousUser?.id
+        if UserModel.currentUser != nil {
+            userId = (UserModel.currentUser?.id)!
+        }
         let newComment: CommentModel = CommentModel()
         newComment.id = 1
-        newComment.longitude = 123
-        newComment.latitude = 123
         newComment.text = text
-        newComment.parkingZoneId = "-Kg5QJT0Iat8uxuDMFiJ"
+        newComment.parkingZoneId = parkingZone?.id
         newComment.rating = 4.5
-        newComment.userId = 1
+        newComment.userId = userId
         newComment.createdAt = Date.init()
         FirebaseService.getInstance().addComment(newComment: newComment) {
-            self.getAllComments(parkingId: "-Kg5QJT0Iat8uxuDMFiJ")
+            self.getAllComments()
         }
     }
 }

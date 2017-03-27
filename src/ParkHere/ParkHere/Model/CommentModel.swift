@@ -18,7 +18,7 @@ class CommentModel: NSObject {
     var text: String?
     var longitude: Double?
     var latitude: Double?
-    var userId: Int?
+    var userId: String?
     var timeAgo: String {
         return (createdAt as NSDate?)?.timeAgo() ?? Constant.Empty_String
     }
@@ -28,7 +28,7 @@ class CommentModel: NSObject {
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
         rating = dictionary["rating"] as? Double
-        userId = dictionary["user_id"] as? Int
+        userId = dictionary["user_id"] as? String
         parkingZoneId = dictionary["parking_zone_id"] as? String
         
         let imageURLString = dictionary["image_url"] as? String

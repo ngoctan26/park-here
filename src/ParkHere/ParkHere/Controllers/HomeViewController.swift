@@ -54,6 +54,12 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navVC = segue.destination as! UINavigationController
+        let commentVC = navVC.topViewController as! CommentViewController
+        commentVC.parkingZone = selectedMarker?.userData as? ParkingZoneModel
+        
+    }
 
     func initMapView() {
         locationManager.delegate = self
