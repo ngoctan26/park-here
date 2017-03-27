@@ -232,6 +232,31 @@ class HomeViewController: UIViewController {
         if state == .None {
             return parkingZones
         }
+        if state == .Rating {
+            // Filter by rating
+            let model = parkingZones.max { a, b  in a.value.rating > a.value.rating
+            }
+            return [(model?.key)! : (model?.value)!]
+        } else if state == .Nearest {
+            // Filter by distance from current location
+            let currentLocation = locationManager.location
+            if let currentLocation = currentLocation {
+                let model = parkingZones.max { a, b  in
+                    let locationA = CLLocation(latitude: a.value.latitude!, longitude: a.value.longitude!)
+                    let locationB = CLLocation(latitude: b.value.latitude!, longitude: b.value.longitude!)
+                    return locationA.distance(from: currentLocation) < locationB.distance(from: currentLocation)
+                }
+                return [(model?.key)! : (model?.value)!]
+            }
+            return [:]
+        } else if state == .Price {
+            // TODO: handle price by current transport type selected
+            // Currently just get min of first price
+            let model = parkingZones.max { a, b  in
+                return Int((a.value.prices?[0])!)! < Int((b.value.prices?[0])!)!
+            }
+            return [(model?.key)! : (model?.value)!]
+        }
         var resultFilter: [String : ParkingZoneModel] = [:]
         for (key, value) in parkingZones {
             switch state {
@@ -249,15 +274,6 @@ class HomeViewController: UIViewController {
                 if (value.transportTypes?.contains(TransportTypeEnum.Motorbike))! {
                     resultFilter[key] = value
                 }
-                break
-            case .Rating:
-                // TODO: Handle later
-                break
-            case .Nearest:
-                // TODO: Handle later
-                break
-            case .Price:
-                // TODO: Handle later
                 break
             default:
                 break
@@ -375,5 +391,11 @@ extension HomeViewController: MapActionBarViewDelegate {
         filterState = .Transport_Bike
         let filterdData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterdData)
+    }
+    
+    func unselected() {
+        filterState = .None
+        let filterData = filterDataByState(state: filterState)
+        updateShowingParkings(data: filterData)
     }
 }

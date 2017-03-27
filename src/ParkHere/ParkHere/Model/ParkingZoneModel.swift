@@ -27,6 +27,7 @@ class ParkingZoneModel: NSObject {
     var openTime: Int?
     var closeTime: Int?
     var markerRef: Int?
+    var prices: [String]?
     
     override init() {}
     
@@ -50,6 +51,9 @@ class ParkingZoneModel: NSObject {
         
         if let transportTypeStr = dictionary["transport_types"] as? String {
             transportTypes = transportTypeStr.components(separatedBy: Constant.Comma_Char).map {TransportTypeEnum(rawValue: $0)!}
+        }
+        if let priceStr = dictionary["prices"] as? String {
+            prices = priceStr.components(separatedBy: Constant.Comma_Char)
         }
         
         if let workingTime = dictionary["working_time"] as? NSDictionary {

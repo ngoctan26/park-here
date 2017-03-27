@@ -11,6 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapActionBarView">
             <connections>
+                <outlet property="btnBike" destination="BvJ-MF-xdI" id="4fh-hC-RDn"/>
+                <outlet property="btnCar" destination="mBY-Cp-tWu" id="N4n-Lp-SYF"/>
+                <outlet property="btnMoto" destination="LZV-Ua-pWG" id="Wqp-Zm-yc8"/>
+                <outlet property="btnNearest" destination="jzr-A5-d9v" id="1jq-kB-3iE"/>
+                <outlet property="btnPrice" destination="kdy-ZY-ze8" id="e62-Be-gy9"/>
+                <outlet property="btnRating" destination="0aE-xG-b5U" id="ZLK-ab-YWG"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="ILt-hb-nzz"/>
             </connections>
         </placeholder>
@@ -71,6 +77,9 @@
                                         <constraint firstAttribute="width" secondItem="jzr-A5-d9v" secondAttribute="height" multiplier="4:4" id="jK1-dO-6aS"/>
                                     </constraints>
                                     <state key="normal" image="ic_btn_nearest"/>
+                                    <connections>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="6C1-bQ-Y7M"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRating" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aE-xG-b5U">
                                     <rect key="frame" x="536" y="0.0" width="40" height="40"/>
