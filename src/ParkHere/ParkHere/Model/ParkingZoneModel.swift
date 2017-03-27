@@ -56,6 +56,10 @@ class ParkingZoneModel: NSObject {
             prices = priceStr.components(separatedBy: Constant.Comma_Char)
         }
         
+        if let ratingString = dictionary["rating"] as? String {
+            rating = Double(ratingString)!
+        }
+        
         if let workingTime = dictionary["working_time"] as? NSDictionary {
             openTime = workingTime["opening_time"] as? Int
             closeTime = workingTime["closing_time"] as? Int
