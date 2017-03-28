@@ -95,17 +95,19 @@ class FirebaseService {
                 
                 if let transportTypes = newParkingZone.transportTypes {
                     var transportTypeStr = Constant.Empty_String
-                    transportTypes.forEach { transportTypeStr = transportTypeStr + Constant.Comma_Char + $0.rawValue}
+                    transportTypes.forEach { transportTypeStr = transportTypeStr + $0.rawValue + Constant.Comma_Char}
+                    transportTypeStr = String(transportTypeStr.characters.dropLast())
                     params["transport_types"] = transportTypeStr as AnyObject
                 }
                 
                 if let prices = newParkingZone.prices {
                     var pricesStr = Constant.Empty_String
-                    prices.forEach { pricesStr = pricesStr + Constant.Comma_Char + $0}
+                    prices.forEach { pricesStr = pricesStr + $0 + Constant.Comma_Char}
+                    pricesStr = String(pricesStr.characters.dropLast())
                     params["prices"] = pricesStr as AnyObject
                 }
                 
-                FirebaseClient.getInstance().saveValue(path: Constant.Parking_Zones_Node, value: params, failure: { (error) in
+                FirebaseClient.getInstance().saveValueWithoutAutoId(path: Constant.Parking_Zones_Node + "/\(newParkingZone.id!)", value: params, failure: { (error) in
                     if error != nil {
                         print(error.debugDescription)
                     } else {

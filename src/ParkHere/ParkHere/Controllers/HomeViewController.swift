@@ -35,9 +35,14 @@ class HomeViewController: UIViewController {
     
     // Action references
     
-    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
-        updateMapToCurrentPosition(animate: true)
+//    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
+//        updateMapToCurrentPosition(animate: true)
+//    }
+    
+    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
+        createSampleForTest()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +51,6 @@ class HomeViewController: UIViewController {
         lblTestMultilingual.text = "lang".localized
         actionBar.delegate = self
         initMapView()
-        //createSampleForTest()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,7 +87,7 @@ class HomeViewController: UIViewController {
     // TODO: Remove sample when finished test
     func createSampleForTest() {
 //        addMarkerForSampleDestination()
-//        addSampleParkingZone()
+        addSampleParkingZone()
     }
     
 //    func addMarkerForSampleDestination() {
@@ -105,22 +109,26 @@ class HomeViewController: UIViewController {
         })
     }
     
-//    func addSampleParkingZone() {
-//        let newParkingZone = ParkingZoneModel()
-//        newParkingZone.desc = "sample description for park 1"
-//        newParkingZone.address = "227 Nguyễn Văn Cừ, phường 4, Quận 5, Hồ Chí Minh, Việt Nam"
-//        newParkingZone.imageUrl = URL(fileURLWithPath: "http://sample.url")
-//        newParkingZone.latitude = 10.762639
-//        newParkingZone.longitude = 106.682027
-//        let currentDateTime = Date()
-//        newParkingZone.createdAt = DateTimeUtil.stringFromDate(date: currentDateTime)
-//        newParkingZone.closeTime = 1120
-//        newParkingZone.id = FirebaseClient.getInstance().getAutoId(path: Constant.Parking_Zones_Node)
-//        FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
-//            // TODO: update something when complete
-//            
-//        }
-//    }
+    func addSampleParkingZone() {
+        let newParkingZone = ParkingZoneModel()
+        newParkingZone.desc = "Bệnh Viện Mắt Cao Thắng"
+        newParkingZone.address = "135B Trần Bình Trọng, phường 2, Quận 5, Hồ Chí Minh 700000, Việt Nam"
+        newParkingZone.imageUrl = URL(fileURLWithPath: "http://sample.url")
+        newParkingZone.latitude = 10.757261
+        newParkingZone.longitude = 106.680654
+        let currentDateTime = Date()
+        newParkingZone.createdAt = DateTimeUtil.stringFromDate(date: currentDateTime)
+        newParkingZone.closeTime = "23:30"
+        newParkingZone.openTime = "08:30"
+        newParkingZone.prices = ["10000"]
+        newParkingZone.rating = 0.0
+        newParkingZone.transportTypes = [TransportTypeEnum.Motorbike]
+        newParkingZone.id = FirebaseClient.getInstance().getAutoId(path: Constant.Parking_Zones_Node)
+        FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
+            // TODO: update something when complete
+            
+        }
+    }
     
 //    func saveSampleLocation() {
 //        let savedLocation = CLLocation(latitude: 10.762639, longitude: 106.682027)
@@ -240,14 +248,14 @@ class HomeViewController: UIViewController {
         }
         if state == .Rating {
             // Filter by rating
-            let model = parkingZones.max { a, b  in a.value.rating > a.value.rating
+            let model = parkingZones.max { a, b  in a.value.rating > b.value.rating
             }
             return [(model?.key)! : (model?.value)!]
         } else if state == .Nearest {
             // Filter by distance from current location
             let currentLocation = locationManager.location
             if let currentLocation = currentLocation {
-                let model = parkingZones.max { a, b  in
+                let model = parkingZones.min { a, b  in
                     let locationA = CLLocation(latitude: a.value.latitude!, longitude: a.value.longitude!)
                     let locationB = CLLocation(latitude: b.value.latitude!, longitude: b.value.longitude!)
                     return locationA.distance(from: currentLocation) < locationB.distance(from: currentLocation)
@@ -258,7 +266,7 @@ class HomeViewController: UIViewController {
         } else if state == .Price {
             // TODO: handle price by current transport type selected
             // Currently just get min of first price
-            let model = parkingZones.max { a, b  in
+            let model = parkingZones.min { a, b  in
                 return Int((a.value.prices?[0])!)! < Int((b.value.prices?[0])!)!
             }
             return [(model?.key)! : (model?.value)!]

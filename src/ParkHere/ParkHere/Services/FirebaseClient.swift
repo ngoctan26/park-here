@@ -29,6 +29,16 @@ class FirebaseClient {
         }
     }
     
+    /**
+     Save value to firbase at specific path without using auto create id
+     */
+    func saveValueWithoutAutoId(path: String, value: [String: Any], failure: @escaping (_ error: Error?) -> ()) {
+        let ref = FIRDatabase.database().reference()
+        ref.child(path).setValue(value) { (error, firebaseRef) in
+            failure(error)
+    }
+    }
+    
     func getAutoId(path: String) -> String {
         let ref = FIRDatabase.database().reference()
         return ref.child(path).childByAutoId().key
