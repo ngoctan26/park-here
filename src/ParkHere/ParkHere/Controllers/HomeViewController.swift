@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 import GoogleMaps
 import GeoFire
 
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
     var parkingZones: [String: ParkingZoneModel] = [:]
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
     var markersRef: [GMSMarker] = []
+    var searchMarker: GMSMarker?
     var filterState = FilterState.None
     
     // Sample variable
@@ -35,13 +37,13 @@ class HomeViewController: UIViewController {
     
     // Action references
     
-//    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
-//        updateMapToCurrentPosition(animate: true)
-//    }
-    
-    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
-        createSampleForTest()
+    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
+        updateMapToCurrentPosition(animate: true)
     }
+    
+//    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
+//        createSampleForTest()
+//    }
     
     
     override func viewDidLoad() {
@@ -86,18 +88,8 @@ class HomeViewController: UIViewController {
  
     // TODO: Remove sample when finished test
     func createSampleForTest() {
-//        addMarkerForSampleDestination()
         addSampleParkingZone()
     }
-    
-//    func addMarkerForSampleDestination() {
-//        sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-//        sampleMarker = mapView.addMarker(lat: sampleDesCoordinate.latitude, long: sampleDesCoordinate.longitude, textInfo: nil, markerIcon: nil)
-//        
-//        // Add second marker
-//        let sample2ndCoordinate = CLLocationCoordinate2D(latitude: 10.761096, longitude: 106.682230)
-//        sampleMarker2nd = mapView.addMarker(lat: sample2ndCoordinate.latitude, long: sample2ndCoordinate.longitude, textInfo: nil, markerIcon: nil)
-//    }
     
     func showRouteSample() {
         let currentCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
@@ -130,14 +122,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-//    func saveSampleLocation() {
-//        let savedLocation = CLLocation(latitude: 10.762639, longitude: 106.682027)
-//        FirebaseService.getInstance().saveLocation(key: "Kg3s2sGsK502j_xrk9h", location: savedLocation) { (error) in
-//            if let error = error {
-//                print("Save sample location failed: \(error)")
-//            }
-//        }
-//    }
+    func searchPlace(place: GMSPlace) {
+        let searchCoordinate = place.coordinate
+        mapView.moveCamera(inputLocation: place.coordinate, animate: true)
+        searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
+    }
     
     func startQueryForParkingZone(centerLocation: CLLocation) {
             currentGeoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation)

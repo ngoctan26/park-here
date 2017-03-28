@@ -96,7 +96,7 @@ class MapView: UIView {
     
     func addMarker(lat: Double, long: Double, textInfo: String?, markerIcon: UIImage?) -> GMSMarker {
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        return addMarker(coordinate: coordinate, textInfo: textInfo, markerIcon: nil)
+        return addMarker(coordinate: coordinate, textInfo: textInfo, markerIcon: markerIcon)
     }
     
     private func addMarker(coordinate: CLLocationCoordinate2D, textInfo: String?, markerIcon: UIImage?) -> GMSMarker {
