@@ -71,6 +71,7 @@ class FirebaseService {
                 params["description"] = newParkingZone.desc as AnyObject
                 params["image_url"] = newParkingZone.imageUrl?.absoluteString as AnyObject
                 params["created_at"] = newParkingZone.createdAt as AnyObject
+                params["rating"] = newParkingZone.rating as AnyObject
                 
                 if let openTime = newParkingZone.openTime {
                     if let closeTime = newParkingZone.closeTime {
@@ -96,6 +97,12 @@ class FirebaseService {
                     var transportTypeStr = Constant.Empty_String
                     transportTypes.forEach { transportTypeStr = transportTypeStr + Constant.Comma_Char + $0.rawValue}
                     params["transport_types"] = transportTypeStr as AnyObject
+                }
+                
+                if let prices = newParkingZone.prices {
+                    var pricesStr = Constant.Empty_String
+                    prices.forEach { pricesStr = pricesStr + Constant.Comma_Char + $0}
+                    params["prices"] = pricesStr as AnyObject
                 }
                 
                 FirebaseClient.getInstance().saveValue(path: Constant.Parking_Zones_Node, value: params, failure: { (error) in

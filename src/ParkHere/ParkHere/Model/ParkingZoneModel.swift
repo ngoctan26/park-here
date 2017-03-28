@@ -24,8 +24,8 @@ class ParkingZoneModel: NSObject {
         let createdAtDate = DateTimeUtil.dateFromString(dateAsString: createdAt!)
         return (createdAtDate as NSDate?)?.timeAgo() ?? Constant.Empty_String
     }
-    var openTime: Int?
-    var closeTime: Int?
+    var openTime: String?
+    var closeTime: String?
     var markerRef: Int?
     var prices: [String]?
     
@@ -61,8 +61,8 @@ class ParkingZoneModel: NSObject {
         }
         
         if let workingTime = dictionary["working_time"] as? NSDictionary {
-            openTime = workingTime["opening_time"] as? Int
-            closeTime = workingTime["closing_time"] as? Int
+            openTime = workingTime["opening_time"] as? String
+            closeTime = workingTime["closing_time"] as? String
         }
     }
     
