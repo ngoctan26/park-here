@@ -248,7 +248,7 @@ class HomeViewController: UIViewController {
         }
         if state == .Rating {
             // Filter by rating
-            let model = parkingZones.max { a, b  in a.value.rating > b.value.rating
+            let model = parkingZones.max { a, b  in a.value.rating < b.value.rating
             }
             return [(model?.key)! : (model?.value)!]
         } else if state == .Nearest {
