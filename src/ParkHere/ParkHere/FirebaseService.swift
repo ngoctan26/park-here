@@ -161,14 +161,16 @@ class FirebaseService {
     func addComment(newComment: CommentModel,  success: @escaping () -> Void) {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
-                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
                 var params = [String: AnyObject]()
                 
                 params["text"] = newComment.text as AnyObject
                 params["rating"] = newComment.rating as AnyObject
                 params["user_id"] = newComment.userId as AnyObject
                 params["parking_zone_id"] = newComment.parkingZoneId as AnyObject
-                params["create_at"] = newComment.createdAt as AnyObject
+                params["create_at"] = dateFormatter.string(from: newComment.createdAt!) as AnyObject?
                 
                 if let longitude = newComment.longitude {
                     if let latitude = newComment.latitude {
