@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     var isUpdateCurrentLocationEnable = true;
-    var infoWindow = MarkerInfoWindowView(frame: CGRect(x: 0, y: 0, width: 150, height: 200))
+    var infoWindow = MarkerInfoWindowView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
     
     var geoFireStartObserve: Bool = false
     var currentGeoQuery: GFCircleQuery?
@@ -339,7 +339,7 @@ extension HomeViewController: GMSMapViewDelegate {
             infoWindow.delegate = self
             infoWindow.markerInfo = parkingModel
             infoWindow.center = mapView.projection.point(for: marker.position)
-            infoWindow.center.y -= 150 // Place infowindow above marker
+            infoWindow.center.y -= 120 // Place infowindow above marker
             selectedMarker = marker
             self.view.addSubview(infoWindow)
         }
@@ -349,7 +349,7 @@ extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         if selectedMarker != nil {
             infoWindow.center = mapView.projection.point(for: (selectedMarker?.position)!)
-            infoWindow.center.y -= 150
+            infoWindow.center.y -= 120
         }
     }
     

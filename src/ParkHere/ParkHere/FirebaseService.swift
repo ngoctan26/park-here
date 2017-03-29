@@ -151,8 +151,9 @@ class FirebaseService {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
                 FirebaseClient.getInstance().retreiveData(path: Constant.Comments_Node + "\(parkingZoneId!)", sussess: { (result) in
-                    let results: NSDictionary = result as! NSDictionary
-                    success(CommentModel.comments(dictionaries: results.allValues as! [NSDictionary]))
+                    if let results = result as? NSDictionary {
+                        success(CommentModel.comments(dictionaries: results.allValues as! [NSDictionary]))
+                    }
                 })
             } else {
                 print("error")
