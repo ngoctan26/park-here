@@ -102,6 +102,10 @@ class HomeViewController: UIViewController {
     func getRouteFromServer(desCoordinate: CLLocationCoordinate2D) {
         if let currentCoordinate = locationManager.location?.coordinate  {
             GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: desCoordinate.getLocationsAsString(), success: { (route) in
+                if self.currentDrawedRoute != nil {
+                    // Remove old route
+                    self.currentDrawedRoute?.map = nil
+                }
                 self.currentDrawedRoute = self.mapView.drawRoute(points: route.routeAsPoints)
             }, failure: { (error) in
                 print("Get route from server failed. \(error?.localizedDescription)")

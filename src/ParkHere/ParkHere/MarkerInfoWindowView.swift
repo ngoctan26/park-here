@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 @objc protocol MarkerInfoWindowViewDelegate {
     @objc optional func onBtnDrawRouteClicked(desLat: Double, desLng: Double)
@@ -21,14 +22,18 @@ class MarkerInfoWindowView: UIView {
     var markerInfo: ParkingZoneModel! {
         didSet {
             // Just add hardcode for demo
-            name.text = markerInfo.desc
-            addressLabel.text = markerInfo.address
+            name.text = markerInfo.address
+            startTimeLabel.text = markerInfo.openTime
+            endTimeLabel.text = markerInfo.closeTime
+            ratingBar.rating = markerInfo.rating
         }
     }
 
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet var containerView: UIView!
+    @IBOutlet var ratingBar: CosmosView!
+    @IBOutlet var startTimeLabel: UILabel!
+    @IBOutlet var endTimeLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +49,11 @@ class MarkerInfoWindowView: UIView {
         let nib = UINib(nibName: "MarkerInfoWindowView", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
         containerView.frame = bounds
+        //containerView.layer.cornerRadius = 10
         addSubview(containerView)
+        containerView.layer.cornerRadius = 10
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.black.cgColor
         
     }
 
