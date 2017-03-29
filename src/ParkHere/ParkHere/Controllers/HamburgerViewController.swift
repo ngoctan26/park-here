@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class HamburgerViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class HamburgerViewController: UIViewController {
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet var searchBtn: UIButton!
     
     var menuViewController: UIViewController! {
         didSet {
@@ -77,14 +79,31 @@ class HamburgerViewController: UIViewController {
         }
     }
     
-    /*
+    @IBAction func onSearchBtnClicked(_ sender: UIButton) {
+        if contentViewController is HomeViewController {
+            performSegue(withIdentifier: "searchPlaces", sender: nil)
+        }
+    }
+    
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        let desNav = segue.destination as? UINavigationController
+        if let desNav = desNav {
+            if let desVC = desNav.topViewController as? SearchPlacesViewController {
+                desVC.delegate = self
+            }
+        }
      }
-     */
     
+}
+
+extension HamburgerViewController: SearchPlacesViewControllerDelegate {
+    func onSearchedDone(place: GMSPlace) {
+        if let currentVC =  contentViewController as? HomeViewController {
+            currentVC.searchPlace(place: place)
+        }
+    }
 }

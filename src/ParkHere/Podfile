@@ -23,5 +23,7 @@ target 'ParkHere' do
   pod 'TextFieldEffects'
   # multiple selection segment control
   pod 'ATHMultiSelectionSegmentedControl'
+  # using rating star bar
+  pod 'Cosmos', '~> 8.0'
   
 end

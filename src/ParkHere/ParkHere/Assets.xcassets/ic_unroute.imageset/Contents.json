@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_route.png",
+      "filename" : "ic_unroute.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_route2x.png",
+      "filename" : "ic_unroute2x.png",
       "scale" : "2x"
     },
     {

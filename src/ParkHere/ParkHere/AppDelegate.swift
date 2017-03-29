@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleMaps
+import GooglePlaces
 import GoogleSignIn
 
 @UIApplicationMain
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FIRApp.configure()
         
         // Setup google APIs
+        GMSPlacesClient.provideAPIKey(Constant.Google_Api_key)
         GMSServices.provideAPIKey(Constant.Google_Api_key)
         
         // Setup Google Sign In

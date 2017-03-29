@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 import GoogleMaps
 import GeoFire
 
@@ -18,13 +19,15 @@ class HomeViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     var isUpdateCurrentLocationEnable = true;
-    var infoWindow = MarkerInfoWindowView(frame: CGRect(x: 0, y: 0, width: 150, height: 200))
+    var infoWindow = MarkerInfoWindowView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
     
     var geoFireStartObserve: Bool = false
     var currentGeoQuery: GFCircleQuery?
     var parkingZones: [String: ParkingZoneModel] = [:]
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
+    var currentDrawedRoute: GMSPolyline?
     var markersRef: [GMSMarker] = []
+    var searchMarker: GMSMarker?
     var filterState = FilterState.None
     
     // Sample variable
@@ -35,13 +38,20 @@ class HomeViewController: UIViewController {
     
     // Action references
     
-//    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
-//        updateMapToCurrentPosition(animate: true)
-//    }
-    
-    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
-        createSampleForTest()
+    @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
+        updateMapToCurrentPosition(animate: true)
     }
+    
+    @IBAction func onUnrouteBtnClicked(_ sender: UIButton) {
+        if let currentDrawedRoute = currentDrawedRoute {
+            currentDrawedRoute.map = nil
+        }
+    }
+    
+    
+//    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
+//        createSampleForTest()
+//    }
     
     
     override func viewDidLoad() {
@@ -86,27 +96,21 @@ class HomeViewController: UIViewController {
  
     // TODO: Remove sample when finished test
     func createSampleForTest() {
-//        addMarkerForSampleDestination()
         addSampleParkingZone()
     }
     
-//    func addMarkerForSampleDestination() {
-//        sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-//        sampleMarker = mapView.addMarker(lat: sampleDesCoordinate.latitude, long: sampleDesCoordinate.longitude, textInfo: nil, markerIcon: nil)
-//        
-//        // Add second marker
-//        let sample2ndCoordinate = CLLocationCoordinate2D(latitude: 10.761096, longitude: 106.682230)
-//        sampleMarker2nd = mapView.addMarker(lat: sample2ndCoordinate.latitude, long: sample2ndCoordinate.longitude, textInfo: nil, markerIcon: nil)
-//    }
-    
-    func showRouteSample() {
-        let currentCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-        let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.758599, longitude: 106.681230)
-        GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: sampleDesCoordinate.getLocationsAsString(), success: { (route) in
-            self.mapView.drawRoute(points: route.routeAsPoints)
-        }, failure: { (error) in
-            print("Get route from server failed. \(error?.localizedDescription)")
-        })
+    func getRouteFromServer(desCoordinate: CLLocationCoordinate2D) {
+        if let currentCoordinate = locationManager.location?.coordinate  {
+            GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: desCoordinate.getLocationsAsString(), success: { (route) in
+                if self.currentDrawedRoute != nil {
+                    // Remove old route
+                    self.currentDrawedRoute?.map = nil
+                }
+                self.currentDrawedRoute = self.mapView.drawRoute(points: route.routeAsPoints)
+            }, failure: { (error) in
+                print("Get route from server failed. \(error?.localizedDescription)")
+            })
+        }
     }
     
     func addSampleParkingZone() {
@@ -130,14 +134,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-//    func saveSampleLocation() {
-//        let savedLocation = CLLocation(latitude: 10.762639, longitude: 106.682027)
-//        FirebaseService.getInstance().saveLocation(key: "Kg3s2sGsK502j_xrk9h", location: savedLocation) { (error) in
-//            if let error = error {
-//                print("Save sample location failed: \(error)")
-//            }
-//        }
-//    }
+    func searchPlace(place: GMSPlace) {
+        let searchCoordinate = place.coordinate
+        mapView.moveCamera(inputLocation: place.coordinate, animate: true)
+        searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
+    }
     
     func startQueryForParkingZone(centerLocation: CLLocation) {
             currentGeoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation)
@@ -324,8 +325,8 @@ extension CLLocationCoordinate2D {
 }
 
 extension HomeViewController: MarkerInfoWindowViewDelegate {
-    func onBtnDrawRouteClicked() {
-        //showRouteSample()
+    func onBtnDrawRouteClicked(desLat: Double, desLng: Double) {
+        getRouteFromServer(desCoordinate: CLLocationCoordinate2D(latitude: desLat, longitude: desLng))
     }
     
     func onBtnDetailClicked() {
@@ -350,7 +351,7 @@ extension HomeViewController: GMSMapViewDelegate {
             infoWindow.delegate = self
             infoWindow.markerInfo = parkingModel
             infoWindow.center = mapView.projection.point(for: marker.position)
-            infoWindow.center.y -= 150 // Place infowindow above marker
+            infoWindow.center.y -= 120 // Place infowindow above marker
             selectedMarker = marker
             self.view.addSubview(infoWindow)
         }
@@ -360,7 +361,7 @@ extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         if selectedMarker != nil {
             infoWindow.center = mapView.projection.point(for: (selectedMarker?.position)!)
-            infoWindow.center.y -= 150
+            infoWindow.center.y -= 120
         }
     }
     
