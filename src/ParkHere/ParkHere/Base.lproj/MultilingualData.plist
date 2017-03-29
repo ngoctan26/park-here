@@ -14,5 +14,11 @@
 	<string>Comment</string>
 	<key>signInMenu</key>
 	<string>Sign In</string>
+	<key>namePlaceHolder</key>
+	<string>Put the parking zone name here...</string>
+	<key>descPlaceHolder</key>
+	<string>Say something about it...</string>
+	<key>addressPlaceHolder</key>
+	<string>Choose its location from the map above...</string>
 </dict>
 </plist>

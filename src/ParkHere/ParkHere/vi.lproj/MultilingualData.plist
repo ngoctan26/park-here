@@ -14,5 +14,11 @@
 	<string>Cấu hình</string>
 	<key>signInMenu</key>
 	<string>Đăng nhập</string>
+	<key>namePlaceHolder</key>
+	<string>Bãi giữ xe có tên chứ...</string>
+	<key>descPlaceHolder</key>
+	<string>Có gì đặc biệt ở đây nhỉ...</string>
+	<key>addressPlaceHolder</key>
+	<string>Chọn vị trí của bãi giữ xe từ bản đồ ở trên...</string>
 </dict>
 </plist>

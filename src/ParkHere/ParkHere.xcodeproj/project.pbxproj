@@ -65,7 +65,6 @@
 		522DFB651E76E7BB007DFEB6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Views/MenuViewCell.swift; sourceTree = "<group>"; };
 		522DFB6A1E76F764007DFEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/MultilingualData.plist; sourceTree = "<group>"; };
-		522DFB6C1E76F7E7007DFEB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/MultilingualData.plist; sourceTree = "<group>"; };
 		522DFB6D1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		522DFB6E1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		522DFB6F1E76F829007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = vi; path = vi.lproj/MultilingualData.plist; sourceTree = "<group>"; };
@@ -415,7 +414,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				522DFB6A1E76F764007DFEB6 /* Base */,
-				522DFB6C1E76F7E7007DFEB6 /* en */,
 				522DFB6F1E76F829007DFEB6 /* vi */,
 			);
 			name = MultilingualData.plist;
