@@ -352,7 +352,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-3F-abo">
-                                <rect key="frame" x="269" y="159" width="45" height="45"/>
+                                <rect key="frame" x="269" y="157" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="DSY-ZX-wFw"/>
                                     <constraint firstAttribute="height" constant="45" id="iNV-gQ-z5w"/>
@@ -378,7 +378,7 @@
                             <constraint firstAttribute="trailing" secondItem="AH2-PX-TZB" secondAttribute="trailing" id="RA7-IG-LVu"/>
                             <constraint firstItem="zkE-3F-abo" firstAttribute="trailing" secondItem="BWu-yU-Try" secondAttribute="trailing" id="SfU-27-yJs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XcG-ae-ZJP" secondAttribute="bottom" constant="10" id="X7C-vp-XcQ"/>
-                            <constraint firstItem="zkE-3F-abo" firstAttribute="top" secondItem="BWu-yU-Try" secondAttribute="bottom" constant="5" id="bK4-J8-lXD"/>
+                            <constraint firstItem="zkE-3F-abo" firstAttribute="top" secondItem="BWu-yU-Try" secondAttribute="bottom" constant="3" id="bK4-J8-lXD"/>
                             <constraint firstItem="AH2-PX-TZB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kjx-Ld-qvq"/>
                             <constraint firstAttribute="trailing" secondItem="XcG-ae-ZJP" secondAttribute="trailing" constant="10" id="v4I-mA-nX0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AH2-PX-TZB" secondAttribute="bottom" id="x97-Z0-dho"/>
