@@ -69,10 +69,11 @@ class MapView: UIView {
      Drawing route from points.
      - parameter points: Get from overview_polyline in direction APIs
     */
-    func drawRoute(points: String) {
+    func drawRoute(points: String) -> GMSPolyline {
         let path: GMSPath = GMSPath(fromEncodedPath: points)!
-        let sampleRoute = GMSPolyline(path: path)
-        sampleRoute.map = showingMap
+        let routePolynline = GMSPolyline(path: path)
+        routePolynline.map = showingMap
+        return routePolynline
     }
     
     func moveCamera(inputLocation: CLLocationCoordinate2D, animate: Bool) {

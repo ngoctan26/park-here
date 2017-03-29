@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     var currentGeoQuery: GFCircleQuery?
     var parkingZones: [String: ParkingZoneModel] = [:]
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
+    var currentDrawedRoute: GMSPolyline?
     var markersRef: [GMSMarker] = []
     var searchMarker: GMSMarker?
     var filterState = FilterState.None
@@ -40,6 +41,13 @@ class HomeViewController: UIViewController {
     @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
         updateMapToCurrentPosition(animate: true)
     }
+    
+    @IBAction func onUnrouteBtnClicked(_ sender: UIButton) {
+        if let currentDrawedRoute = currentDrawedRoute {
+            currentDrawedRoute.map = nil
+        }
+    }
+    
     
 //    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
 //        createSampleForTest()
@@ -91,14 +99,14 @@ class HomeViewController: UIViewController {
         addSampleParkingZone()
     }
     
-    func showRouteSample() {
-        let currentCoordinate = CLLocationCoordinate2D(latitude: 10.762639, longitude: 106.682027)
-        let sampleDesCoordinate = CLLocationCoordinate2D(latitude: 10.758599, longitude: 106.681230)
-        GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: sampleDesCoordinate.getLocationsAsString(), success: { (route) in
-            self.mapView.drawRoute(points: route.routeAsPoints)
-        }, failure: { (error) in
-            print("Get route from server failed. \(error?.localizedDescription)")
-        })
+    func getRouteFromServer(desCoordinate: CLLocationCoordinate2D) {
+        if let currentCoordinate = locationManager.location?.coordinate  {
+            GMapDirectionService.sharedInstance.getDirection(origin: currentCoordinate.getLocationsAsString(), destination: desCoordinate.getLocationsAsString(), success: { (route) in
+                self.currentDrawedRoute = self.mapView.drawRoute(points: route.routeAsPoints)
+            }, failure: { (error) in
+                print("Get route from server failed. \(error?.localizedDescription)")
+            })
+        }
     }
     
     func addSampleParkingZone() {
@@ -313,8 +321,8 @@ extension CLLocationCoordinate2D {
 }
 
 extension HomeViewController: MarkerInfoWindowViewDelegate {
-    func onBtnDrawRouteClicked() {
-        //showRouteSample()
+    func onBtnDrawRouteClicked(desLat: Double, desLng: Double) {
+        getRouteFromServer(desCoordinate: CLLocationCoordinate2D(latitude: desLat, longitude: desLng))
     }
     
     func onBtnDetailClicked() {

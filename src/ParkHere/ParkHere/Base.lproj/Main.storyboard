@@ -359,6 +359,9 @@
                                     <constraint firstAttribute="height" constant="40" id="iNV-gQ-z5w"/>
                                 </constraints>
                                 <state key="normal" image="ic_btn_unroute"/>
+                                <connections>
+                                    <action selector="onUnrouteBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GBs-H1-3EU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-0W-SkI">
                                 <rect key="frame" x="16" y="20" width="149" height="21"/>
@@ -590,7 +593,7 @@
     <resources>
         <image name="ic_btn_unroute" width="32" height="32"/>
         <image name="ic_location" width="32" height="32"/>
-        <image name="ic_search" width="16" height="16"/>
+        <image name="ic_search" width="32" height="32"/>
         <image name="iconMenuBar" width="24" height="24"/>
         <image name="parkhere" width="114" height="114"/>
     </resources>

@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol MarkerInfoWindowViewDelegate {
-    @objc optional func onBtnDrawRouteClicked()
+    @objc optional func onBtnDrawRouteClicked(desLat: Double, desLng: Double)
     @objc optional func onBtnDetailClicked()
 }
 
@@ -49,7 +49,7 @@ class MarkerInfoWindowView: UIView {
     }
 
     @IBAction func btnRouteClicked(_ sender: UIButton) {
-        delegate.onBtnDrawRouteClicked!()
+        delegate.onBtnDrawRouteClicked!(desLat: markerInfo.latitude!, desLng: markerInfo.longitude!)
     }
     
     @IBAction func btnDetailClicked(_ sender: UIButton) {
