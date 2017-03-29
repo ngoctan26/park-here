@@ -68,6 +68,25 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     }
     
     @IBAction func onPost(_ sender: UIButton) {
+        let newParkingZone = ParkingZoneModel()
+        newParkingZone.desc = txtDesc.text
+        newParkingZone.name = txtName.text
+        newParkingZone.rating = 0.0
+        
+        // dummy value
+        newParkingZone.address = "Dummy address"
+        newParkingZone.closeTime = "23"
+        newParkingZone.openTime = "5"
+        // newParkingZone.imageUrl = "dummy url"
+        newParkingZone.createdAt = ""
+        newParkingZone.latitude = 10.759975
+        newParkingZone.longitude = 106.682112
+        newParkingZone.transportTypes = [TransportTypeEnum.Bicycle, TransportTypeEnum.Motorbike, TransportTypeEnum.Car]
+        newParkingZone.prices = ["5", "10", "15"]
+        
+        FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) { 
+            
+        }
     }
     
     
@@ -97,7 +116,7 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     func loadTransportTypeView() {
         self.transportTypeView.layoutIfNeeded()
         
-        let segmentedControl = MultiSelectionSegmentedControl(items: ["1", "2", "3"])
+        let segmentedControl = MultiSelectionSegmentedControl(items: ["B", "M", "C"])
         
         segmentedControl.frame = CGRect(x: 0, y: 0, width: transportTypeView.frame.size.width - 40, height: transportTypeView.frame.size.height)
         

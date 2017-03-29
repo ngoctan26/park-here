@@ -11,6 +11,7 @@ import NSDate_TimeAgo
 import GoogleMaps
 
 class ParkingZoneModel: NSObject {
+    var name: String?
     var id: String?
     var createdAt: String?
     var imageUrl: URL?
@@ -32,6 +33,7 @@ class ParkingZoneModel: NSObject {
     override init() {}
     
     init(dictionary: NSDictionary) {
+        name = dictionary["name"] as? String
         desc = dictionary["description"] as? String
         address = dictionary["address"] as? String
         
