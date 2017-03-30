@@ -97,12 +97,13 @@ class HamburgerViewController: UIViewController {
             }
         }
      }
-    
 }
 
 extension HamburgerViewController: SearchPlacesViewControllerDelegate {
     func onSearchedDone(place: GMSPlace) {
         if let currentVC =  contentViewController as? HomeViewController {
+            currentVC.searchPlace(place: place)
+        } else if let currentVC = contentViewController as? AddingViewController {
             currentVC.searchPlace(place: place)
         }
     }
