@@ -14,6 +14,7 @@ import GeoFire
 
 @objc protocol NewParkingZoneDelegate {
     @objc func saveSuccessful(newParkingZone: ParkingZoneModel)
+    @objc func openPickImageController()
 }
 
 class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -71,19 +72,7 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     }
     
     @IBAction func onCaptureImage(_ sender: UIButton) {
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            print("Camera is available 📸")
-            vc.sourceType = .camera
-        } else {
-            print("Camera 🚫 available so we will use photo library instead")
-            vc.sourceType = .photoLibrary
-        }
-        
-        // self.present(vc, animated: true, completion: nil)
+        delegate.openPickImageController()
     }
     
     @IBAction func onPost(_ sender: UIButton) {
@@ -167,7 +156,6 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
         mapView.moveCamera(inputLocation: place.coordinate, animate: true)
         searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
     }
-
 }
 
 extension NewParkingZone: UITextViewDelegate {

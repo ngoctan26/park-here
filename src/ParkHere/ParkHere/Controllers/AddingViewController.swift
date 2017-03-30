@@ -26,7 +26,7 @@ class AddingViewController: UIViewController {
         newParkingZoneSubView.delegate = self
         newParkingZoneSubView.frame.size.width = newParkingZoneView.frame.size.width
         newParkingZoneSubView.segmentedControl.frame.size.width = newParkingZoneSubView.frame.size.width - 20
-        newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height)
+        newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height + 10)
         newParkingZoneView.addSubview(newParkingZoneSubView)
     }
     
@@ -43,9 +43,37 @@ class AddingViewController: UIViewController {
     }
 }
 
-extension AddingViewController: NewParkingZoneDelegate {
+extension AddingViewController: NewParkingZoneDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func saveSuccessful(newParkingZone: ParkingZoneModel) {
         print("save thanh cong")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func openPickImageController() {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            vc.sourceType = .camera
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+            vc.sourceType = .photoLibrary
+        }
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get the image captured by the UIImagePickerController
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        // Do something with the images (based on your use case)
+        newParkingZoneSubView.imgOnCapture.image = editedImage
+        // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
 }

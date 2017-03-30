@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Hey I want to use your camera</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Hey I want to steal your photos</string>
 	<key>CFBundleDisplayName</key>
 	<string>ParkHere</string>
 	<key>CFBundleExecutable</key>
@@ -51,5 +55,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>${PRODUCT_NAME} want to access your photos</string>
 </dict>
 </plist>
