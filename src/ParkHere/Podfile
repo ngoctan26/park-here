@@ -9,6 +9,8 @@ target 'ParkHere' do
   pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  #Store image in storage
+  pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   #GeoFire using to query nearby location
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc'

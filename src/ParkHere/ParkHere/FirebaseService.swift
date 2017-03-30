@@ -130,13 +130,13 @@ class FirebaseService {
     }
     
     func getParkingZoneRating(parkingZoneId: Int!, success: @escaping (Double) -> Void) {
-        var sum: Double = 0.0
+        //var sum: Double = 0.0
         var count: Int = 0
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
                 FIRDatabase.database().reference().child("comments/1/").queryOrdered(byChild: "rating").observe(.childAdded, with: { (snapshot) -> Void in
                     
-                    print(snapshot.value)
+                    print("\(snapshot.value)")
                     //sum += snapshot.value["rating"] as! Double
                     count += 1
                 })
@@ -252,5 +252,26 @@ class FirebaseService {
         let geoRef = GeoFire(firebaseRef: fireBaseDefaultRef.child(Constant.Locations_Node))
         // Query locations at [37.7832889, -122.4056973] with a radius of 600 meters
         return geoRef?.query(at: centerLocation, withRadius: 2.0)
+    }
+    
+    // Upload image
+    func uploadImage(image: UIImage, parkingZoneId: String, failure: @escaping (_ error: Error?) -> (), success: @escaping (_ downLoadURL: String) -> ()) {
+        let storageRef = FIRStorage.storage().reference()
+        let data = UIImagePNGRepresentation(image)
+        let storagePath = Constant.Image_Storage_Node + "\(parkingZoneId)\\imagename.png"
+        if let data = data {
+            let metaData = FIRStorageMetadata()
+            metaData.contentType = "image/png"
+            storageRef.child(storagePath).put(data, metadata: metaData, completion: { (metaDataReturn, error) in
+                guard let metaDataReturn = metaDataReturn else {
+                    failure(error)
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                let downLoadString = metaDataReturn.downloadURL()!.absoluteString
+                success(downLoadString)
+                print(downLoadString)
+            })
+        }
     }
 }

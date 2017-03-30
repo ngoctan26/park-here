@@ -27,14 +27,9 @@ class HomeViewController: UIViewController {
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
     var currentDrawedRoute: GMSPolyline?
     var markersRef: [GMSMarker] = []
+    var selectedMarker: GMSMarker?
     var searchMarker: GMSMarker?
     var filterState = FilterState.None
-    
-    // Sample variable
-    var sampleMarker: GMSMarker!
-    var sampleMarker2nd: GMSMarker!
-    var selectedMarker: GMSMarker?
-    var sampleDesCoordinate: CLLocationCoordinate2D!
     
     // Action references
     
@@ -47,12 +42,6 @@ class HomeViewController: UIViewController {
             currentDrawedRoute.map = nil
         }
     }
-    
-    
-//    @IBAction func onBtnAddSampleClicked(_ sender: UIButton) {
-//        createSampleForTest()
-//    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
