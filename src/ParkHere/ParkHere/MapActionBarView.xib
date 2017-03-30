@@ -36,7 +36,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="BvJ-MF-xdI" secondAttribute="height" multiplier="4:4" id="xkw-bp-oFi"/>
                                     </constraints>
-                                    <state key="normal" image="ic_btn_bicycle"/>
+                                    <state key="normal" image="ic_bike_unselect"/>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="s0h-2N-UBR"/>
                                     </connections>
@@ -46,7 +46,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="LZV-Ua-pWG" secondAttribute="height" multiplier="4:4" id="RCx-tR-hG5"/>
                                     </constraints>
-                                    <state key="normal" image="ic_btn_moto"/>
+                                    <state key="normal" image="ic_motor_unselect"/>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="8Sq-Zf-Tl4"/>
                                     </connections>
@@ -56,7 +56,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mBY-Cp-tWu" secondAttribute="height" multiplier="4:4" id="u5l-Ap-z8o"/>
                                     </constraints>
-                                    <state key="normal" image="ic_btn_car"/>
+                                    <state key="normal" image="ic_car_unselect"/>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="NnT-V1-SU7"/>
                                     </connections>
@@ -66,7 +66,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="kdy-ZY-ze8" secondAttribute="height" multiplier="4:4" id="Hc4-Mm-bkg"/>
                                     </constraints>
-                                    <state key="normal" image="ic_btn_price"/>
+                                    <state key="normal" image="ic_price_unselect"/>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="z9g-33-Z7B"/>
                                     </connections>
@@ -76,7 +76,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="jzr-A5-d9v" secondAttribute="height" multiplier="4:4" id="jK1-dO-6aS"/>
                                     </constraints>
-                                    <state key="normal" image="ic_btn_nearest"/>
+                                    <state key="normal" image="ic_nearest_unselect"/>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="6C1-bQ-Y7M"/>
                                     </connections>
@@ -86,7 +86,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="0aE-xG-b5U" secondAttribute="height" multiplier="4:4" id="apo-27-hu4"/>
                                     </constraints>
-                                    <state key="normal" image="ic_btn_rating"/>
+                                    <state key="normal" image="ic_rating_unselect"/>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="YHw-9Z-z8v"/>
                                     </connections>
@@ -110,11 +110,11 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_btn_bicycle" width="32" height="32"/>
-        <image name="ic_btn_car" width="32" height="32"/>
-        <image name="ic_btn_moto" width="32" height="32"/>
-        <image name="ic_btn_nearest" width="32" height="32"/>
-        <image name="ic_btn_price" width="32" height="32"/>
-        <image name="ic_btn_rating" width="32" height="32"/>
+        <image name="ic_bike_unselect" width="32" height="32"/>
+        <image name="ic_car_unselect" width="32" height="32"/>
+        <image name="ic_motor_unselect" width="60" height="60"/>
+        <image name="ic_nearest_unselect" width="32" height="32"/>
+        <image name="ic_price_unselect" width="32" height="32"/>
+        <image name="ic_rating_unselect" width="32" height="32"/>
     </resources>
 </document>

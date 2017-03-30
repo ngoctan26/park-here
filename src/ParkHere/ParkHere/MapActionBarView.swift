@@ -50,8 +50,8 @@ class MapActionBarView: UIView {
         nib.instantiate(withOwner: self, options: nil)
         containerView.frame = bounds
         addSubview(containerView)
-        containerView.layer.cornerRadius = 15
-        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        containerView.layer.cornerRadius = 15
+//        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.backgroundColor = UIColor.clear
     }
     
@@ -61,14 +61,20 @@ class MapActionBarView: UIView {
         case "btnBike":
             if selectedPos == 0 {
                 // is selected befor
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
                 removeAllBlurAndReturnUnseleted()
             } else {
                 btnStates[0] = true
-                addBlurEffect(buttons: [btnMoto, btnCar, btnPrice, btnNearest, btnRating])
+                btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
+                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
+                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
+                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
+                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
                 }
                 selectedPos = 0
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_select"), for: .normal)
                 delegate?.btnBikeClicked()
             }
             break
@@ -78,10 +84,15 @@ class MapActionBarView: UIView {
                 removeAllBlurAndReturnUnseleted()
             } else {
                 btnStates[1] = true
-                addBlurEffect(buttons: [btnBike, btnCar, btnPrice, btnNearest, btnRating])
+                btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
+                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
+                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
+                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
                 }
+                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_select"), for: .normal)
                 selectedPos = 1
                 delegate?.btnMotoClicked()
             }
@@ -92,10 +103,15 @@ class MapActionBarView: UIView {
                 removeAllBlurAndReturnUnseleted()
             } else {
                 btnStates[2] = true
-                addBlurEffect(buttons: [btnMoto, btnBike, btnPrice, btnNearest, btnRating])
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
+                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
+                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
+                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
+                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
                 }
+                btnCar.setImage(#imageLiteral(resourceName: "ic_car_select"), for: .normal)
                 selectedPos = 2
                 delegate?.btnCarClicked()
             }
@@ -106,10 +122,15 @@ class MapActionBarView: UIView {
                 removeAllBlurAndReturnUnseleted()
             } else {
                 btnStates[3] = true
-                addBlurEffect(buttons: [btnMoto, btnCar, btnBike, btnNearest, btnRating])
+                btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
+                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
+                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
+                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
                 }
+                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_select"), for: .normal)
                 selectedPos = 3
                 delegate?.btnPriceClicked()
             }
@@ -120,10 +141,15 @@ class MapActionBarView: UIView {
                 removeAllBlurAndReturnUnseleted()
             } else {
                 btnStates[4] = true
-                addBlurEffect(buttons: [btnMoto, btnCar, btnPrice, btnBike, btnRating])
+                btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
+                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
+                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
+                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
                 }
+                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_select"), for: .normal)
                 selectedPos = 4
                 delegate?.btnNearestClicked()
             }
@@ -134,10 +160,15 @@ class MapActionBarView: UIView {
                 removeAllBlurAndReturnUnseleted()
             } else {
                 btnStates[5] = true
-                addBlurEffect(buttons: [btnMoto, btnCar, btnPrice, btnNearest, btnBike])
+                btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
+                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
+                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
+                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
+                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
                 }
+                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_select"), for: .normal)
                 selectedPos = 5
                 delegate?.btnRatingClicked()
             }
@@ -148,30 +179,13 @@ class MapActionBarView: UIView {
     }
     
     func removeAllBlurAndReturnUnseleted() {
-        removeBlurEffect(buttons: [btnBike, btnRating, btnCar, btnMoto, btnNearest, btnPrice])
+        btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
+        btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
+        btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
+        btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
+        btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
+        btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
         selectedPos = -1
         delegate?.unselected()
-    }
-    
-    func addBlurEffect(buttons: [UIButton]) {
-        for button in buttons {
-            let blur = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-            blur.frame = (button.imageView?.bounds)!
-            blur.tag = BlurTagView
-            button.insertSubview(blur, at: 0)
-            if let imageView = button.imageView{
-                self.bringSubview(toFront: imageView)
-            }
-            blurViews.append(blur)
-        }
-    }
-    
-    func removeBlurEffect(buttons: [UIButton]) {
-        for button in buttons {
-            let blurView = button.viewWithTag(BlurTagView)
-            if let blurView = blurView {
-                blurView.removeFromSuperview()
-            }
-        }
     }
 }
