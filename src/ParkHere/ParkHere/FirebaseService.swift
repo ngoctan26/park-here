@@ -248,10 +248,10 @@ class FirebaseService {
         }
     }
     
-    func getCircleQuery(centerLocation: CLLocation) -> GFCircleQuery? {
+    func getCircleQuery(centerLocation: CLLocation, radius: Double) -> GFCircleQuery? {
         let geoRef = GeoFire(firebaseRef: fireBaseDefaultRef.child(Constant.Locations_Node))
         // Query locations at [37.7832889, -122.4056973] with a radius of 600 meters
-        return geoRef?.query(at: centerLocation, withRadius: 2.0)
+        return geoRef?.query(at: centerLocation, withRadius: radius)
     }
     
     // Upload image

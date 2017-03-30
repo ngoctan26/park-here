@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     
     var geoFireStartObserve: Bool = false
     var currentGeoQuery: GFCircleQuery?
+    var searchGeoQuery: GFCircleQuery?
     var parkingZones: [String: ParkingZoneModel] = [:]
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
     var currentDrawedRoute: GMSPolyline?
@@ -30,11 +31,19 @@ class HomeViewController: UIViewController {
     var selectedMarker: GMSMarker?
     var searchMarker: GMSMarker?
     var filterState = FilterState.None
+    var isSearching = false
     
     // Action references
     
     @IBAction func onBtnCurrentLocationClicked(_ sender: UIButton) {
         updateMapToCurrentPosition(animate: true)
+        if isSearching {
+            isSearching = false
+            clearSearchData()
+            if let currentLocation = locationManager.location {
+                currentGeoQuery = startQueryForParkingZone(centerLocation: currentLocation)
+            }
+        }
     }
     
     @IBAction func onUnrouteBtnClicked(_ sender: UIButton) {
@@ -124,18 +133,38 @@ class HomeViewController: UIViewController {
     }
     
     func searchPlace(place: GMSPlace) {
+        isSearching = true
         let searchCoordinate = place.coordinate
         mapView.moveCamera(inputLocation: place.coordinate, animate: true)
         searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
+        clearCurrentShowingData()
+        searchGeoQuery = startQueryForParkingZone(centerLocation: CLLocation(latitude: searchCoordinate.latitude, longitude: searchCoordinate.longitude))
     }
     
-    func startQueryForParkingZone(centerLocation: CLLocation) {
-            currentGeoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation)
-            if let currentGeoQuery = currentGeoQuery {
-                currentGeoQuery.observeReady({
+    func clearSearchData() {
+        searchMarker?.map = nil
+        searchGeoQuery?.removeAllObservers()
+    }
+    
+    func clearCurrentShowingData() {
+        currentGeoQuery?.removeAllObservers()
+        parkingZones.removeAll()
+        currentDrawedRoute?.map = nil
+        filteredParkingZones.removeAll()
+        for marker in markersRef {
+            marker.map = nil
+        }
+        markersRef.removeAll()
+        
+    }
+    
+    func startQueryForParkingZone(centerLocation: CLLocation) -> GFCircleQuery? {
+            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(Constant.GeoQuery_Radius_Default))
+            if let geoQuery = geoQuery {
+                geoQuery.observeReady({
                     print("All initial data has been loaded and events have been fired!")
                 })
-                currentGeoQuery.observe(.keyEntered, with: { (key, parkingLocation) in
+                geoQuery.observe(.keyEntered, with: { (key, parkingLocation) in
                     if key != Constant.Current_User_Loc_Key {
                         FirebaseService.getInstance().getParkingZonesById(parkingZoneId: key!, success: { (parkingModel) in
                             if let parkingModel = parkingModel {
@@ -147,7 +176,7 @@ class HomeViewController: UIViewController {
                         })
                     }
                 })
-                currentGeoQuery.observe(.keyExited, with: { (key, parkingLocation) in
+                geoQuery.observe(.keyExited, with: { (key, parkingLocation) in
                     if key != Constant.Current_User_Loc_Key {
                         // Get maker and Model reference by key
                         self.parkingZones.removeValue(forKey: key!)
@@ -164,7 +193,7 @@ class HomeViewController: UIViewController {
                         }
                     }
                 })
-                currentGeoQuery.observe(.keyMoved, with: { (key, parkingLocation) in
+                geoQuery.observe(.keyMoved, with: { (key, parkingLocation) in
                     if key != Constant.Current_User_Loc_Key {
                         // Get maker and Model reference by key
                         let parkingModel = self.parkingZones[key!]
@@ -182,6 +211,7 @@ class HomeViewController: UIViewController {
                     }
                 })
             }
+        return geoQuery
     }
     
     func updateShowingParkingByState(state: FilterState, parkingModel: ParkingZoneModel, key: String) {
@@ -196,14 +226,25 @@ class HomeViewController: UIViewController {
         case .Transport_Moto:
             isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Motorbike))!
             break
+        // Below cases will only have 1 data in dictionary.
         case .Rating:
-            // TODO: Handle later
+            if let filteredData = filteredParkingZones.values.first {
+                isValidData = filteredData.rating < parkingModel.rating
+            }
             break
         case .Nearest:
-            // TODO: Handle later
+            if let filteredData = filteredParkingZones.values.first {
+                let coordinateFiltered = CLLocation(latitude: filteredData.latitude!, longitude: filteredData.longitude!)
+                let coordinateNew = CLLocation(latitude: parkingModel.latitude!, longitude: parkingModel.longitude!)
+                if let currentLocation = locationManager.location {
+                    isValidData = coordinateFiltered.distance(from: currentLocation) > coordinateNew.distance(from: currentLocation)
+                }
+            }
             break
         case .Price:
-            // TODO: Handle later
+            if let filteredData = filteredParkingZones.values.first {
+                isValidData = (filteredData.prices?[0])! < (parkingModel.prices?[0])!
+            }
             break
         default:
             isValidData = true
@@ -301,7 +342,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             isUpdateCurrentLocationEnable = false
         }
         if !geoFireStartObserve && location != nil {
-            startQueryForParkingZone(centerLocation: location!)
+            currentGeoQuery = startQueryForParkingZone(centerLocation: location!)
             geoFireStartObserve = true
         }
     }
