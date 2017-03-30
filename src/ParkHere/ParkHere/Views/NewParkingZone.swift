@@ -8,6 +8,13 @@
 
 import UIKit
 import ATHMultiSelectionSegmentedControl
+import GooglePlaces
+import GoogleMaps
+import GeoFire
+
+@objc protocol NewParkingZoneDelegate {
+    @objc func saveSuccessful(newParkingZone: ParkingZoneModel)
+}
 
 class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -27,6 +34,19 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     
     @IBOutlet weak var btnPost: UIButton!
     
+    var searchMarker: GMSMarker?
+    
+    var selectedPlace: GMSPlace? {
+        didSet {
+            txtAddress.text = selectedPlace?.formattedAddress
+            txtName.text = txtName.text == Constant.Name_Place_Holder.localized ? selectedPlace?.name : txtName.text
+            txtName.textColor = .black
+        }
+    }
+    
+    weak var delegate: NewParkingZoneDelegate!
+    
+    var segmentedControl = MultiSelectionSegmentedControl(items: ["B", "M", "C"])
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,7 +63,6 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     }
     
     func initSubView() {
-        
         let nib = UINib(nibName: "NewParkingZone", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
         containerCtrlView.frame = bounds
@@ -73,19 +92,21 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
         newParkingZone.name = txtName.text
         newParkingZone.rating = 0.0
         
+        newParkingZone.latitude = selectedPlace?.coordinate.latitude
+        newParkingZone.longitude = selectedPlace?.coordinate.longitude
+        newParkingZone.address = selectedPlace?.formattedAddress
+        
+        newParkingZone.createdAt = DateTimeUtil.stringFromDate(date: Date())
+        
         // dummy value
-        newParkingZone.address = "Dummy address"
         newParkingZone.closeTime = "23"
         newParkingZone.openTime = "5"
         // newParkingZone.imageUrl = "dummy url"
-        newParkingZone.createdAt = ""
-        newParkingZone.latitude = 10.759975
-        newParkingZone.longitude = 106.682112
         newParkingZone.transportTypes = [TransportTypeEnum.Bicycle, TransportTypeEnum.Motorbike, TransportTypeEnum.Car]
         newParkingZone.prices = ["5", "10", "15"]
         
         FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) { 
-            
+            self.delegate.saveSuccessful(newParkingZone: newParkingZone)
         }
     }
     
@@ -116,8 +137,6 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     func loadTransportTypeView() {
         self.transportTypeView.layoutIfNeeded()
         
-        let segmentedControl = MultiSelectionSegmentedControl(items: ["B", "M", "C"])
-        
         segmentedControl.frame = CGRect(x: 0, y: 0, width: transportTypeView.frame.size.width - 40, height: transportTypeView.frame.size.height)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
@@ -142,6 +161,13 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
         // Dismiss UIImagePickerController to go back to your original view controller
         // dismiss(animated: true, completion: nil)
     }
+    
+    func searchPlace(place: GMSPlace) {
+        let searchCoordinate = place.coordinate
+        mapView.moveCamera(inputLocation: place.coordinate, animate: true)
+        searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
+    }
+
 }
 
 extension NewParkingZone: UITextViewDelegate {

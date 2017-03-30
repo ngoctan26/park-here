@@ -9,16 +9,23 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GooglePlaces
+import GoogleMaps
+import GeoFire
 
 class AddingViewController: UIViewController {
     
     @IBOutlet weak var newParkingZoneView: UIScrollView!
+    var newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: 200, height: 880))
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: newParkingZoneView.frame.size.width, height: 880))
+        newParkingZoneSubView.delegate = self
+        newParkingZoneSubView.frame.size.width = newParkingZoneView.frame.size.width
+        newParkingZoneSubView.segmentedControl.frame.size.width = newParkingZoneSubView.frame.size.width - 20
         newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height)
         newParkingZoneView.addSubview(newParkingZoneSubView)
     }
@@ -28,38 +35,17 @@ class AddingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onAdd(_ sender: UIButton) {
-        let newComment: CommentModel = CommentModel()
-        newComment.id = 1
-        newComment.longitude = 123
-        newComment.latitude = 123
-        newComment.text = "Test Comment"
-        newComment.parkingZoneId = "1"
-        newComment.rating = 4.5
-        newComment.userId = "1"
-        newComment.createdAt = Date.init()
-        
-//        FirebaseService.getInstance().addComment(newComment: newComment) { (_) in
-//            print("OK")
-//        }
-//        
-//        FirebaseService.getInstance().getCommentsByPage(parkingZoneId: 1, page: 1) { (comments) in
-//            print(comments.count)
-//        }
-        FirebaseService.getInstance().getParkingZoneRating(parkingZoneId: 1) { (rating) in
-            print(rating)
-        }
-        
+    func searchPlace(place: GMSPlace) {
+        let searchCoordinate = place.coordinate
+        newParkingZoneSubView.selectedPlace = place
+        newParkingZoneSubView.mapView.moveCamera(inputLocation: place.coordinate, animate: true)
+        newParkingZoneSubView.searchMarker = newParkingZoneSubView.mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+}
+
+extension AddingViewController: NewParkingZoneDelegate {
+    func saveSuccessful(newParkingZone: ParkingZoneModel) {
+        print("save thanh cong")
+        dismiss(animated: true, completion: nil)
+    }
 }
