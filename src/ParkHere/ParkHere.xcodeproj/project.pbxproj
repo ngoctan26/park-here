@@ -66,7 +66,6 @@
 		522DFB651E76E7BB007DFEB6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Views/MenuViewCell.swift; sourceTree = "<group>"; };
 		522DFB6A1E76F764007DFEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/MultilingualData.plist; sourceTree = "<group>"; };
-		522DFB6C1E76F7E7007DFEB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/MultilingualData.plist; sourceTree = "<group>"; };
 		522DFB6D1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		522DFB6E1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		522DFB6F1E76F829007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = vi; path = vi.lproj/MultilingualData.plist; sourceTree = "<group>"; };
@@ -280,7 +279,7 @@
 				TargetAttributes = {
 					8624AC681E71BF8900B92710 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = V7Z27TG6NM;
+						DevelopmentTeam = B77T45EXXL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -419,7 +418,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				522DFB6A1E76F764007DFEB6 /* Base */,
-				522DFB6C1E76F7E7007DFEB6 /* en */,
 				522DFB6F1E76F829007DFEB6 /* vi */,
 			);
 			name = MultilingualData.plist;
@@ -545,11 +543,11 @@
 			baseConfigurationReference = BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7Z27TG6NM;
+				DEVELOPMENT_TEAM = B77T45EXXL;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -562,11 +560,11 @@
 			baseConfigurationReference = 610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7Z27TG6NM;
+				DEVELOPMENT_TEAM = B77T45EXXL;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

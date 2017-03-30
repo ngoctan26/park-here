@@ -43,5 +43,10 @@ class Constant {
     static let Current_User_Loc_Node = "current_user"
     static let User_Node = "user_profiles/"
     static let Anonymous = "Anonymous"
+    
+    // Adding New Parking Zone
+    static let Name_Place_Holder = "namePlaceHolder"
+    static let Desc_Place_Holder = "descPlaceHolder"
+    static let Address_Place_Holder = "addressPlaceHolder"
 
 }
