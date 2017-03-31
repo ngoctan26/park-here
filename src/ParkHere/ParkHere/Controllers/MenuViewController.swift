@@ -27,6 +27,7 @@ class MenuViewController: UIViewController {
         // Do any additional setup after loading the view.
         tblMenu.delegate = self
         tblMenu.dataSource = self
+        tblMenu.tableFooterView = UIView()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
@@ -73,8 +74,26 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuViewCell", for: indexPath) as! MenuViewCell
         
         let titles = [Constant.Home_Menu_Title_Key.localized, Constant.Settings_Menu_Title_Key.localized, Constant.Adding_Menu_Title_Key.localized,Constant.SignIn_Menu_Title_Key.localized]
-        
-        cell.lblMenuTitle.text = titles[indexPath.row]
+        switch indexPath.row {
+        case 0:
+            cell.lblMenuTitle.text = titles[0]
+            cell.icMenu.image = #imageLiteral(resourceName: "ic_home")
+            break
+        case 1:
+            cell.lblMenuTitle.text = titles[1]
+            cell.icMenu.image = #imageLiteral(resourceName: "ic_setting")
+            break
+        case 2:
+            cell.lblMenuTitle.text = titles[2]
+            cell.icMenu.image = #imageLiteral(resourceName: "ic_compose")
+            break
+        case 3:
+            cell.lblMenuTitle.text = titles[3]
+            cell.icMenu.image = #imageLiteral(resourceName: "ic_user")
+            break
+        default:
+            break
+        }
         return cell
     }
     

@@ -11,6 +11,7 @@ import Foundation
 class DateTimeUtil {
     static let timeFormater = DateFormatter()
     static let Date_Format_Default = "EEE MMM d HH:mm:ss"
+    static let Time_Format_Default = "HH:mm"
     
     static func dateFromString(dateAsString: String) -> Date? {
         timeFormater.dateFormat = Date_Format_Default
