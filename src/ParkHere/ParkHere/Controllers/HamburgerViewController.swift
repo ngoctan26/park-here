@@ -20,6 +20,8 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet var searchBtn: UIButton!
     
+    var isMenuOpen = false;
+    
     var menuViewController: UIViewController! {
         didSet {
             view.layoutIfNeeded()
@@ -68,6 +70,14 @@ class HamburgerViewController: UIViewController {
     
     @IBAction func onMenu(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5) {
+            if self.isMenuOpen {
+                sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+                sender.transform = CGAffineTransform(rotationAngle: 0)
+            } else {
+                sender.transform = CGAffineTransform(rotationAngle: 0)
+                sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+            }
+            self.isMenuOpen = !self.isMenuOpen
             self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - self.view.frame.size.width/2
             if self.leftMarginConstraint.constant != 0 && self.view.frame.size.width / 2 < CGFloat(Constant.Width_Of_Space_For_Icon_On_Header_View) {
                 self.logo.isHidden = true
