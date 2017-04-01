@@ -97,20 +97,13 @@ extension CommentViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch (indexPath as NSIndexPath).section {
-        case 0: return 44
-        case 1: return 80
-        default: return 0
-        }
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath as NSIndexPath).section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "commentViewCell", for: indexPath) as! CommentViewCell
             let comment = comments![indexPath.row]
             cell.contentLabel.text = comment.text
+            cell.ratingView.rating = comment.rating!
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "addCommentCell", for: indexPath) as! AddCommentViewCell
@@ -137,7 +130,7 @@ extension CommentViewController: AddCommentViewCellDelagate{
     func addCommentViewCellSignIn(addCommentViewCell: AddCommentViewCell) {
         GIDSignIn.sharedInstance().signIn()
     }
-    func addCommentViewCell(addCommentViewCell: AddCommentViewCell, didSendComment text: String) {
+    func addCommentViewCell(addCommentViewCell: AddCommentViewCell, didSendComment text: String, rating: Double) {
         var userId = UserModel.anonymousUser?.id
         if UserModel.currentUser != nil {
             userId = (UserModel.currentUser?.id)!
@@ -146,11 +139,15 @@ extension CommentViewController: AddCommentViewCellDelagate{
         newComment.id = 1
         newComment.text = text
         newComment.parkingZoneId = parkingZone?.id
-        newComment.rating = 4.5
+        newComment.rating = rating
         newComment.userId = userId
         newComment.createdAt = Date.init()
         FirebaseService.getInstance().addComment(newComment: newComment) {
             self.getAllComments()
+            let newParkingRating = ((self.parkingZone?.rating)! + rating)/2
+            FirebaseService.getInstance().updateParkingZoneRating(parkingId: (self.parkingZone?.id)!, newRating: newParkingRating, success: {
+                self.parkingZone?.rating = newParkingRating
+            })
         }
     }
 }

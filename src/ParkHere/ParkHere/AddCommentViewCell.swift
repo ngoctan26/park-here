@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Cosmos
 
 protocol AddCommentViewCellDelagate {
-    func addCommentViewCell(addCommentViewCell: AddCommentViewCell, didSendComment text:String)
+    func addCommentViewCell(addCommentViewCell: AddCommentViewCell, didSendComment text:String, rating: Double)
     func addCommentViewCellSignIn(addCommentViewCell: AddCommentViewCell)
 }
 
@@ -20,6 +21,7 @@ class AddCommentViewCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var ratingView: CosmosView!
     
     var delegate: AddCommentViewCellDelagate!
 
@@ -50,7 +52,7 @@ class AddCommentViewCell: UITableViewCell {
     }
 
     @IBAction func onAddCommentButton(_ sender: UIButton) {
-        delegate.addCommentViewCell(addCommentViewCell: self, didSendComment: contentTextField.text!)
+        delegate.addCommentViewCell(addCommentViewCell: self, didSendComment: contentTextField.text!, rating: ratingView.rating)
         contentTextField.text = ""
     }
 }

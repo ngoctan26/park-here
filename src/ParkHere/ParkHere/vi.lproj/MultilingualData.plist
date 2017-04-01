@@ -22,5 +22,7 @@
 	<string>Chọn vị trí của bãi giữ xe từ bản đồ ở trên...</string>
 	<key>settingSection1Title</key>
 	<string>Cài đặt bộ lọc</string>
+	<key>signOutMenu</key>
+	<string>Đăng xuất</string>
 </dict>
 </plist>

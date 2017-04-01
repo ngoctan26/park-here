@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var tblMenu: UITableView!
     
@@ -42,6 +43,8 @@ class MenuViewController: UIViewController {
         
         hamburgerViewController.isMenuOpen = true   // Initialize menu state at begining
         hamburgerViewController.contentViewController = homeNavController
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +77,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuViewCell", for: indexPath) as! MenuViewCell
         
-        let titles = [Constant.Home_Menu_Title_Key.localized, Constant.Settings_Menu_Title_Key.localized, Constant.Adding_Menu_Title_Key.localized,Constant.SignIn_Menu_Title_Key.localized]
+        var signInTitle = Constant.SignIn_Menu_Title_Key.localized
+        if UserModel.currentUser != nil {
+            signInTitle = Constant.SignOut_Menu_Title_Key.localized
+        }
+        
+        let titles = [Constant.Home_Menu_Title_Key.localized, Constant.Settings_Menu_Title_Key.localized, Constant.Adding_Menu_Title_Key.localized,signInTitle]
         switch indexPath.row {
         case 0:
             cell.lblMenuTitle.text = titles[0]
@@ -100,6 +108,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        if indexPath.row != 3 {
+            hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        } else if UserModel.currentUser != nil {
+            GIDSignIn.sharedInstance().signOut()
+        }
+        
     }
 }

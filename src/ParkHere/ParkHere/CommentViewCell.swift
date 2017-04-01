@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Cosmos
 
 class CommentViewCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var ratingView: CosmosView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

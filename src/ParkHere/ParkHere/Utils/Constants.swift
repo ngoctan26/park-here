@@ -20,6 +20,7 @@ class Constant {
     static let Adding_Menu_Title_Key = "addingMenu"
     static let Settings_Menu_Title_Key = "settingsMenu"
     static let SignIn_Menu_Title_Key = "signInMenu"
+    static let SignOut_Menu_Title_Key = "signOutMenu"
     
     static let Width_Of_Space_For_Icon_On_Header_View = 100
     

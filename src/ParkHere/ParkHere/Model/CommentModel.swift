@@ -23,6 +23,8 @@ class CommentModel: NSObject {
         return (createdAt as NSDate?)?.timeAgo() ?? Constant.Empty_String
     }
     
+    var timestamp: TimeInterval?
+    
     override init() {}
     
     init(dictionary: NSDictionary) {
@@ -45,9 +47,14 @@ class CommentModel: NSObject {
             timeFormater.dateFormat = "EEE MMM d HH:mm:ss" // Tue Aug 28 21:16:23
             createdAt = timeFormater.date(from: timestampString)
         }
+        
+        timestamp = dictionary["timestamp"] as? TimeInterval
     }
     
     class func comments(dictionaries: [NSDictionary]) -> [CommentModel] {
-        return dictionaries.map { CommentModel(dictionary: $0) }
+        let result = dictionaries.map { CommentModel(dictionary: $0) }
+        return result.sorted(by: { (firstComment, secondComment) -> Bool in
+            return firstComment.timestamp! < secondComment.timestamp!
+        })
     }
 }

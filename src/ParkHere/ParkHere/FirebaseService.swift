@@ -129,6 +129,28 @@ class FirebaseService {
         }
     }
     
+    func updateParkingZoneRating(parkingId: String, newRating: Double, success: @escaping () -> Void) {
+        FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
+            if error == nil {
+                var params = [String: AnyObject]()
+                params["rating"] = newRating as AnyObject
+                
+                FirebaseClient.getInstance().updateValue(path: Constant.Parking_Zones_Node + "/\(parkingId)", value: params, failure: { (error: Error?) in
+                    if error != nil {
+                        print(error.debugDescription)
+                    }
+                    else {
+                        success()
+                    }
+                })
+                
+                try! FIRAuth.auth()!.signOut()
+            } else {
+                print("error")
+            }
+        }
+    }
+    
     func getParkingZoneRating(parkingZoneId: Int!, success: @escaping (Double) -> Void) {
         //var sum: Double = 0.0
         var count: Int = 0
@@ -150,7 +172,7 @@ class FirebaseService {
     func getCommentsByPage(parkingZoneId: String!, page: Int!, success: @escaping ([CommentModel]) -> Void) {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
-                FirebaseClient.getInstance().retreiveDataWithOrder(path: Constant.Comments_Node + "\(parkingZoneId!)",key: "create_at", sussess: { (result) in
+                FirebaseClient.getInstance().retreiveDataWithOrder(path: Constant.Comments_Node + "\(parkingZoneId!)",key: "timestamp", sussess: { (result) in
                     if let results = result as? NSDictionary {
                         success(CommentModel.comments(dictionaries: results.allValues as! [NSDictionary]))
                     }
