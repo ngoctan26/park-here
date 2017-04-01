@@ -40,6 +40,7 @@ class MenuViewController: UIViewController {
         viewControllers.append(addingNavController)
         viewControllers.append(signInNavController)
         
+        hamburgerViewController.isMenuOpen = true   // Initialize menu state at begining
         hamburgerViewController.contentViewController = homeNavController
     }
 

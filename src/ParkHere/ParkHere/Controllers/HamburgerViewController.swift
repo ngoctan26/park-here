@@ -19,6 +19,7 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet var searchBtn: UIButton!
+    @IBOutlet var menuIcon: UIButton!
     
     var isMenuOpen = false;
     
@@ -46,6 +47,8 @@ class HamburgerViewController: UIViewController {
             contentViewController.didMove(toParentViewController: self)
             
             UIView.animate(withDuration: 0.5) {
+                self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: self.menuIcon)
+                self.isMenuOpen = !self.isMenuOpen
                 self.leftMarginConstraint.constant = 0
                 self.leftMarginConstraintHeaderView.constant = 10
                 self.view.layoutIfNeeded()
@@ -70,13 +73,7 @@ class HamburgerViewController: UIViewController {
     
     @IBAction func onMenu(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5) {
-            if self.isMenuOpen {
-                sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-                sender.transform = CGAffineTransform(rotationAngle: 0)
-            } else {
-                sender.transform = CGAffineTransform(rotationAngle: 0)
-                sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-            }
+            self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: sender)
             self.isMenuOpen = !self.isMenuOpen
             self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - self.view.frame.size.width/2
             if self.leftMarginConstraint.constant != 0 && self.view.frame.size.width / 2 < CGFloat(Constant.Width_Of_Space_For_Icon_On_Header_View) {
@@ -86,6 +83,16 @@ class HamburgerViewController: UIViewController {
             }
             self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant == 0 ? 10 : self.leftMarginConstraint.constant
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    func toogleMenuSettingIcon(isOpen: Bool, button: UIButton) {
+        if isOpen {
+            button.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+            button.transform = CGAffineTransform(rotationAngle: 0)
+        } else {
+            button.transform = CGAffineTransform(rotationAngle: 0)
+            button.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         }
     }
     

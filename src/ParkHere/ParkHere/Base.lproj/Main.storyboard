@@ -96,6 +96,7 @@
                         <outlet property="leftMarginConstraint" destination="mKy-Ns-1QP" id="bbs-xt-kSh"/>
                         <outlet property="leftMarginConstraintHeaderView" destination="ytp-tf-24M" id="QVh-hg-bE3"/>
                         <outlet property="logo" destination="i2W-hm-dBn" id="eW7-Lq-bS1"/>
+                        <outlet property="menuIcon" destination="BPX-3j-W5J" id="BDa-Pm-e78"/>
                         <outlet property="menuView" destination="Hsf-BE-OEb" id="DJV-4X-urS"/>
                         <outlet property="searchBtn" destination="ylk-IA-OOv" id="awh-C5-cjj"/>
                     </connections>
