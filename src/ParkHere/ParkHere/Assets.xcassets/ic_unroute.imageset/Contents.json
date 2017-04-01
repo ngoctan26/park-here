@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_unroute.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_unroute2x.png",
+      "filename" : "Entypo_d83d(0)_128.png",
       "scale" : "2x"
     },
     {

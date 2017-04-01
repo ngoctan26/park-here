@@ -24,5 +24,11 @@
 	<string>Cài đặt bộ lọc</string>
 	<key>signOutMenu</key>
 	<string>Đăng xuất</string>
+	<key>transportTypeLabel</key>
+	<string>Loại xe</string>
+	<key>distanceLabel</key>
+	<string>Khoảng cách</string>
+	<key>timeOpenAndCloseLabel</key>
+	<string>Thời gian hoạt động</string>
 </dict>
 </plist>

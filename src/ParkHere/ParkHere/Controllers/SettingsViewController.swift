@@ -61,12 +61,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "transportCell", for: indexPath) as! SettingTransportCell
+            cell.transportLabel.text = Constant.Transport_Type_Label.localized
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath ) as! SettingTimeCell
+            cell.timeCellLabel.text = Constant.Time_Setting_Label.localized
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "distanceCell", for: indexPath) as! SettingDistanceCell
+            cell.distanceLabel.text = Constant.Distance_Label
             return cell
         default:
             break

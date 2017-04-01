@@ -24,5 +24,11 @@
 	<string>Setting filter</string>
 	<key>signOutMenu</key>
 	<string>Sign Out</string>
+	<key>transportTypeLabel</key>
+	<string>Your transport type</string>
+	<key>distanceLabel</key>
+	<string>DIstance</string>
+	<key>timeOpenAndCloseLabel</key>
+	<string>Open and Close time</string>
 </dict>
 </plist>

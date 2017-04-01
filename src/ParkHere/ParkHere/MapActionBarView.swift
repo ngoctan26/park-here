@@ -12,7 +12,6 @@ import UIKit
     @objc func btnBikeClicked()
     @objc func btnMotoClicked()
     @objc func btnCarClicked()
-    @objc func btnPriceClicked()
     @objc func btnNearestClicked()
     @objc func btnRatingClicked()
     @objc func unselected()
@@ -24,7 +23,6 @@ class MapActionBarView: UIView {
     @IBOutlet var btnBike: UIButton!
     @IBOutlet var btnMoto: UIButton!
     @IBOutlet var btnCar: UIButton!
-    @IBOutlet var btnPrice: UIButton!
     @IBOutlet var btnNearest: UIButton!
     @IBOutlet var btnRating: UIButton!
     
@@ -68,7 +66,6 @@ class MapActionBarView: UIView {
                 btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
                 btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
                 btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
-                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
                 btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
@@ -87,7 +84,6 @@ class MapActionBarView: UIView {
                 btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
                 btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
                 btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
-                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
                 btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
@@ -106,7 +102,6 @@ class MapActionBarView: UIView {
                 btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
                 btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
                 btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
-                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
                 btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
@@ -114,25 +109,6 @@ class MapActionBarView: UIView {
                 btnCar.setImage(#imageLiteral(resourceName: "ic_car_select"), for: .normal)
                 selectedPos = 2
                 delegate?.btnCarClicked()
-            }
-            break
-        case "btnPrice":
-            if selectedPos == 3 {
-                // is selected befor
-                removeAllBlurAndReturnUnseleted()
-            } else {
-                btnStates[3] = true
-                btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
-                btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
-                btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
-                btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
-                btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
-                if selectedPos != -1 {
-                    btnStates[selectedPos] = false
-                }
-                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_select"), for: .normal)
-                selectedPos = 3
-                delegate?.btnPriceClicked()
             }
             break
         case "btnNearest":
@@ -144,7 +120,6 @@ class MapActionBarView: UIView {
                 btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
                 btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
                 btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
-                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
                 btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
@@ -163,7 +138,6 @@ class MapActionBarView: UIView {
                 btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
                 btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
                 btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
-                btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
                 btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
                 if selectedPos != -1 {
                     btnStates[selectedPos] = false
@@ -182,7 +156,6 @@ class MapActionBarView: UIView {
         btnCar.setImage(#imageLiteral(resourceName: "ic_car_unselect"), for: .normal)
         btnMoto.setImage(#imageLiteral(resourceName: "ic_motor_unselect"), for: .normal)
         btnNearest.setImage(#imageLiteral(resourceName: "ic_nearest_unselect"), for: .normal)
-        btnPrice.setImage(#imageLiteral(resourceName: "ic_price_unselect"), for: .normal)
         btnBike.setImage(#imageLiteral(resourceName: "ic_bike_unselect"), for: .normal)
         btnRating.setImage(#imageLiteral(resourceName: "ic_rating_unselect"), for: .normal)
         selectedPos = -1

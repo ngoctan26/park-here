@@ -150,7 +150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="at9-SS-e71">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="at9-SS-e71">
                                 <rect key="frame" x="0.0" y="114" width="320" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -173,9 +173,9 @@
                                                         <action selector="onTransportTypeChanged:" destination="ZBi-gx-4VV" eventType="valueChanged" id="Fk4-jB-tVw"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your transport type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7u-vm-5PJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your transport type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7u-vm-5PJ">
                                                     <rect key="frame" x="13" y="17" width="133" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -205,14 +205,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh7-hC-p7q">
-                                                    <rect key="frame" x="265" y="13" width="42" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh7-hC-p7q">
+                                                    <rect key="frame" x="269" y="13" width="38" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xP-h9-QfT">
-                                                    <rect key="frame" x="193" y="14" width="33" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="08:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xP-h9-QfT">
+                                                    <rect key="frame" x="193" y="14" width="37" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -229,7 +229,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UP0-Co-RpL">
-                                                    <rect key="frame" x="236" y="9" width="24" height="24"/>
+                                                    <rect key="frame" x="240" y="9" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="aUp-0e-zLJ"/>
                                                         <constraint firstAttribute="height" constant="24" id="kX7-XM-4bw"/>
@@ -257,6 +257,7 @@
                                         <connections>
                                             <outlet property="startLabel" destination="2xP-h9-QfT" id="OJk-MU-547"/>
                                             <outlet property="stopLabel" destination="kh7-hC-p7q" id="z8x-pv-mKd"/>
+                                            <outlet property="timeCellLabel" destination="5pW-jS-wOL" id="Gs8-N7-XsX"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="distanceCell" id="uUP-EU-jMh" customClass="SettingDistanceCell" customModule="ParkHere" customModuleProvider="target">
@@ -527,14 +528,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-ae-ZJP" customClass="MapActionBarView" customModule="ParkHere" customModuleProvider="target">
-                                <rect key="frame" x="10" y="508" width="300" height="50"/>
+                                <rect key="frame" x="10" y="498" width="300" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="7Wt-gq-3PC"/>
+                                    <constraint firstAttribute="height" constant="60" id="7Wt-gq-3PC"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWu-yU-Try">
-                                <rect key="frame" x="274" y="114" width="40" height="40"/>
+                                <rect key="frame" x="274" y="124" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2sE-dX-uix"/>
                                     <constraint firstAttribute="width" constant="40" id="P46-Dk-JJi"/>
@@ -545,10 +546,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkE-3F-abo">
-                                <rect key="frame" x="269" y="157" width="45" height="45"/>
+                                <rect key="frame" x="274" y="167" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="DSY-ZX-wFw"/>
-                                    <constraint firstAttribute="height" constant="45" id="iNV-gQ-z5w"/>
+                                    <constraint firstAttribute="width" constant="40" id="DSY-ZX-wFw"/>
+                                    <constraint firstAttribute="height" constant="40" id="iNV-gQ-z5w"/>
                                 </constraints>
                                 <state key="normal" image="ic_unroute"/>
                                 <connections>
@@ -565,7 +566,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1450980392" green="0.58039215690000001" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="BWu-yU-Try" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="5K1-Ew-8eE"/>
+                            <constraint firstItem="BWu-yU-Try" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="5K1-Ew-8eE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BWu-yU-Try" secondAttribute="trailing" constant="-10" id="8Eh-t4-2Fo"/>
                             <constraint firstItem="AH2-PX-TZB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Gl3-YW-bAC"/>
                             <constraint firstAttribute="trailing" secondItem="AH2-PX-TZB" secondAttribute="trailing" id="RA7-IG-LVu"/>
@@ -799,10 +800,10 @@
         <image name="ic_bike_seg" width="24" height="24"/>
         <image name="ic_car_seg" width="24" height="24"/>
         <image name="ic_clock" width="32" height="32"/>
-        <image name="ic_location" width="32" height="32"/>
+        <image name="ic_location" width="64" height="64"/>
         <image name="ic_motor_seg" width="24" height="24"/>
         <image name="ic_search" width="32" height="32"/>
-        <image name="ic_unroute" width="32" height="32"/>
+        <image name="ic_unroute" width="64" height="64"/>
         <image name="iconMenuBar" width="24" height="24"/>
         <image name="parkhere" width="114" height="114"/>
     </resources>

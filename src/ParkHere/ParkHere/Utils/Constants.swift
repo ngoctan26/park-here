@@ -56,5 +56,8 @@ class Constant {
     
     // Setting view
     static let Section_1_Title = "settingSection1Title"
+    static let Transport_Type_Label = "transportTypeLabel"
+    static let Time_Setting_Label = "timeOpenAndCloseLabel"
+    static let Distance_Label = "distanceLabel"
 
 }

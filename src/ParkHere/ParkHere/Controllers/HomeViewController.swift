@@ -429,12 +429,6 @@ extension HomeViewController: MapActionBarViewDelegate {
         updateShowingParkings(data: filterdData)
     }
     
-    func btnPriceClicked() {
-        filterState = .Price
-        let filterdData = filterDataByState(state: filterState)
-        updateShowingParkings(data: filterdData)
-    }
-    
     func btnNearestClicked() {
         filterState = .Nearest
         let filterdData = filterDataByState(state: filterState)
