@@ -20,5 +20,7 @@
 	<string>Có gì đặc biệt ở đây nhỉ...</string>
 	<key>addressPlaceHolder</key>
 	<string>Chọn vị trí của bãi giữ xe từ bản đồ ở trên...</string>
+	<key>settingSection1Title</key>
+	<string>Cài đặt bộ lọc</string>
 </dict>
 </plist>

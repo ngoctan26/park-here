@@ -281,7 +281,10 @@ class HomeViewController: UIViewController {
             // Filter by rating
             let model = parkingZones.max { a, b  in a.value.rating < b.value.rating
             }
-            return [(model?.key)! : (model?.value)!]
+            if let model = model {
+                return [model.key : model.value]
+            }
+            return [:]
         } else if state == .Nearest {
             // Filter by distance from current location
             let currentLocation = locationManager.location
@@ -291,7 +294,10 @@ class HomeViewController: UIViewController {
                     let locationB = CLLocation(latitude: b.value.latitude!, longitude: b.value.longitude!)
                     return locationA.distance(from: currentLocation) < locationB.distance(from: currentLocation)
                 }
-                return [(model?.key)! : (model?.value)!]
+                if let model = model {
+                    return [model.key : model.value]
+                }
+                return [:]
             }
             return [:]
         } else if state == .Price {
@@ -300,7 +306,10 @@ class HomeViewController: UIViewController {
             let model = parkingZones.min { a, b  in
                 return Int((a.value.prices?[0])!)! < Int((b.value.prices?[0])!)!
             }
-            return [(model?.key)! : (model?.value)!]
+            if let model = model {
+                return [model.key : model.value]
+            }
+            return [:]
         }
         var resultFilter: [String : ParkingZoneModel] = [:]
         for (key, value) in parkingZones {

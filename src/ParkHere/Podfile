@@ -27,5 +27,7 @@ target 'ParkHere' do
   pod 'ATHMultiSelectionSegmentedControl'
   # using rating star bar
   pod 'Cosmos', '~> 8.0'
+  # using show date time dialog
+  pod 'DatePickerDialog'
   
 end

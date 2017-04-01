@@ -52,5 +52,8 @@ class Constant {
     
     // Firebase storage node
     static let Image_Storage_Node = "images/"
+    
+    // Setting view
+    static let Section_1_Title = "settingSection1Title"
 
 }

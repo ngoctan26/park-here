@@ -20,5 +20,7 @@
 	<string>Say something about it...</string>
 	<key>addressPlaceHolder</key>
 	<string>Choose its location from the map above...</string>
+	<key>settingSection1Title</key>
+	<string>Setting filter</string>
 </dict>
 </plist>
