@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_more.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_more2x.png",
+      "filename" : "Material Icons_e0d8(0)_64.png",
       "scale" : "2x"
     },
     {
