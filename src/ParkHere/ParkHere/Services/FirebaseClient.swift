@@ -89,4 +89,21 @@ class FirebaseClient {
             sussess(snapshot.value)
         })
     }
+    
+    func retreiveDataWithOrder(path: String, key: String, sussess: @escaping (_ data: Any?) -> ()) {
+        //var ref = FIRDatabase.database().reference().child(path).queryOrdered(byChild: "timestamp")
+        //var ref = FIRDatabase.database().reference().child(path)
+        //if let key = key {
+        //    ref = ref.child(key)
+        //}
+        let ref = FIRDatabase.database().reference().child(path).queryOrdered(byChild: "timestamp")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if !snapshot.exists() {
+                sussess(nil)
+                print("Retreive date at path \(path) is not existed")
+                return
+            }
+            sussess(snapshot.value)
+        })
+    }
 }

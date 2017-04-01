@@ -150,7 +150,7 @@ class FirebaseService {
     func getCommentsByPage(parkingZoneId: String!, page: Int!, success: @escaping ([CommentModel]) -> Void) {
         FIRAuth.auth()!.signIn(withEmail: Constant.Auth_Email, password: Constant.Auth_Pass) { (user, error) in
             if error == nil {
-                FirebaseClient.getInstance().retreiveData(path: Constant.Comments_Node + "\(parkingZoneId!)", sussess: { (result) in
+                FirebaseClient.getInstance().retreiveDataWithOrder(path: Constant.Comments_Node + "\(parkingZoneId!)",key: "create_at", sussess: { (result) in
                     if let results = result as? NSDictionary {
                         success(CommentModel.comments(dictionaries: results.allValues as! [NSDictionary]))
                     }
@@ -166,6 +166,11 @@ class FirebaseService {
             if error == nil {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                var Timestamp: TimeInterval {
+                    return NSDate().timeIntervalSince1970 * 1000
+                }
+                let t1 = Timestamp
 
                 var params = [String: AnyObject]()
                 
@@ -174,6 +179,7 @@ class FirebaseService {
                 params["user_id"] = newComment.userId as AnyObject
                 params["parking_zone_id"] = newComment.parkingZoneId as AnyObject
                 params["create_at"] = dateFormatter.string(from: newComment.createdAt!) as AnyObject?
+                params["timestamp"] = t1 as AnyObject
                 
                 if let longitude = newComment.longitude {
                     if let latitude = newComment.latitude {
