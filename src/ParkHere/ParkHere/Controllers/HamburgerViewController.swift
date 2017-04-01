@@ -64,6 +64,7 @@ class HamburgerViewController: UIViewController {
         // Do any additional setup after loading the view.
         leftMarginConstraintHeaderView.constant = 10
         headerView.backgroundColor = Constant.Header_View_Background_Color
+        headerView.layer.cornerRadius = 7
     }
     
     override func didReceiveMemoryWarning() {

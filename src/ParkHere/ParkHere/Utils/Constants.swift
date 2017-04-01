@@ -23,7 +23,7 @@ class Constant {
     
     static let Width_Of_Space_For_Icon_On_Header_View = 100
     
-    static let Header_View_Background_Color = UIColor(red:0.65, green:0.80, blue:0.36, alpha:1.0)
+    static let Header_View_Background_Color = UIColor(red:0.0 / 255, green:214.0 / 255, blue:199.0 / 255, alpha:1.0)
     
     // Map configuration
     static let Google_Api_key = "AIzaSyCVy3nim32ev3LFpmGVC-RVvKeE6SwRWuE"
