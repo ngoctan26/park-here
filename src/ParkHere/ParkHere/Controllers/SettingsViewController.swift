@@ -26,6 +26,8 @@ class SettingsViewController: UIViewController {
         // Init table view
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
     }
 
@@ -41,8 +43,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return [Constant.Section_1_Title.localized];
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return Constant.Section_1_Title.localized
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0{
+            return 61
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
