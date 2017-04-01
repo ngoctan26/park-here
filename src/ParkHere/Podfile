@@ -29,5 +29,6 @@ target 'ParkHere' do
   pod 'Cosmos', '~> 8.0'
   # using show date time dialog
   pod 'DatePickerDialog'
-  
+  # using to show toast
+  pod 'Toast-Swift', '~> 2.0.0'
 end

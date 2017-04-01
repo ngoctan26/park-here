@@ -59,5 +59,6 @@ class Constant {
     static let Transport_Type_Label = "transportTypeLabel"
     static let Time_Setting_Label = "timeOpenAndCloseLabel"
     static let Distance_Label = "distanceLabel"
+    static let Saved_Message_Toast = "savedText"
 
 }

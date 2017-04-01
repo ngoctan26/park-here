@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import Toast_Swift
 
 class HamburgerViewController: UIViewController {
     
@@ -110,6 +111,7 @@ class HamburgerViewController: UIViewController {
     
     
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
+        self.view.makeToast(Constant.Saved_Message_Toast.localized)
     }
     
      // MARK: - Navigation

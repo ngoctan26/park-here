@@ -30,5 +30,7 @@
 	<string>DIstance</string>
 	<key>timeOpenAndCloseLabel</key>
 	<string>Open and Close time</string>
+    <key>savedText</key>
+    <string>Saved</string>
 </dict>
 </plist>
