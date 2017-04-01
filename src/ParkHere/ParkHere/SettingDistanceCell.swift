@@ -15,13 +15,15 @@ class SettingDistanceCell: UITableViewCell {
     // View references
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceValueLabel: UILabel!
+    @IBOutlet var distanceSlider: UISlider!
     
     @IBAction func onSlideChanged(_ sender: UISlider) {
+        self.distanceValueLabel.text = String(format: "%.1f", sender.value) + "km"
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.distanceValueLabel.text = String(format: "%.2f", distanceSlider.value) + "km"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

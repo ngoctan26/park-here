@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import DatePickerDialog
 
 class SettingTimeCell: UITableViewCell {
     
     @objc weak var delegate: SettingCellDelegate?
+    let diaglog = DatePickerDialog()
     
     // View references
     @IBOutlet var timeCellLabel: UILabel!
@@ -19,9 +21,21 @@ class SettingTimeCell: UITableViewCell {
     
     // Action references
     @IBAction func onStartClockClicked(_ sender: UIButton) {
+        let currentSetTime = DateTimeUtil.dateFromString(dateAsString: startLabel.text!, format: DateTimeUtil.Time_Format_Default)
+        diaglog.show(title: "Time", doneButtonTitle: "OK", cancelButtonTitle: "Cancel", defaultDate: currentSetTime!, minimumDate: nil, maximumDate: nil, datePickerMode: .time) { (pickedDate) in
+            if let pickedDate = pickedDate {
+                self.startLabel.text = DateTimeUtil.stringFromDate(date: pickedDate, format: DateTimeUtil.Time_Format_Default)
+            }
+        }
     }
     
     @IBAction func onCloseClockClicked(_ sender: UIButton) {
+        let currentSetTime = DateTimeUtil.dateFromString(dateAsString: stopLabel.text!, format: DateTimeUtil.Time_Format_Default)
+        diaglog.show(title: "Time", doneButtonTitle: "OK", cancelButtonTitle: "Cancel", defaultDate: currentSetTime!, minimumDate: nil, maximumDate: nil, datePickerMode: .time) { (pickedDate) in
+            if let pickedDate = pickedDate {
+                self.stopLabel.text = DateTimeUtil.stringFromDate(date: pickedDate, format: DateTimeUtil.Time_Format_Default)
+            }
+        }
     }
     
     override func awakeFromNib() {

@@ -14,15 +14,18 @@ class SettingTransportCell: UITableViewCell {
     
     // View references
     @IBOutlet var transportLabel: UILabel!
+    @IBOutlet var transportSegment: UISegmentedControl!
+    
+    var selectedIndex = 3
 
     // Action references
     @IBAction func onTransportTypeChanged(_ sender: UISegmentedControl) {
+        selectedIndex = sender.selectedSegmentIndex
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        transportSegment.selectedSegmentIndex = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
