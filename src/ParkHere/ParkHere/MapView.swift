@@ -12,17 +12,24 @@ import CoreLocation
 
 @objc protocol MapViewDelegate {
     @objc optional func onLongPressed(locationOnMap: CLLocationCoordinate2D)
+    @objc optional func onSearchClicked()
 }
 
 class MapView: UIView {
 
     @IBOutlet var containerView: UIView!
     @IBOutlet var showingMap: GMSMapView!
+    @IBOutlet var searchBtn: UIButton!
+    @IBOutlet var searchBtnTopConstrains: NSLayoutConstraint!
     
     weak var mapViewDelegate: MapViewDelegate!
     var isLongPressedEnable = false
     lazy var longPressRecognizer: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(recognizer:)))
     
+    @IBAction func onSearchBtnClicked(_ sender: UIButton) {
+        mapViewDelegate?.onSearchClicked!()
+    }
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +51,15 @@ class MapView: UIView {
     
     private func initMapView() {
         showingMap.isMyLocationEnabled = true
+    }
+    
+    func updateSearchTopSpaceToContainer(space: CGFloat) {
+        searchBtnTopConstrains.constant = space
+        self.layoutIfNeeded()
+    }
+    
+    func showHideSearchBtn(isHide: Bool) {
+        searchBtn.isHidden = isHide
     }
 
     /**
