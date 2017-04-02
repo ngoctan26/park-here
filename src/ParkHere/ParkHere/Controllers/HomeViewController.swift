@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     var parkingZones: [String: ParkingZoneModel] = [:]
     var filteredParkingZones: [String: ParkingZoneModel] = [:]
     var currentDrawedRoute: GMSPolyline?
+    var desDrawlocation: CLLocationCoordinate2D?
     var markersRef: [GMSMarker] = []
     var selectedMarker: GMSMarker?
     var searchMarker: GMSMarker?
@@ -107,6 +108,7 @@ class HomeViewController: UIViewController {
                 if self.currentDrawedRoute != nil {
                     // Remove old route
                     self.currentDrawedRoute?.map = nil
+                    self.desDrawlocation = desCoordinate
                 }
                 self.currentDrawedRoute = self.mapView.drawRoute(points: route.routeAsPoints)
             }, failure: { (error) in
@@ -411,7 +413,13 @@ extension CLLocationCoordinate2D {
 
 extension HomeViewController: MarkerInfoWindowViewDelegate {
     func onBtnDrawRouteClicked(desLat: Double, desLng: Double) {
-        getRouteFromServer(desCoordinate: CLLocationCoordinate2D(latitude: desLat, longitude: desLng))
+        if desDrawlocation != nil && desDrawlocation!.latitude == desLat && desDrawlocation!.longitude == desLng {
+            // Unroute current path
+            currentDrawedRoute?.map = nil
+            desDrawlocation = nil
+        } else {
+            getRouteFromServer(desCoordinate: CLLocationCoordinate2D(latitude: desLat, longitude: desLng))
+        }
     }
     
     func onBtnDetailClicked() {
