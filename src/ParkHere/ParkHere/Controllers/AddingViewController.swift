@@ -19,7 +19,8 @@ class AddingViewController: UIViewController {
     
     var newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: 200, height: 880))
     
-    public var hamburgerViewController: HamburgerViewController!
+    var hamburgerViewController: HamburgerViewController!
+    var homeNavController: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +48,7 @@ class AddingViewController: UIViewController {
 
 extension AddingViewController: NewParkingZoneDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func saveSuccessful(newParkingZone: ParkingZoneModel) {
-        print("save thanh cong")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeNavController: UIViewController! = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         hamburgerViewController.contentViewController = homeNavController
-        dismiss(animated: true, completion: nil)
     }
     
     func openPickImageController() {
@@ -73,7 +70,6 @@ extension AddingViewController: NewParkingZoneDelegate, UIImagePickerControllerD
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Do something with the images (based on your use case)
