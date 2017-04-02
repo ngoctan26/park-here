@@ -35,6 +35,7 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
         settingsNavController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
         addingNavController = storyboard.instantiateViewController(withIdentifier: "AddingViewController") as! AddingViewController
         addingNavController.hamburgerViewController = hamburgerViewController
+        addingNavController.homeNavController = homeNavController
         
         signInNavController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         
