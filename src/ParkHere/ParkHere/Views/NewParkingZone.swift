@@ -11,11 +11,13 @@ import ATHMultiSelectionSegmentedControl
 import GooglePlaces
 import GoogleMaps
 import GeoFire
+import WARangeSlider
 
 @objc protocol NewParkingZoneDelegate {
     @objc func saveSuccessful(newParkingZone: ParkingZoneModel)
     @objc func openPickImageController()
     @objc func openSearchPlaceController()
+    @objc func cancel()
 }
 
 class NewParkingZone: UIView {
@@ -31,6 +33,7 @@ class NewParkingZone: UIView {
     @IBOutlet weak var txtName: UITextView!
     @IBOutlet weak var txtDesc: UITextView!
     @IBOutlet weak var txtAddress: UITextView!
+    @IBOutlet weak var inside: UIView!
     
     @IBOutlet weak var imgOnCapture: UIImageView!
     
@@ -56,6 +59,7 @@ class NewParkingZone: UIView {
         loadTransportTypeView()
         setupTextView()
         setupButton()
+        setupRangeSlider()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -115,6 +119,11 @@ class NewParkingZone: UIView {
         }
     }
     
+    @IBAction func onCancel(_ sender: UIButton) {
+        delegate.cancel()
+    }
+    
+    
     func setupTextView() {
         txtName.delegate = self
         txtName.text = Constant.Name_Place_Holder.localized
@@ -151,7 +160,23 @@ class NewParkingZone: UIView {
     }
     
     func setupButton() {
-        btnPost.setImage(#imageLiteral(resourceName: "post"), for: .normal)
+        
+    }
+    
+    func setupRangeSlider() {
+        self.workingTimeView.layoutIfNeeded()
+        let rangeSlider = RangeSlider(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
+        
+        rangeSlider.frame.size.width = workingTimeView.frame.size.width
+        
+        inside.addSubview(rangeSlider)
+
+        rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged),
+                              for: .valueChanged)
+    }
+    
+    func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
+        print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))")
     }
 }
 

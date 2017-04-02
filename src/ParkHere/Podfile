@@ -33,4 +33,6 @@ target 'ParkHere' do
   pod 'Toast-Swift', '~> 2.0.0'
   # loading indicator
   pod 'SVProgressHUD'
+  # rangeSlider control
+  pod 'WARangeSlider'
 end

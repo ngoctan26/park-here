@@ -17,7 +17,7 @@ class AddingViewController: UIViewController {
     
     @IBOutlet weak var newParkingZoneView: UIScrollView!
     
-    var newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: 200, height: 880))
+    var newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: 200, height: 860))
     
     var hamburgerViewController: HamburgerViewController!
     var homeNavController: UIViewController!
@@ -29,7 +29,7 @@ class AddingViewController: UIViewController {
         newParkingZoneSubView.delegate = self
         newParkingZoneSubView.frame.size.width = newParkingZoneView.frame.size.width
         newParkingZoneSubView.segmentedControl.frame.size.width = newParkingZoneSubView.frame.size.width - 20
-        newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height + 10)
+        newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height)
         newParkingZoneView.addSubview(newParkingZoneSubView)
     }
     
@@ -48,6 +48,10 @@ class AddingViewController: UIViewController {
 
 extension AddingViewController: NewParkingZoneDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func saveSuccessful(newParkingZone: ParkingZoneModel) {
+        hamburgerViewController.contentViewController = homeNavController
+    }
+    
+    func cancel() {
         hamburgerViewController.contentViewController = homeNavController
     }
     
