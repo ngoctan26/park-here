@@ -69,7 +69,7 @@ class FirebaseService {
                 
                 params["address"] = newParkingZone.address as AnyObject
                 params["description"] = newParkingZone.desc as AnyObject
-                params["image_url"] = newParkingZone.imageUrl?.absoluteString as AnyObject
+                params["image_url"] = newParkingZone.imageUrl as AnyObject
                 params["created_at"] = newParkingZone.createdAt as AnyObject
                 params["rating"] = newParkingZone.rating as AnyObject
                 

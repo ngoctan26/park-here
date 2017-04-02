@@ -10,17 +10,16 @@ import UIKit
 
 class SettingTransportCell: UITableViewCell {
     
-    @objc weak var delegate: SettingCellDelegate?
+    weak var delegate: SettingCellDelegate?
     
     // View references
     @IBOutlet var transportLabel: UILabel!
     @IBOutlet var transportSegment: UISegmentedControl!
-    
-    var selectedIndex = 3
+    lazy var transportTypes = [TransportTypeEnum.Bicycle, TransportTypeEnum.Motorbike, TransportTypeEnum.Car, TransportTypeEnum.All]
 
     // Action references
     @IBAction func onTransportTypeChanged(_ sender: UISegmentedControl) {
-        selectedIndex = sender.selectedSegmentIndex
+        delegate?.onTransportChanged(type: transportTypes[sender.selectedSegmentIndex])
     }
     
     override func awakeFromNib() {

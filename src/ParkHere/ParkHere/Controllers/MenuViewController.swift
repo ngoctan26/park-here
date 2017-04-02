@@ -32,6 +32,10 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        if let homeVC = homeNavController as? HomeViewController {
+            // Add delegate to received from changed in setting page
+            hamburgerViewController.settingDelegate = homeVC
+        }
         settingsNavController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
         addingNavController = storyboard.instantiateViewController(withIdentifier: "AddingViewController") as! AddingViewController
         addingNavController.hamburgerViewController = hamburgerViewController

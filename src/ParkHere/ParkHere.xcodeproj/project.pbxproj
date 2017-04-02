@@ -34,6 +34,7 @@
 		8618E6C01E8AC34B00DDFE0B /* SearchPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618E6BF1E8AC34A00DDFE0B /* SearchPlacesViewController.swift */; };
 		861B59381E79A17200D7817A /* MarkerInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */; };
 		861B593A1E79A1AD00D7817A /* MarkerInfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */; };
+		861D0C851E90E069001F8748 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D0C841E90E069001F8748 /* SettingModel.swift */; };
 		861D44B11E81836C00BF3DA2 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861D44B01E81836C00BF3DA2 /* MapView.xib */; };
 		861D44B31E81838000BF3DA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D44B21E81838000BF3DA2 /* MapView.swift */; };
 		8624AC6D1E71BF8900B92710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624AC6C1E71BF8900B92710 /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		8618E6BF1E8AC34A00DDFE0B /* SearchPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlacesViewController.swift; sourceTree = "<group>"; };
 		861B59371E79A17200D7817A /* MarkerInfoWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindowView.swift; sourceTree = "<group>"; };
 		861B59391E79A1AD00D7817A /* MarkerInfoWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoWindowView.xib; sourceTree = "<group>"; };
+		861D0C841E90E069001F8748 /* SettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		861D44B01E81836C00BF3DA2 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		861D44B21E81838000BF3DA2 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8624AC691E71BF8900B92710 /* ParkHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				525141F11E8029F3004E8092 /* TransportTypeEnum.swift */,
 				869927E61E82EDA3002E3745 /* APIError.swift */,
 				865260F51E87E5D400B69117 /* FilterState.swift */,
+				861D0C841E90E069001F8748 /* SettingModel.swift */,
 			);
 			name = Models;
 			path = Model;
@@ -414,6 +417,7 @@
 				864984E81E8F94DE0071D9F2 /* SettingTimeCell.swift in Sources */,
 				522DFB5E1E76E765007DFEB6 /* HamburgerViewController.swift in Sources */,
 				525141EC1E7D9612004E8092 /* CommentModel.swift in Sources */,
+				861D0C851E90E069001F8748 /* SettingModel.swift in Sources */,
 				522DFB641E76E7A4007DFEB6 /* AddingViewController.swift in Sources */,
 				8688F9401E7702DB00E49B0B /* FirebaseClient.swift in Sources */,
 				8618810C1E7C5CD200D5250A /* GMapRoute.swift in Sources */,

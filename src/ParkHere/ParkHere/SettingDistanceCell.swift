@@ -10,7 +10,7 @@ import UIKit
 
 class SettingDistanceCell: UITableViewCell {
     
-    @objc weak var delegate: SettingCellDelegate?
+    weak var delegate: SettingCellDelegate?
     
     // View references
     @IBOutlet var distanceLabel: UILabel!
@@ -19,6 +19,7 @@ class SettingDistanceCell: UITableViewCell {
     
     @IBAction func onSlideChanged(_ sender: UISlider) {
         self.distanceValueLabel.text = String(format: "%.1f", sender.value) + "km"
+        self.delegate?.onDistanceChanged(radius: sender.value)
     }
 
     override func awakeFromNib() {
