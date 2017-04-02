@@ -15,7 +15,7 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
     
     private var homeNavController: UIViewController!
     private var settingsNavController: UIViewController!
-    private var addingNavController: UIViewController!
+    private var addingNavController: AddingViewController!
     private var signInNavController: UIViewController!
     
     var hamburgerViewController: HamburgerViewController!
@@ -33,7 +33,9 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         settingsNavController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-        addingNavController = storyboard.instantiateViewController(withIdentifier: "AddingViewController")
+        addingNavController = storyboard.instantiateViewController(withIdentifier: "AddingViewController") as! AddingViewController
+        addingNavController.hamburgerViewController = hamburgerViewController
+        
         signInNavController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         
         viewControllers.append(homeNavController)

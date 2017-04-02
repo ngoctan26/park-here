@@ -16,7 +16,10 @@ import GeoFire
 class AddingViewController: UIViewController {
     
     @IBOutlet weak var newParkingZoneView: UIScrollView!
+    
     var newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: 200, height: 880))
+    
+    public var hamburgerViewController: HamburgerViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,9 @@ class AddingViewController: UIViewController {
 extension AddingViewController: NewParkingZoneDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func saveSuccessful(newParkingZone: ParkingZoneModel) {
         print("save thanh cong")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeNavController: UIViewController! = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        hamburgerViewController.contentViewController = homeNavController
         dismiss(animated: true, completion: nil)
     }
     
