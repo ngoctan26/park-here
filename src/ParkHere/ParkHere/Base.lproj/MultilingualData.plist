@@ -30,7 +30,25 @@
 	<string>DIstance</string>
 	<key>timeOpenAndCloseLabel</key>
 	<string>Open and Close time</string>
-    <key>savedText</key>
-    <string>Saved</string>
+	<key>signInMessage</key>
+	<string>We really want to know who you are. Please click button below</string>
+	<key>signOutMessage</key>
+	<string>You leave us. Please click button below to connect again</string>
+	<key>savedText</key>
+	<string>Saved</string>
+	<key>backTitle</key>
+	<string>Back</string>
+	<key>addressTitle</key>
+	<string>Address:</string>
+	<key>vehicleTitle</key>
+	<string>Vehicle:</string>
+	<key>priceTitle</key>
+	<string>Price:</string>
+	<key>openTimeTitle</key>
+	<string>Open:</string>
+	<key>closeTimeTitle</key>
+	<string>Close:</string>
+	<key>descriptionTitle</key>
+	<string>Description:</string>
 </dict>
 </plist>

@@ -93,7 +93,7 @@ class NewParkingZone: UIView {
         // dummy value
         newParkingZone.closeTime = "23"
         newParkingZone.openTime = "5"
-        // newParkingZone.imageUrl = "dummy url"
+        newParkingZone.imageUrl = "dummy url"
         newParkingZone.transportTypes = [TransportTypeEnum.Bicycle, TransportTypeEnum.Motorbike, TransportTypeEnum.Car]
         newParkingZone.prices = ["5", "10", "15"]
         

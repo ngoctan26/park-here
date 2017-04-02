@@ -45,6 +45,10 @@ class Constant {
     static let Current_User_Loc_Node = "current_user"
     static let User_Node = "user_profiles/"
     static let Anonymous = "Anonymous"
+    static let SignInMessage = "signInMessage"
+    static let SignOutMessage = "signOutMessage"
+    static let UserDidSignOutNotification = "userDidSignOutNotification"
+    static let UserDidSignInNotification = "userDidSignInNotification"
     
     // Adding New Parking Zone
     static let Name_Place_Holder = "namePlaceHolder"
@@ -59,6 +63,16 @@ class Constant {
     static let Transport_Type_Label = "transportTypeLabel"
     static let Time_Setting_Label = "timeOpenAndCloseLabel"
     static let Distance_Label = "distanceLabel"
+    
     static let Saved_Message_Toast = "savedText"
+    
+    // Comment
+    static let Back_Title = "backTitle"
+    static let Address_Title = "addressTitle"
+    static let Vehicle_Title = "vehicleTitle"
+    static let Price_Title = "priceTitle"
+    static let OpenTime_Title = "openTimeTitle"
+    static let CloseTime_Title = "closeTimeTitle"
+    static let Description_Title = "descriptionTitle"
 
 }

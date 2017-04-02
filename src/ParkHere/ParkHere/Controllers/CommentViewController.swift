@@ -14,6 +14,21 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var commentMapView: MapView!
     @IBOutlet weak var commentTableView: UITableView!
+
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var addressTitleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var vehicleTitleLabel: UILabel!
+    @IBOutlet weak var vehicleLabel: UILabel!
+    @IBOutlet weak var priceTitleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var openTitleLabel: UILabel!
+    @IBOutlet weak var openTimeLabel: UILabel!
+    @IBOutlet weak var closeTitleLabel: UILabel!
+    @IBOutlet weak var closeTimeLabel: UILabel!
+    @IBOutlet weak var descriptionTitleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     
     var parkingZone: ParkingZoneModel?
     
@@ -28,16 +43,51 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
         commentTableView.estimatedRowHeight = 100
         commentTableView.rowHeight = UITableViewAutomaticDimension
 
-        
+        initTitle()
         initMapView()
-        getAllComments() //parkingId: "-Kg5QJT0Iat8uxuDMFiJ"
+        getParkingZoneDetail()
+        getAllComments()
     }
-
+    
+    func initTitle() {
+        backButton.title = Constant.Back_Title.localized
+        addressTitleLabel.text = Constant.Address_Title.localized
+        vehicleTitleLabel.text = Constant.Vehicle_Title.localized
+        priceTitleLabel.text = Constant.Price_Title.localized
+        openTitleLabel.text = Constant.OpenTime_Title.localized
+        closeTitleLabel.text = Constant.CloseTime_Title.localized
+        descriptionTitleLabel.text = Constant.Description_Title.localized
+    }
+    
     func initMapView() {
         if parkingZone != nil {
             let currentLocation = CLLocationCoordinate2D(latitude: (parkingZone?.latitude)!, longitude: (parkingZone?.longitude)!)
             commentMapView.moveCamera(inputLocation: currentLocation, animate: false)
             commentMapView.addMarker(lat: currentLocation.latitude, long: currentLocation.longitude, textInfo: nil, markerIcon: nil)
+        }
+    }
+    
+    func getParkingZoneDetail() {
+        if parkingZone != nil {
+            
+            var vehicle: String = ""
+            if parkingZone?.transportTypes != nil {
+                for (index, element) in (parkingZone?.transportTypes!.enumerated())! {
+                    vehicle += element.rawValue + ", "
+                }
+                
+                let splitIndex = vehicle.index(vehicle.endIndex, offsetBy: -2)
+                vehicle = vehicle.substring(to: splitIndex)
+            }
+            
+            if parkingZone?.address != nil {
+                addressLabel.text = parkingZone?.address!
+            }
+            priceLabel.text = parkingZone?.prices?.joined(separator: ", ")
+            vehicleLabel.text = vehicle
+            openTimeLabel.text = parkingZone?.openTime
+            closeTimeLabel.text = parkingZone?.closeTime
+            descriptionLabel.text = parkingZone?.desc
         }
     }
     

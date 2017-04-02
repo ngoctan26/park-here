@@ -45,6 +45,16 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
         hamburgerViewController.contentViewController = homeNavController
         
         GIDSignIn.sharedInstance().uiDelegate = self
+        
+        let signOutNotificationName = Notification.Name(Constant.UserDidSignOutNotification)
+        NotificationCenter.default.addObserver(forName: signOutNotificationName, object: nil, queue: OperationQueue.main, using: {(Notification) -> Void in
+            self.tblMenu.reloadData()
+        })
+
+        let signInNotificationName = Notification.Name(Constant.UserDidSignInNotification)
+        NotificationCenter.default.addObserver(forName: signInNotificationName, object: nil, queue: OperationQueue.main, using: {(Notification) -> Void in
+            self.tblMenu.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,15 +63,22 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "signInSegue" {
+            let navVC = segue.destination as! UINavigationController
+            let signInVC = navVC.topViewController as! SignInViewController
+            if sender != nil {
+                signInVC.isSignOut = sender as! Bool
+            }
+        }
     }
-    */
+    
 
 }
 
@@ -110,9 +127,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row != 3 {
             hamburgerViewController.contentViewController = viewControllers[indexPath.row]
-        } else if UserModel.currentUser != nil {
-            GIDSignIn.sharedInstance().signOut()
+        } else {
+            if UserModel.currentUser != nil {
+                performSegue(withIdentifier: "signInSegue", sender: true)
+            } else {
+                performSegue(withIdentifier: "signInSegue", sender: false)
+            }
         }
-        
     }
 }
