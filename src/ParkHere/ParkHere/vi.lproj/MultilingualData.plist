@@ -34,7 +34,21 @@
 	<string>Hãy đăng nhập để chúng tôi biết bạn là ai</string>
 	<key>signOutMessage</key>
 	<string>Bạn đã đăng xuất thành công. Hãy đăng nhập lần nữa để kết nối với chúng tôi</string>
-    <key>savedText</key>
-    <string>Đã lưu</string>
+	<key>savedText</key>
+	<string>Đã lưu</string>
+	<key>backTitle</key>
+	<string>Trở lại</string>
+	<key>addressTitle</key>
+	<string>Địa chỉ:</string>
+	<key>vehicleTitle</key>
+	<string>Phương tiện:</string>
+	<key>priceTitle</key>
+	<string>Giá:</string>
+	<key>openTimeTitle</key>
+	<string>Giờ mở cửa:</string>
+	<key>closeTimeTitle</key>
+	<string>Giờ đóng cửa:</string>
+	<key>descriptionTitle</key>
+	<string>Mô tả:</string>
 </dict>
 </plist>
