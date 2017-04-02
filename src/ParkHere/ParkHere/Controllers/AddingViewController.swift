@@ -18,7 +18,6 @@ class AddingViewController: UIViewController {
     @IBOutlet weak var newParkingZoneView: UIScrollView!
     var newParkingZoneSubView = NewParkingZone(frame: CGRect(x: 0, y: 0, width: 200, height: 880))
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,4 +75,23 @@ extension AddingViewController: NewParkingZoneDelegate, UIImagePickerControllerD
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
+    
+    func openSearchPlaceController() {
+        performSegue(withIdentifier: "searchPlaces", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let desNav = segue.destination as? UINavigationController {
+            if let desVC = desNav.topViewController as? SearchPlacesViewController {
+                desVC.delegate = self
+            }
+        }
+    }
 }
+
+extension AddingViewController: SearchPlacesViewControllerDelegate {
+    func onSearchedDone(place: GMSPlace) {
+        searchPlace(place: place)
+    }
+}
+

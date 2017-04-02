@@ -15,9 +15,10 @@ import GeoFire
 @objc protocol NewParkingZoneDelegate {
     @objc func saveSuccessful(newParkingZone: ParkingZoneModel)
     @objc func openPickImageController()
+    @objc func openSearchPlaceController()
 }
 
-class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewParkingZone: UIView {
     
     @IBOutlet var containerCtrlView: UIView!
     @IBOutlet weak var transportTypeView: UIView!
@@ -67,6 +68,8 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
         let nib = UINib(nibName: "NewParkingZone", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
         containerCtrlView.frame = bounds
+        
+        mapView.mapViewDelegate = self
         
         addSubview(containerCtrlView)
     }
@@ -138,24 +141,6 @@ class NewParkingZone: UIView, UIImagePickerControllerDelegate, UINavigationContr
     func setupButton() {
         btnPost.setImage(#imageLiteral(resourceName: "post"), for: .normal)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
-        // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        // Do something with the images (based on your use case)
-        
-        // Dismiss UIImagePickerController to go back to your original view controller
-        // dismiss(animated: true, completion: nil)
-    }
-    
-    func searchPlace(place: GMSPlace) {
-        let searchCoordinate = place.coordinate
-        mapView.moveCamera(inputLocation: place.coordinate, animate: true)
-        searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
-    }
 }
 
 extension NewParkingZone: UITextViewDelegate {
@@ -202,5 +187,12 @@ extension NewParkingZone {
     
     func dismissKeyboard() {
         containerCtrlView.endEditing(true)
+    }
+}
+
+// MARK: - Custom MapView
+extension NewParkingZone: MapViewDelegate {
+    func onSearchClicked() {
+        delegate.openSearchPlaceController()
     }
 }
