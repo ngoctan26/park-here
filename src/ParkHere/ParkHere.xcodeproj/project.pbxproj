@@ -20,6 +20,7 @@
 		522DFB661E76E7BB007DFEB6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB651E76E7BB007DFEB6 /* SettingsViewController.swift */; };
 		522DFB681E76ECF1007DFEB6 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DFB671E76ECF1007DFEB6 /* MenuViewCell.swift */; };
 		522DFB6B1E76F764007DFEB6 /* MultilingualData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 522DFB691E76F764007DFEB6 /* MultilingualData.plist */; };
+		5244B8BB1E90D600001DF246 /* GuiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244B8BA1E90D600001DF246 /* GuiUtil.swift */; };
 		525141EA1E7D95D2004E8092 /* ParkingZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141E91E7D95D2004E8092 /* ParkingZoneModel.swift */; };
 		525141EC1E7D9612004E8092 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141EB1E7D9612004E8092 /* CommentModel.swift */; };
 		525141EE1E7D9623004E8092 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525141ED1E7D9623004E8092 /* UserModel.swift */; };
@@ -73,6 +74,7 @@
 		522DFB6D1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		522DFB6E1E76F81C007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		522DFB6F1E76F829007DFEB6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = vi; path = vi.lproj/MultilingualData.plist; sourceTree = "<group>"; };
+		5244B8BA1E90D600001DF246 /* GuiUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GuiUtil.swift; path = Utils/GuiUtil.swift; sourceTree = "<group>"; };
 		525141E91E7D95D2004E8092 /* ParkingZoneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingZoneModel.swift; sourceTree = "<group>"; };
 		525141EB1E7D9612004E8092 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		525141ED1E7D9623004E8092 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				8685FA061E73019A00993E6D /* ImageUtil.swift */,
 				8685FA081E73024300993E6D /* SetttingUtil.swift */,
 				866159571E8671F60047B2F0 /* DateTimeUtil.swift */,
+				5244B8BA1E90D600001DF246 /* GuiUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				525141F21E8029F3004E8092 /* TransportTypeEnum.swift in Sources */,
 				861D44B31E81838000BF3DA2 /* MapView.swift in Sources */,
 				864984E41E8F948E0071D9F2 /* SettingTransportCell.swift in Sources */,
+				5244B8BB1E90D600001DF246 /* GuiUtil.swift in Sources */,
 				522DFB5B1E76E6A6007DFEB6 /* Localizator.swift in Sources */,
 				522DFB5C1E76E6A6007DFEB6 /* Constants.swift in Sources */,
 				864984E81E8F94DE0071D9F2 /* SettingTimeCell.swift in Sources */,

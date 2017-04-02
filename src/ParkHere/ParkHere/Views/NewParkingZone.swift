@@ -79,6 +79,8 @@ class NewParkingZone: UIView {
     }
     
     @IBAction func onPost(_ sender: UIButton) {
+        GuiUtil.showLoadingIndicator()
+        
         let newParkingZone = ParkingZoneModel()
         newParkingZone.desc = txtDesc.text
         newParkingZone.name = txtName.text
@@ -93,15 +95,25 @@ class NewParkingZone: UIView {
         // dummy value
         newParkingZone.closeTime = "23"
         newParkingZone.openTime = "5"
-        newParkingZone.imageUrl = "dummy url"
+        
         newParkingZone.transportTypes = [TransportTypeEnum.Bicycle, TransportTypeEnum.Motorbike, TransportTypeEnum.Car]
         newParkingZone.prices = ["5", "10", "15"]
         
-        FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) { 
-            self.delegate.saveSuccessful(newParkingZone: newParkingZone)
+        FirebaseService.getInstance().uploadImage(image: imgOnCapture.image!, failure: { (error) in
+            print(error.debugDescription)
+            newParkingZone.imageUrl = URL(string: "dummyUrl")
+            FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
+                GuiUtil.dismissLoadingIndicator()
+                self.delegate.saveSuccessful(newParkingZone: newParkingZone)
+            }
+        }) { (imgUrl) in
+            newParkingZone.imageUrl = URL(string: imgUrl)
+            FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
+                GuiUtil.dismissLoadingIndicator()
+                self.delegate.saveSuccessful(newParkingZone: newParkingZone)
+            }
         }
     }
-    
     
     func setupTextView() {
         txtName.delegate = self

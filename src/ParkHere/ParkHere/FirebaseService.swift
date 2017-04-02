@@ -283,10 +283,10 @@ class FirebaseService {
     }
     
     // Upload image
-    func uploadImage(image: UIImage, parkingZoneId: String, failure: @escaping (_ error: Error?) -> (), success: @escaping (_ downLoadURL: String) -> ()) {
+    func uploadImage(image: UIImage, failure: @escaping (_ error: Error?) -> (), success: @escaping (_ downLoadURL: String) -> ()) {
         let storageRef = FIRStorage.storage().reference()
         let data = UIImagePNGRepresentation(image)
-        let storagePath = Constant.Image_Storage_Node + "\(parkingZoneId)\\imagename.png"
+        let storagePath = Constant.Image_Storage_Node + "\(NSDate().timeIntervalSince1970 * 1000)\\imagename.png"
         if let data = data {
             let metaData = FIRStorageMetadata()
             metaData.contentType = "image/png"

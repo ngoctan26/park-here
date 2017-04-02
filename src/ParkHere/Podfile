@@ -31,4 +31,6 @@ target 'ParkHere' do
   pod 'DatePickerDialog'
   # using to show toast
   pod 'Toast-Swift', '~> 2.0.0'
+  # loading indicator
+  pod 'SVProgressHUD'
 end
