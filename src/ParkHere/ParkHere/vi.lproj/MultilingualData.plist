@@ -34,5 +34,7 @@
 	<string>Hãy đăng nhập để chúng tôi biết bạn là ai</string>
 	<key>signOutMessage</key>
 	<string>Bạn đã đăng xuất thành công. Hãy đăng nhập lần nữa để kết nối với chúng tôi</string>
+    <key>savedText</key>
+    <string>Đã lưu</string>
 </dict>
 </plist>

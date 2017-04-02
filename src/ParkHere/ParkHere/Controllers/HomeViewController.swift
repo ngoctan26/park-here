@@ -263,6 +263,9 @@ class HomeViewController: UIViewController {
     func updateShowingParkings(data: [String : ParkingZoneModel]) {
         // Clear all current marker
         mapView.showingMap.clear()
+        if isSearching {
+            searchMarker?.map = mapView.showingMap
+        }
         markersRef.removeAll()
         filteredParkingZones = data
         for (_, value) in filteredParkingZones {

@@ -4,13 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapView" customModule="ParkHere" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="eS0-eo-gPb"/>
+                <outlet property="searchBtn" destination="QAi-l6-SvK" id="7Pr-A8-E1w"/>
+                <outlet property="searchBtnTopConstrains" destination="su2-ZR-9Yb" id="bzK-vF-0hp"/>
                 <outlet property="showingMap" destination="b3c-sf-c6O" id="kFI-yY-vV3"/>
             </connections>
         </placeholder>
@@ -23,14 +25,30 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAi-l6-SvK">
+                    <rect key="frame" x="5" y="60" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Lsg-eZ-Kdt"/>
+                        <constraint firstAttribute="width" constant="50" id="VXk-nm-8QB"/>
+                    </constraints>
+                    <state key="normal" image="ic_search"/>
+                    <connections>
+                        <action selector="onSearchBtnClicked:" destination="-1" eventType="touchUpInside" id="1j2-Pd-U4Y"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="b3c-sf-c6O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7Nd-Ul-Sfz"/>
                 <constraint firstItem="b3c-sf-c6O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rvk-mp-WUq"/>
                 <constraint firstAttribute="bottom" secondItem="b3c-sf-c6O" secondAttribute="bottom" id="bYZ-8g-69r"/>
+                <constraint firstItem="QAi-l6-SvK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="su2-ZR-9Yb"/>
+                <constraint firstItem="QAi-l6-SvK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="wlt-Eu-VvP"/>
                 <constraint firstAttribute="trailing" secondItem="b3c-sf-c6O" secondAttribute="trailing" id="zbv-xG-jc5"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="ic_search" width="32" height="32"/>
+    </resources>
 </document>

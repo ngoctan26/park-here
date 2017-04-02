@@ -64,4 +64,7 @@ class Constant {
     static let SignOutMessage = "signOutMessage"
     static let UserDidSignOutNotification = "userDidSignOutNotification"
     static let UserDidSignInNotification = "userDidSignInNotification"
+
+    static let Saved_Message_Toast = "savedText"
+
 }

@@ -34,5 +34,7 @@
 	<string>We really want to know who you are. Please click button below</string>
 	<key>signOutMessage</key>
 	<string>You leave us. Please click button below to connect again</string>
+    <key>savedText</key>
+    <string>Saved</string>
 </dict>
 </plist>

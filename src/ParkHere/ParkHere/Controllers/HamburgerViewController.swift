@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import Toast_Swift
 
 class HamburgerViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet var searchBtn: UIButton!
     @IBOutlet var menuIcon: UIButton!
+    @IBOutlet var saveBtn: UIButton!
     
     var isMenuOpen = false;
     
@@ -46,6 +48,9 @@ class HamburgerViewController: UIViewController {
             
             contentViewController.didMove(toParentViewController: self)
             
+            searchBtn.isHidden = !(contentViewController is HomeViewController)
+            saveBtn.isHidden = !(contentViewController is SettingsViewController)
+            
             UIView.animate(withDuration: 0.5) {
                 self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: self.menuIcon)
                 self.isMenuOpen = !self.isMenuOpen
@@ -65,6 +70,7 @@ class HamburgerViewController: UIViewController {
         leftMarginConstraintHeaderView.constant = 10
         headerView.backgroundColor = Constant.Header_View_Background_Color
         headerView.layer.cornerRadius = 7
+        saveBtn.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,6 +109,10 @@ class HamburgerViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func onSaveBtnClicked(_ sender: UIButton) {
+        self.view.makeToast(Constant.Saved_Message_Toast.localized)
+    }
     
      // MARK: - Navigation
      
