@@ -14,7 +14,7 @@ class ParkingZoneModel: NSObject {
     var name: String?
     var id: String?
     var createdAt: String?
-    var imageUrl: URL?
+    var imageUrl: String?
     var rating: Double = 0.0
     var desc: String?
     var longitude: Double?
@@ -38,7 +38,7 @@ class ParkingZoneModel: NSObject {
         address = dictionary["address"] as? String
         
         if let imageURLString = dictionary["image_url"] as? String {
-            imageUrl = URL(string: imageURLString)
+            imageUrl = imageURLString
         }
         
         

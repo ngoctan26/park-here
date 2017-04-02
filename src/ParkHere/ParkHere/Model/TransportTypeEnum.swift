@@ -12,4 +12,5 @@ enum TransportTypeEnum: String {
     case Bicycle = "Bicycle"
     case Motorbike = "Motorbike"
     case Car = "Car"
+    case All = "All"
 }

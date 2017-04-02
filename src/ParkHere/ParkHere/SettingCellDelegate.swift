@@ -8,6 +8,8 @@
 
 import Foundation
 
-@objc protocol SettingCellDelegate {
-    
+protocol SettingCellDelegate: class {
+    func onTransportChanged(type: TransportTypeEnum)
+    func onTimeChanged(openTime: String?, closedTime: String?)
+    func onDistanceChanged(radius: Float)
 }

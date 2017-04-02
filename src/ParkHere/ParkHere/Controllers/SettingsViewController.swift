@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate: class {
+    func onSettingChanged(changed: SettingModel)
+}
+
 class SettingsViewController: UIViewController {
     
     // View References
     @IBOutlet var tableView: UITableView!
-    
+    var settings: SettingModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +33,12 @@ class SettingsViewController: UIViewController {
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
+        settings = SettingModel(type: SettingModel.Transport_Type, openTime: SettingModel.Open_Time, closedTime: SettingModel.Closed_Time, radius: SettingModel.Radius_Query)
     }
 
+    func getSavedSetting() -> SettingModel {
+        return settings!
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -75,5 +83,24 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
         return UITableViewCell()
+    }
+}
+
+extension SettingsViewController: SettingCellDelegate {
+    func onTransportChanged(type: TransportTypeEnum) {
+        settings?.transportType = type
+    }
+    
+    func onTimeChanged(openTime: String?, closedTime: String?) {
+        if let openTime = openTime {
+            settings?.openTime = openTime
+        }
+        if let closedTime = closedTime {
+            settings?.closedTime = closedTime
+        }
+    }
+    
+    func onDistanceChanged(radius: Float) {
+        settings?.radius = radius
     }
 }

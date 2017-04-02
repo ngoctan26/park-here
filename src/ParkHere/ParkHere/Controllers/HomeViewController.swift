@@ -115,7 +115,7 @@ class HomeViewController: UIViewController {
         let newParkingZone = ParkingZoneModel()
         newParkingZone.desc = "Bệnh Viện Mắt Cao Thắng"
         newParkingZone.address = "135B Trần Bình Trọng, phường 2, Quận 5, Hồ Chí Minh 700000, Việt Nam"
-        newParkingZone.imageUrl = URL(fileURLWithPath: "http://sample.url")
+        newParkingZone.imageUrl = "http://sample.url"
         newParkingZone.latitude = 10.757261
         newParkingZone.longitude = 106.680654
         let currentDateTime = Date()
@@ -448,5 +448,11 @@ extension HomeViewController: MapActionBarViewDelegate {
         filterState = .None
         let filterData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterData)
+    }
+}
+
+extension HomeViewController: SettingsViewControllerDelegate {
+    func onSettingChanged(changed: SettingModel) {
+        
     }
 }

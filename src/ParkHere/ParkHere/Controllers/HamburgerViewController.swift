@@ -24,6 +24,7 @@ class HamburgerViewController: UIViewController {
     @IBOutlet var saveBtn: UIButton!
     
     var isMenuOpen = false;
+    weak var settingDelegate: SettingsViewControllerDelegate?
     
     var menuViewController: UIViewController! {
         didSet {
@@ -114,6 +115,10 @@ class HamburgerViewController: UIViewController {
     
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
         self.view.makeToast(Constant.Saved_Message_Toast.localized)
+        if let settingVC = contentViewController as? SettingsViewController {
+            let savedChanged = settingVC.getSavedSetting()
+            settingDelegate?.onSettingChanged(changed: savedChanged)
+        }
     }
     
      // MARK: - Navigation

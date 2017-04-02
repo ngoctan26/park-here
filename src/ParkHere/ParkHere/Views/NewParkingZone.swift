@@ -101,13 +101,13 @@ class NewParkingZone: UIView {
         
         FirebaseService.getInstance().uploadImage(image: imgOnCapture.image!, failure: { (error) in
             print(error.debugDescription)
-            newParkingZone.imageUrl = URL(string: "dummyUrl")
+            newParkingZone.imageUrl = "dummyUrl"
             FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
                 GuiUtil.dismissLoadingIndicator()
                 self.delegate.saveSuccessful(newParkingZone: newParkingZone)
             }
         }) { (imgUrl) in
-            newParkingZone.imageUrl = URL(string: imgUrl)
+            newParkingZone.imageUrl = imgUrl
             FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
                 GuiUtil.dismissLoadingIndicator()
                 self.delegate.saveSuccessful(newParkingZone: newParkingZone)
