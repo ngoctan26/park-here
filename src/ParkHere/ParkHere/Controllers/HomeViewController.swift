@@ -32,6 +32,8 @@ class HomeViewController: UIViewController {
     var searchMarker: GMSMarker?
     var filterState = FilterState.None
     var isSearching = false
+    var searedLocation: CLLocationCoordinate2D?
+    var currentSetting: SettingModel?
     
     // Action references
     
@@ -41,7 +43,9 @@ class HomeViewController: UIViewController {
             isSearching = false
             clearSearchData()
             if let currentLocation = locationManager.location {
-                currentGeoQuery = startQueryForParkingZone(centerLocation: currentLocation)
+                let currentRadius = currentSetting?.radius
+                let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
+                currentGeoQuery = startQueryForParkingZone(centerLocation: currentLocation, radius: queryRadius)
             }
         }
     }
@@ -134,11 +138,13 @@ class HomeViewController: UIViewController {
     
     func searchPlace(place: GMSPlace) {
         isSearching = true
-        let searchCoordinate = place.coordinate
+        searedLocation = place.coordinate
         mapView.moveCamera(inputLocation: place.coordinate, animate: true)
-        searchMarker = mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
+        searchMarker = mapView.addMarker(lat: searedLocation!.latitude, long: searedLocation!.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
         clearCurrentShowingData()
-        searchGeoQuery = startQueryForParkingZone(centerLocation: CLLocation(latitude: searchCoordinate.latitude, longitude: searchCoordinate.longitude))
+        let currentRadius = currentSetting?.radius
+        let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
+        searchGeoQuery = startQueryForParkingZone(centerLocation: CLLocation(latitude: searedLocation!.latitude, longitude: searedLocation!.longitude), radius: queryRadius)
     }
     
     func clearSearchData() {
@@ -158,8 +164,8 @@ class HomeViewController: UIViewController {
         
     }
     
-    func startQueryForParkingZone(centerLocation: CLLocation) -> GFCircleQuery? {
-            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(Constant.GeoQuery_Radius_Default))
+    func startQueryForParkingZone(centerLocation: CLLocation, radius: Float) -> GFCircleQuery? {
+            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(radius))
             if let geoQuery = geoQuery {
                 geoQuery.observeReady({
                     print("All initial data has been loaded and events have been fired!")
@@ -215,21 +221,21 @@ class HomeViewController: UIViewController {
     }
     
     func updateShowingParkingByState(state: FilterState, parkingModel: ParkingZoneModel, key: String) {
-        var isValidData = false
+        var dataIsValid = false
         switch state {
         case .Transport_Car:
-            isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Car))!
+            dataIsValid = (parkingModel.transportTypes?.contains(TransportTypeEnum.Car))!
             break
         case .Transport_Bike:
-            isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Bicycle))!
+            dataIsValid = (parkingModel.transportTypes?.contains(TransportTypeEnum.Bicycle))!
             break
         case .Transport_Moto:
-            isValidData = (parkingModel.transportTypes?.contains(TransportTypeEnum.Motorbike))!
+            dataIsValid = (parkingModel.transportTypes?.contains(TransportTypeEnum.Motorbike))!
             break
         // Below cases will only have 1 data in dictionary.
         case .Rating:
             if let filteredData = filteredParkingZones.values.first {
-                isValidData = filteredData.rating < parkingModel.rating
+                dataIsValid = filteredData.rating < parkingModel.rating
             }
             break
         case .Nearest:
@@ -237,21 +243,24 @@ class HomeViewController: UIViewController {
                 let coordinateFiltered = CLLocation(latitude: filteredData.latitude!, longitude: filteredData.longitude!)
                 let coordinateNew = CLLocation(latitude: parkingModel.latitude!, longitude: parkingModel.longitude!)
                 if let currentLocation = locationManager.location {
-                    isValidData = coordinateFiltered.distance(from: currentLocation) > coordinateNew.distance(from: currentLocation)
+                    dataIsValid = coordinateFiltered.distance(from: currentLocation) > coordinateNew.distance(from: currentLocation)
                 }
             }
             break
         case .Price:
             if let filteredData = filteredParkingZones.values.first {
-                isValidData = (filteredData.prices?[0])! < (parkingModel.prices?[0])!
+                dataIsValid = (filteredData.prices?[0])! < (parkingModel.prices?[0])!
             }
             break
         default:
-            isValidData = true
+            dataIsValid = true
             break
         }
+        if let currentLoation = locationManager.location {
+            dataIsValid = dataIsValid || isValidData(parkingZone: parkingModel, currentLocation: currentLoation)
+        }
         // Update to showing parking zone and add marker
-        if isValidData {
+        if dataIsValid {
             let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: nil)[0]
             addedMarker.userData = parkingModel
             parkingModel.markerRef = markersRef.count
@@ -338,6 +347,38 @@ class HomeViewController: UIViewController {
         }
         return resultFilter
     }
+    
+    func isValidData(parkingZone: ParkingZoneModel, currentLocation: CLLocation?) -> Bool {
+        var isValid = true
+        // FIXME: confusing between setting and filter at home
+//        let settingTransport = currentSetting?.transportType
+//        if settingTransport != nil && settingTransport != TransportTypeEnum.All {
+//            isValid = (parkingZone.transportTypes?.contains(settingTransport!))!
+//        }
+        let openTime = currentSetting?.openTime
+        let closedTime = currentSetting?.closedTime
+        if openTime != nil {
+            let openTimeConvert = DateTimeUtil.dateFromString(dateAsString: openTime!, format: DateTimeUtil.Time_Format_Default)
+            let openTimeInModel = DateTimeUtil.dateFromString(dateAsString: parkingZone.openTime!, format: DateTimeUtil.Time_Format_Default)
+            if openTimeInModel != nil {
+                isValid = isValid || (openTimeConvert! < openTimeInModel!)
+            }
+        }
+        if closedTime != nil {
+            let closeTimeConvert = DateTimeUtil.dateFromString(dateAsString: closedTime!, format: DateTimeUtil.Time_Format_Default)
+            let closedimeInModel = DateTimeUtil.dateFromString(dateAsString: parkingZone.closeTime!, format: DateTimeUtil.Time_Format_Default)
+            if closedimeInModel != nil {
+                isValid = isValid || (closedimeInModel! < closeTimeConvert!)
+            }
+        }
+        let radius = currentSetting?.radius
+        if radius != nil && currentLocation != nil {
+            let location = CLLocation(latitude: parkingZone.latitude!, longitude: parkingZone.longitude!)
+            let distance = location.distance(from: currentLocation!)
+            isValid = isValid || (Double(radius!) > distance)
+        }
+        return isValid
+    }
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
@@ -354,7 +395,9 @@ extension HomeViewController: CLLocationManagerDelegate {
             isUpdateCurrentLocationEnable = false
         }
         if !geoFireStartObserve && location != nil {
-            currentGeoQuery = startQueryForParkingZone(centerLocation: location!)
+            let currentRadius = currentSetting?.radius
+            let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
+            currentGeoQuery = startQueryForParkingZone(centerLocation: location!, radius: queryRadius)
             geoFireStartObserve = true
         }
     }
@@ -453,6 +496,19 @@ extension HomeViewController: MapActionBarViewDelegate {
 
 extension HomeViewController: SettingsViewControllerDelegate {
     func onSettingChanged(changed: SettingModel) {
-        
+        currentSetting = changed
+        let currentRadius = currentSetting?.radius
+        let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
+        if isSearching {
+            searchGeoQuery?.removeAllObservers()
+            clearSearchData()
+            searchGeoQuery = startQueryForParkingZone(centerLocation: CLLocation(latitude: searedLocation!.latitude, longitude: searedLocation!.longitude), radius: queryRadius)
+        } else {
+            currentGeoQuery?.removeAllObservers()
+            clearCurrentShowingData()
+            if let currentLocation = locationManager.location {
+                currentGeoQuery = startQueryForParkingZone(centerLocation: currentLocation, radius: queryRadius)
+            }
+        }
     }
 }
