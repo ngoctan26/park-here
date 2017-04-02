@@ -59,5 +59,9 @@ class Constant {
     static let Transport_Type_Label = "transportTypeLabel"
     static let Time_Setting_Label = "timeOpenAndCloseLabel"
     static let Distance_Label = "distanceLabel"
-
+    
+    static let SignInMessage = "signInMessage"
+    static let SignOutMessage = "signOutMessage"
+    static let UserDidSignOutNotification = "userDidSignOutNotification"
+    static let UserDidSignInNotification = "userDidSignInNotification"
 }

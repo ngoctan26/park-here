@@ -30,5 +30,9 @@
 	<string>Khoảng cách</string>
 	<key>timeOpenAndCloseLabel</key>
 	<string>Thời gian hoạt động</string>
+	<key>signInMessage</key>
+	<string>Hãy đăng nhập để chúng tôi biết bạn là ai</string>
+	<key>signOutMessage</key>
+	<string>Bạn đã đăng xuất thành công. Hãy đăng nhập lần nữa để kết nối với chúng tôi</string>
 </dict>
 </plist>

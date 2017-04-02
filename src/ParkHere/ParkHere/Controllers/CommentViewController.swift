@@ -14,6 +14,12 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var commentMapView: MapView!
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var vehicleLabel: UILabel!
+    @IBOutlet weak var openTimeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var closeTimeLabel: UILabel!
     
     var parkingZone: ParkingZoneModel?
     
@@ -28,9 +34,9 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
         commentTableView.estimatedRowHeight = 100
         commentTableView.rowHeight = UITableViewAutomaticDimension
 
-        
         initMapView()
-        getAllComments() //parkingId: "-Kg5QJT0Iat8uxuDMFiJ"
+        getParkingZoneDetail()
+        getAllComments()
     }
 
     func initMapView() {
@@ -38,6 +44,30 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
             let currentLocation = CLLocationCoordinate2D(latitude: (parkingZone?.latitude)!, longitude: (parkingZone?.longitude)!)
             commentMapView.moveCamera(inputLocation: currentLocation, animate: false)
             commentMapView.addMarker(lat: currentLocation.latitude, long: currentLocation.longitude, textInfo: nil, markerIcon: nil)
+        }
+    }
+    
+    func getParkingZoneDetail() {
+        if parkingZone != nil {
+            
+            var vehicle: String = ""
+            if parkingZone?.transportTypes != nil {
+                for (index, element) in (parkingZone?.transportTypes!.enumerated())! {
+                    vehicle += element.rawValue + ", "
+                }
+                
+                let splitIndex = vehicle.index(vehicle.endIndex, offsetBy: -2)
+                vehicle = vehicle.substring(to: splitIndex)
+            }
+            
+            if parkingZone?.address != nil {
+                addressLabel.text = parkingZone?.address!
+            }
+            priceLabel.text = parkingZone?.prices?.joined(separator: ", ")
+            vehicleLabel.text = vehicle
+            openTimeLabel.text = parkingZone?.openTime
+            closeTimeLabel.text = parkingZone?.closeTime
+            descriptionLabel.text = parkingZone?.desc
         }
     }
     

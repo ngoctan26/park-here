@@ -29,6 +29,12 @@ class AddCommentViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        // Define identifier
+        let signInNotificationName = Notification.Name(Constant.UserDidSignInNotification)
+        // Register to receive notification
+        NotificationCenter.default.addObserver(forName: signInNotificationName, object: nil, queue: OperationQueue.main, using: {(Notification) -> Void in
+            self.reloadUser(username: (UserModel.currentUser?.name!)!)
+        })
     }
     
     func reloadUser(username: String) {
