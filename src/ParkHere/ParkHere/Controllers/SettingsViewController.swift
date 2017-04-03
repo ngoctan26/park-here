@@ -48,7 +48,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -67,15 +67,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
+//        case 0:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "transportCell", for: indexPath) as! SettingTransportCell
+//            cell.transportLabel.text = Constant.Transport_Type_Label.localized
+//            return cell
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "transportCell", for: indexPath) as! SettingTransportCell
-            cell.transportLabel.text = Constant.Transport_Type_Label.localized
-            return cell
-        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath ) as! SettingTimeCell
             cell.timeCellLabel.text = Constant.Time_Setting_Label.localized
             return cell
-        case 2:
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "distanceCell", for: indexPath) as! SettingDistanceCell
             cell.distanceLabel.text = Constant.Distance_Label
             return cell

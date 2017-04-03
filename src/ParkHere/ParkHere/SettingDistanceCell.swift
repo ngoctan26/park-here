@@ -24,6 +24,7 @@ class SettingDistanceCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        distanceLabel.text = Constant.Distance_Label.localized
         self.distanceValueLabel.text = String(format: "%.2f", distanceSlider.value) + "km"
     }
 

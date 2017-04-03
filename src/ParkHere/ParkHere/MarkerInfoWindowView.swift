@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import AFNetworking
 
 @objc protocol MarkerInfoWindowViewDelegate {
     @objc optional func onBtnDrawRouteClicked(desLat: Double, desLng: Double)
@@ -26,6 +27,11 @@ class MarkerInfoWindowView: UIView {
             startTimeLabel.text = markerInfo.openTime
             endTimeLabel.text = markerInfo.closeTime
             ratingBar.rating = markerInfo.rating
+            if let urlAsString = markerInfo.imageUrl {
+                if let url = URL(string: urlAsString) {
+                    imageParking.setImageWith(url)
+                }
+            }
         }
     }
 
@@ -34,6 +40,7 @@ class MarkerInfoWindowView: UIView {
     @IBOutlet var ratingBar: CosmosView!
     @IBOutlet var startTimeLabel: UILabel!
     @IBOutlet var endTimeLabel: UILabel!
+    @IBOutlet var imageParking: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
