@@ -26,11 +26,17 @@ class AddingViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        newParkingZoneView.layoutIfNeeded()
         newParkingZoneSubView.delegate = self
         newParkingZoneSubView.frame.size.width = newParkingZoneView.frame.size.width
         newParkingZoneSubView.segmentedControl.frame.size.width = newParkingZoneSubView.frame.size.width - 20
         newParkingZoneView.contentSize = CGSize(width: newParkingZoneSubView.frame.size.width, height: newParkingZoneSubView.frame.origin.y + newParkingZoneSubView.frame.size.height)
         newParkingZoneView.addSubview(newParkingZoneSubView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        newParkingZoneView.layoutIfNeeded()
+        newParkingZoneSubView.frame.size.width = newParkingZoneView.frame.size.width
     }
     
     override func didReceiveMemoryWarning() {
