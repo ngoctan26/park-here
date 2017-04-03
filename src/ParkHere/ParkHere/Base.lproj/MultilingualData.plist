@@ -50,5 +50,7 @@
 	<string>Close:</string>
 	<key>descriptionTitle</key>
 	<string>Description:</string>
+	<key>hour</key>
+	<string>o&apos;clock</string>
 </dict>
 </plist>

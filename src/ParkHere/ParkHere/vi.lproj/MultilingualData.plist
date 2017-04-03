@@ -50,5 +50,7 @@
 	<string>Giờ đóng cửa:</string>
 	<key>descriptionTitle</key>
 	<string>Mô tả:</string>
+	<key>hour</key>
+	<string>Giờ</string>
 </dict>
 </plist>

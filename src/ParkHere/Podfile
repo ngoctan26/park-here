@@ -34,5 +34,5 @@ target 'ParkHere' do
   # loading indicator
   pod 'SVProgressHUD'
   # rangeSlider control
-  pod 'WARangeSlider'
+  pod 'NHRangeSlider', '~> 0.2'
 end

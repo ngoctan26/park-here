@@ -11,7 +11,7 @@ import ATHMultiSelectionSegmentedControl
 import GooglePlaces
 import GoogleMaps
 import GeoFire
-import WARangeSlider
+import NHRangeSlider
 
 @objc protocol NewParkingZoneDelegate {
     @objc func saveSuccessful(newParkingZone: ParkingZoneModel)
@@ -49,9 +49,14 @@ class NewParkingZone: UIView {
         }
     }
     
+    var openTime: String?
+    var closeTime: String?
+    var transports: [TransportTypeEnum]?
+    
     weak var delegate: NewParkingZoneDelegate!
     
-    var segmentedControl = MultiSelectionSegmentedControl(items: ["B", "M", "C"])
+    var segmentedControl = MultiSelectionSegmentedControl(items: ["🚲", "🏍", "🚗"])
+    var rangeSlider = NHRangeSliderView(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,16 +71,6 @@ class NewParkingZone: UIView {
         super.init(coder: aDecoder)
         initSubView()
         loadTransportTypeView()
-    }
-    
-    func initSubView() {
-        let nib = UINib(nibName: "NewParkingZone", bundle: nil)
-        nib.instantiate(withOwner: self, options: nil)
-        containerCtrlView.frame = bounds
-        
-        mapView.mapViewDelegate = self
-        
-        addSubview(containerCtrlView)
     }
     
     @IBAction func onCaptureImage(_ sender: UIButton) {
@@ -95,24 +90,26 @@ class NewParkingZone: UIView {
         newParkingZone.address = selectedPlace?.formattedAddress
         
         newParkingZone.createdAt = DateTimeUtil.stringFromDate(date: Date())
+        newParkingZone.closeTime = closeTime
+        newParkingZone.openTime = openTime
+        
+        newParkingZone.transportTypes = transports
         
         // dummy value
-        newParkingZone.closeTime = "23"
-        newParkingZone.openTime = "5"
-        
-        newParkingZone.transportTypes = [TransportTypeEnum.Bicycle, TransportTypeEnum.Motorbike, TransportTypeEnum.Car]
-        newParkingZone.prices = ["5", "10", "15"]
+        newParkingZone.prices = ["2000", "5000", "20000"]
         
         FirebaseService.getInstance().uploadImage(image: imgOnCapture.image!, failure: { (error) in
             print(error.debugDescription)
             newParkingZone.imageUrl = "dummyUrl"
             FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
+                self.reset()
                 GuiUtil.dismissLoadingIndicator()
                 self.delegate.saveSuccessful(newParkingZone: newParkingZone)
             }
         }) { (imgUrl) in
             newParkingZone.imageUrl = imgUrl
             FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
+                self.reset()
                 GuiUtil.dismissLoadingIndicator()
                 self.delegate.saveSuccessful(newParkingZone: newParkingZone)
             }
@@ -122,7 +119,18 @@ class NewParkingZone: UIView {
     @IBAction func onCancel(_ sender: UIButton) {
         delegate.cancel()
     }
+}
+
+// MARK: - Setup view
+extension NewParkingZone {
     
+    func initSubView() {
+        let nib = UINib(nibName: "NewParkingZone", bundle: nil)
+        nib.instantiate(withOwner: self, options: nil)
+        containerCtrlView.frame = bounds
+        mapView.mapViewDelegate = self
+        addSubview(containerCtrlView)
+    }
     
     func setupTextView() {
         txtName.delegate = self
@@ -156,30 +164,68 @@ class NewParkingZone: UIView {
         
         segmentedControl.frame.size.width = transportTypeView.frame.size.width
         
+        segmentedControl.delegate = self
+        
         transportTypeView.addSubview(segmentedControl)
     }
     
     func setupButton() {
-        
     }
     
     func setupRangeSlider() {
-        self.workingTimeView.layoutIfNeeded()
-        let rangeSlider = RangeSlider(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
         
         rangeSlider.frame.size.width = workingTimeView.frame.size.width
+        rangeSlider.trackHighlightTintColor = UIColor.blue
+        rangeSlider.minimumValue = 0
+        rangeSlider.maximumValue = 24
+        rangeSlider.stepValue = 1
+        rangeSlider.thumbLabelStyle = .FOLLOW
+        rangeSlider.lowerDisplayStringFormat = "%.0f " + Constant.Hour.localized
+        rangeSlider.upperDisplayStringFormat = "%.0f " + Constant.Hour.localized
+        rangeSlider.sizeToFit()
         
-        inside.addSubview(rangeSlider)
-
-        rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged),
-                              for: .valueChanged)
+        workingTimeView.addSubview(rangeSlider)
+        
+        rangeSlider.delegate = self
     }
     
-    func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
-        print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))")
+    func reset() {
+        imgOnCapture.image = #imageLiteral(resourceName: "parkhere")
+        selectedPlace = nil
+        txtName.text = Constant.Name_Place_Holder.localized
+        txtDesc.text = Constant.Desc_Place_Holder.localized
+        txtAddress.text = Constant.Address_Place_Holder.localized
+        segmentedControl.selectedSegmentIndices = []
+        rangeSlider.upperValue = 24
+        rangeSlider.lowerValue = 0
     }
 }
 
+// MARK: - RangeSlider delegate processing
+extension NewParkingZone: NHRangeSliderViewDelegate {
+    func sliderValueChanged(slider: NHRangeSlider?) {
+        openTime = "\(slider?.lowerValue)"
+        closeTime = "\(slider?.upperValue)"
+    }
+}
+
+// MARK: - MultiSelectionSegmentedControlDelegate processing
+extension NewParkingZone: MultiSelectionSegmentedControlDelegate {
+    func multiSelectionSegmentedControl(_ control: MultiSelectionSegmentedControl, selectedIndices indices: [Int]) {
+        transports = []
+        for i in indices {
+            if i == 0 {
+                transports?.append(TransportTypeEnum.Bicycle)
+            } else if i == 1 {
+                transports?.append(TransportTypeEnum.Motorbike)
+            } else if i == 2 {
+                transports?.append(TransportTypeEnum.Car)
+            }
+        }
+    }
+}
+
+// MARK: - UITextView delegate processing
 extension NewParkingZone: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         var changed: Bool = true
@@ -207,7 +253,7 @@ extension NewParkingZone: UITextViewDelegate {
 extension NewParkingZone {
     
     func adjustInsetForKeyboardShow(notification: NSNotification) {
-        guard let value = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        guard (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue) != nil else { return }
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -227,7 +273,7 @@ extension NewParkingZone {
     }
 }
 
-// MARK: - Custom MapView
+// MARK: - Custom MapView delegate processing
 extension NewParkingZone: MapViewDelegate {
     func onSearchClicked() {
         delegate.openSearchPlaceController()

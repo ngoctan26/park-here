@@ -54,6 +54,7 @@ class Constant {
     static let Name_Place_Holder = "namePlaceHolder"
     static let Desc_Place_Holder = "descPlaceHolder"
     static let Address_Place_Holder = "addressPlaceHolder"
+    static let Hour = "hour"
     
     // Firebase storage node
     static let Image_Storage_Node = "images/"

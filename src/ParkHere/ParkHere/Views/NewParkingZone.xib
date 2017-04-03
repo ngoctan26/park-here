@@ -86,6 +86,7 @@
                     <constraints>
                         <constraint firstItem="MfE-n0-RF3" firstAttribute="leading" secondItem="JHv-JZ-4pU" secondAttribute="leading" id="6w9-lR-8xE"/>
                         <constraint firstAttribute="trailing" secondItem="MfE-n0-RF3" secondAttribute="trailing" id="8bb-Oc-7oD"/>
+                        <constraint firstItem="MfE-n0-RF3" firstAttribute="width" secondItem="JHv-JZ-4pU" secondAttribute="width" id="DVX-Ah-FEZ"/>
                         <constraint firstAttribute="height" constant="60" id="Iir-RP-RDp"/>
                         <constraint firstItem="MfE-n0-RF3" firstAttribute="centerX" secondItem="JHv-JZ-4pU" secondAttribute="centerX" id="jB3-kY-KzG"/>
                         <constraint firstItem="MfE-n0-RF3" firstAttribute="centerY" secondItem="JHv-JZ-4pU" secondAttribute="centerY" id="lCA-eh-xsf"/>
