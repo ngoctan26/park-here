@@ -53,8 +53,10 @@ class HamburgerViewController: UIViewController {
             saveBtn.isHidden = !(contentViewController is SettingsViewController)
             
             UIView.animate(withDuration: 0.5) {
-                self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: self.menuIcon)
-                self.isMenuOpen = !self.isMenuOpen
+                if self.isMenuOpen {
+                    self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: self.menuIcon)
+                    self.isMenuOpen = !self.isMenuOpen
+                }
                 self.leftMarginConstraint.constant = 0
                 self.leftMarginConstraintHeaderView.constant = 10
                 self.view.layoutIfNeeded()
