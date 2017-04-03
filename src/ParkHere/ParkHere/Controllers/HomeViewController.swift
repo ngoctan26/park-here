@@ -264,11 +264,8 @@ class HomeViewController: UIViewController {
         }
         // Update to showing parking zone and add marker
         if dataIsValid {
-            let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: nil)[0]
-            addedMarker.userData = parkingModel
-            parkingModel.markerRef = markersRef.count
+            addMarker(parkingModel: parkingModel)
             filteredParkingZones[key] = parkingModel
-            markersRef.append(addedMarker)
         }
     }
     
@@ -281,11 +278,26 @@ class HomeViewController: UIViewController {
         markersRef.removeAll()
         filteredParkingZones = data
         for (_, value) in filteredParkingZones {
-            let addedMarker = mapView.addMarker(parkingZones: [value], textInfo: nil, markerIcon: nil)[0]
-            addedMarker.userData = value
-            value.markerRef = markersRef.count
-            markersRef.append(addedMarker)
+            addMarker(parkingModel: value)
         }
+    }
+    
+    func addMarker(parkingModel: ParkingZoneModel) {
+//        let types = parkingModel.transportTypes
+//        var icDisplay: UIImage?
+//        if types != nil && (types?.count)! > 1 {
+//            icDisplay = #imageLiteral(resourceName: "ic_parking")
+//        } else if types != nil && types![0] == .Bicycle {
+//            icDisplay = #imageLiteral(resourceName: "ic_bike_parking")
+//        } else if types != nil && types![0] == .Car {
+//            icDisplay = #imageLiteral(resourceName: "ic_car_parking")
+//        } else if types != nil && types![0] == .Motorbike {
+//            icDisplay = #imageLiteral(resourceName: "ic_moto_parking")
+//        }
+        let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_parking"))[0]
+        addedMarker.userData = parkingModel
+        parkingModel.markerRef = markersRef.count
+        markersRef.append(addedMarker)
     }
     
     func filterDataByState(state: FilterState) -> [String : ParkingZoneModel] {

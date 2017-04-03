@@ -105,7 +105,7 @@ class MapView: UIView {
         var markerList: [GMSMarker] = []
         for parkingZone in parkingZones {
             let coordinate = CLLocationCoordinate2D(latitude: parkingZone.latitude!, longitude: parkingZone.longitude!)
-            let createdMarker = addMarker(coordinate: coordinate, textInfo: nil, markerIcon: nil)
+            let createdMarker = addMarker(coordinate: coordinate, textInfo: nil, markerIcon: markerIcon)
             markerList.append(createdMarker)
         }
         return markerList
