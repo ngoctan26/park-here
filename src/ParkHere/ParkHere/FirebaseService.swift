@@ -81,6 +81,12 @@ class FirebaseService {
                         ]
                         params["working_time"] = workingTime as AnyObject?
                     }
+                } else {
+                    let workingTime: [String : AnyObject] = [
+                        "opening_time": "07:00" as AnyObject,
+                        "closing_time": "22:00" as AnyObject
+                    ]
+                    params["working_time"] = workingTime as AnyObject?
                 }
                 
                 if let longitude = newParkingZone.longitude {

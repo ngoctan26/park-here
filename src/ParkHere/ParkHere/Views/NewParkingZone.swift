@@ -12,6 +12,7 @@ import GooglePlaces
 import GoogleMaps
 import GeoFire
 import NHRangeSlider
+import Toast_Swift
 
 @objc protocol NewParkingZoneDelegate {
     @objc func saveSuccessful(newParkingZone: ParkingZoneModel)
@@ -78,6 +79,9 @@ class NewParkingZone: UIView {
     }
     
     @IBAction func onPost(_ sender: UIButton) {
+        if !validateBeforPost() {
+            return
+        }
         GuiUtil.showLoadingIndicator()
         
         let newParkingZone = ParkingZoneModel()
@@ -99,7 +103,9 @@ class NewParkingZone: UIView {
         newParkingZone.prices = ["2000", "5000", "20000"]
         
         FirebaseService.getInstance().uploadImage(image: imgOnCapture.image!, failure: { (error) in
-            print(error.debugDescription)
+            if let error = error {
+                print(error.localizedDescription)
+            }
             newParkingZone.imageUrl = "dummyUrl"
             FirebaseService.getInstance().addParkingZone(newParkingZone: newParkingZone) {
                 self.reset()
@@ -118,6 +124,14 @@ class NewParkingZone: UIView {
     
     @IBAction func onCancel(_ sender: UIButton) {
         delegate.cancel()
+    }
+    
+    func validateBeforPost() -> Bool {
+        if selectedPlace == nil {
+            self.makeToast("Error: Input missing information")
+            return false
+        }
+        return true
     }
 }
 
