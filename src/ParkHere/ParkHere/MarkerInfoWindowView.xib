@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="VM2-z3-7iD"/>
                 <outlet property="endTimeLabel" destination="rvO-t9-4bs" id="8al-NQ-Gv2"/>
+                <outlet property="imageParking" destination="jeC-SL-mXk" id="4ZS-BT-fbp"/>
                 <outlet property="name" destination="4Cl-WM-dKl" id="lyt-J9-2Xn"/>
                 <outlet property="ratingBar" destination="gil-w1-B5h" id="HGb-K9-DHU"/>
                 <outlet property="startTimeLabel" destination="9ns-bc-wjZ" id="6iX-um-gwf"/>
@@ -132,8 +133,8 @@
     </objects>
     <resources>
         <image name="ic_endtime" width="24" height="24"/>
-        <image name="ic_more" width="24" height="24"/>
-        <image name="ic_route" width="24" height="24"/>
+        <image name="ic_more" width="32" height="32"/>
+        <image name="ic_route" width="32" height="32"/>
         <image name="ic_starttime" width="24" height="24"/>
         <image name="image_parking_default" width="396" height="396"/>
     </resources>

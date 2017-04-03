@@ -86,6 +86,7 @@ class HomeViewController: UIViewController {
         
         // Add delegate for map view
         mapView.showingMap.delegate = self
+        mapView.showHideSearchBtn(isHide: true)
         // At first, jump into current location
         updateMapToCurrentPosition(animate: false)
     }
