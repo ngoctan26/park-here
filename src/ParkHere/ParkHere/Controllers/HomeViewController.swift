@@ -479,36 +479,42 @@ extension HomeViewController: GMSMapViewDelegate {
 
 extension HomeViewController: MapActionBarViewDelegate {
     func btnRatingClicked() {
+        infoWindow.removeFromSuperview()
         filterState = .Rating
         let filterdData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterdData)
     }
     
     func btnCarClicked() {
+        infoWindow.removeFromSuperview()
         filterState = .Transport_Car
         let filterdData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterdData)
     }
     
     func btnMotoClicked() {
+        infoWindow.removeFromSuperview()
         filterState = .Transport_Moto
         let filterdData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterdData)
     }
     
     func btnNearestClicked() {
+        infoWindow.removeFromSuperview()
         filterState = .Nearest
         let filterdData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterdData)
     }
     
     func btnBikeClicked() {
+        infoWindow.removeFromSuperview()
         filterState = .Transport_Bike
         let filterdData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterdData)
     }
     
     func unselected() {
+        infoWindow.removeFromSuperview()
         filterState = .None
         let filterData = filterDataByState(state: filterState)
         updateShowingParkings(data: filterData)
