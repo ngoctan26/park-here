@@ -34,5 +34,8 @@ target 'ParkHere' do
   # loading indicator
   pod 'SVProgressHUD'
   # rangeSlider control
-  pod 'NHRangeSlider', '~> 0.2'
+  pod 'NHRangeSlider'
+  pod 'WARangeSlider'
+  pod 'MARKRangeSlider'
+  pod 'SkyFloatingLabelTextField', '~> 2.0.0'
 end

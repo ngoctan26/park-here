@@ -49,7 +49,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgE-k1-HM5" userLabel="transportTypeCtrView" customClass="MultiSelectionSegmentedControl">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgE-k1-HM5" userLabel="transportTypeCtrView">
                     <rect key="frame" x="10" y="410" width="355" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="To9-KU-nYz"/>
@@ -72,40 +72,22 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHv-JZ-4pU" userLabel="workingTimeCtrView">
-                    <rect key="frame" x="10" y="450" width="355" height="60"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-n0-RF3">
-                            <rect key="frame" x="0.0" y="15" width="355" height="30"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="G5s-fF-EuD"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="MfE-n0-RF3" firstAttribute="leading" secondItem="JHv-JZ-4pU" secondAttribute="leading" id="6w9-lR-8xE"/>
-                        <constraint firstAttribute="trailing" secondItem="MfE-n0-RF3" secondAttribute="trailing" id="8bb-Oc-7oD"/>
-                        <constraint firstItem="MfE-n0-RF3" firstAttribute="width" secondItem="JHv-JZ-4pU" secondAttribute="width" id="DVX-Ah-FEZ"/>
-                        <constraint firstAttribute="height" constant="60" id="Iir-RP-RDp"/>
-                        <constraint firstItem="MfE-n0-RF3" firstAttribute="centerX" secondItem="JHv-JZ-4pU" secondAttribute="centerX" id="jB3-kY-KzG"/>
-                        <constraint firstItem="MfE-n0-RF3" firstAttribute="centerY" secondItem="JHv-JZ-4pU" secondAttribute="centerY" id="lCA-eh-xsf"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X31-2j-5vd" userLabel="imageCtrlView">
                     <rect key="frame" x="10" y="520" width="355" height="240"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkhere" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-PU-7b4">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-PU-7b4">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="240"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3C-bW-ioZ">
-                            <rect key="frame" x="321" y="216" width="24" height="24"/>
+                            <rect key="frame" x="321" y="206" width="24" height="24"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="1vh-he-xEg"/>
                                 <constraint firstAttribute="width" constant="24" id="TfB-OX-7gB"/>
                             </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="iconCamera">
-                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="onCaptureImage:" destination="-1" eventType="touchUpInside" id="2Mv-Ix-z3g"/>
@@ -114,7 +96,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="F3C-bW-ioZ" secondAttribute="bottom" id="8RA-Dg-Rwv"/>
+                        <constraint firstAttribute="bottom" secondItem="F3C-bW-ioZ" secondAttribute="bottom" constant="10" id="8RA-Dg-Rwv"/>
                         <constraint firstItem="b0l-PU-7b4" firstAttribute="top" secondItem="X31-2j-5vd" secondAttribute="top" id="HTf-gp-PVx"/>
                         <constraint firstAttribute="height" constant="240" id="Qn5-Gc-uee"/>
                         <constraint firstAttribute="trailing" secondItem="b0l-PU-7b4" secondAttribute="trailing" id="TkF-cc-BsK"/>
@@ -162,6 +144,25 @@
                         <constraint firstItem="Ycu-i7-Vnh" firstAttribute="centerY" secondItem="YDn-q9-fBP" secondAttribute="centerY" id="WXC-hm-s5E"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHv-JZ-4pU" userLabel="workingTimeCtrView">
+                    <rect key="frame" x="10" y="450" width="355" height="60"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-n0-RF3">
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="MfE-n0-RF3" firstAttribute="top" secondItem="JHv-JZ-4pU" secondAttribute="top" id="4GL-R9-8gF"/>
+                        <constraint firstItem="MfE-n0-RF3" firstAttribute="leading" secondItem="JHv-JZ-4pU" secondAttribute="leading" id="6w9-lR-8xE"/>
+                        <constraint firstAttribute="trailing" secondItem="MfE-n0-RF3" secondAttribute="trailing" id="8bb-Oc-7oD"/>
+                        <constraint firstItem="MfE-n0-RF3" firstAttribute="width" secondItem="JHv-JZ-4pU" secondAttribute="width" id="DVX-Ah-FEZ"/>
+                        <constraint firstAttribute="height" constant="60" id="Iir-RP-RDp"/>
+                        <constraint firstItem="MfE-n0-RF3" firstAttribute="centerX" secondItem="JHv-JZ-4pU" secondAttribute="centerX" id="jB3-kY-KzG"/>
+                        <constraint firstItem="MfE-n0-RF3" firstAttribute="centerY" secondItem="JHv-JZ-4pU" secondAttribute="centerY" id="lCA-eh-xsf"/>
+                        <constraint firstAttribute="bottom" secondItem="MfE-n0-RF3" secondAttribute="bottom" id="mFY-tB-I3g"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -197,8 +198,8 @@
     </objects>
     <resources>
         <image name="cancel" width="32" height="32"/>
-        <image name="iconCamera" width="24" height="24"/>
-        <image name="parkhere" width="114" height="114"/>
+        <image name="default" width="183" height="108"/>
+        <image name="iconCamera" width="60" height="60"/>
         <image name="save" width="32" height="32"/>
     </resources>
 </document>

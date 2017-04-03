@@ -179,14 +179,16 @@ extension NewParkingZone {
         rangeSlider.minimumValue = 0
         rangeSlider.maximumValue = 24
         rangeSlider.stepValue = 1
+        rangeSlider.lowerValue = 5
+        rangeSlider.upperValue = 22
         rangeSlider.thumbLabelStyle = .FOLLOW
         rangeSlider.lowerDisplayStringFormat = "%.0f " + Constant.Hour.localized
         rangeSlider.upperDisplayStringFormat = "%.0f " + Constant.Hour.localized
         rangeSlider.sizeToFit()
-        
-        workingTimeView.addSubview(rangeSlider)
-        
         rangeSlider.delegate = self
+        rangeSlider.translatesAutoresizingMaskIntoConstraints = false
+        
+        inside.addSubview(rangeSlider)
     }
     
     func reset() {
@@ -202,7 +204,7 @@ extension NewParkingZone {
 }
 
 // MARK: - RangeSlider delegate processing
-extension NewParkingZone: NHRangeSliderViewDelegate {
+extension NewParkingZone: NHRangeSliderViewDelegate {    
     func sliderValueChanged(slider: NHRangeSlider?) {
         openTime = "\(slider?.lowerValue)"
         closeTime = "\(slider?.upperValue)"

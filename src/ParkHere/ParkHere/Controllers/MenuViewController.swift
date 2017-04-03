@@ -10,13 +10,13 @@ import UIKit
 import GoogleSignIn
 
 class MenuViewController: UIViewController, GIDSignInUIDelegate {
-
+    
     @IBOutlet weak var tblMenu: UITableView!
     
-    private var homeNavController: UIViewController!
-    private var settingsNavController: UIViewController!
-    private var addingNavController: AddingViewController!
-    private var signInNavController: UIViewController!
+    var homeNavController: UIViewController!
+    var settingsNavController: UIViewController!
+    var addingNavController: AddingViewController!
+    var signInNavController: UIViewController!
     
     var hamburgerViewController: HamburgerViewController!
     
@@ -24,7 +24,7 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tblMenu.delegate = self
         tblMenu.dataSource = self
@@ -57,22 +57,22 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
         NotificationCenter.default.addObserver(forName: signOutNotificationName, object: nil, queue: OperationQueue.main, using: {(Notification) -> Void in
             self.tblMenu.reloadData()
         })
-
+        
         let signInNotificationName = Notification.Name(Constant.UserDidSignInNotification)
         NotificationCenter.default.addObserver(forName: signInNotificationName, object: nil, queue: OperationQueue.main, using: {(Notification) -> Void in
             self.tblMenu.reloadData()
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -86,7 +86,7 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
     
-
+    
 }
 
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
@@ -133,7 +133,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row != 3 {
-            hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+            if indexPath.row == 2 {
+                let addingController = storyboard?.instantiateViewController(withIdentifier: "AddingViewController") as! AddingViewController
+                addingController.hamburgerViewController = hamburgerViewController
+                addingController.homeNavController = self.homeNavController
+                hamburgerViewController.contentViewController = addingController
+            } else {
+                hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+            }
         } else {
             if UserModel.currentUser != nil {
                 performSegue(withIdentifier: "signInSegue", sender: true)
