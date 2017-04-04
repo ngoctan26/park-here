@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     var isSearching = false
     var searedLocation: CLLocationCoordinate2D?
     var currentSetting: SettingModel?
+    var cirleQuery: GMSCircle?
     
     // Action references
     
@@ -47,6 +48,7 @@ class HomeViewController: UIViewController {
                 let currentRadius = currentSetting?.radius
                 let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
                 currentGeoQuery = startQueryForParkingZone(centerLocation: currentLocation, radius: queryRadius)
+                drawRadiusQuery(coordinate: currentLocation.coordinate)
             }
         }
     }
@@ -148,6 +150,7 @@ class HomeViewController: UIViewController {
         let currentRadius = currentSetting?.radius
         let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
         searchGeoQuery = startQueryForParkingZone(centerLocation: CLLocation(latitude: searedLocation!.latitude, longitude: searedLocation!.longitude), radius: queryRadius)
+        drawRadiusQuery(coordinate: searedLocation!)
     }
     
     func clearSearchData() {
@@ -168,7 +171,8 @@ class HomeViewController: UIViewController {
     }
     
     func startQueryForParkingZone(centerLocation: CLLocation, radius: Float) -> GFCircleQuery? {
-            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(radius))
+            // input radius is meter
+            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(radius / 1000))
             if let geoQuery = geoQuery {
                 geoQuery.observeReady({
                     print("All initial data has been loaded and events have been fired!")
@@ -272,6 +276,9 @@ class HomeViewController: UIViewController {
     func updateShowingParkings(data: [String : ParkingZoneModel]) {
         // Clear all current marker
         mapView.showingMap.clear()
+        if let cirleQuery = cirleQuery {
+            cirleQuery.map = mapView.showingMap
+        }
         if isSearching {
             searchMarker?.map = mapView.showingMap
         }
@@ -410,11 +417,26 @@ extension HomeViewController: CLLocationManagerDelegate {
             isUpdateCurrentLocationEnable = false
         }
         if !geoFireStartObserve && location != nil {
+            // Draw circle query
+            drawRadiusQuery(coordinate: (location?.coordinate)!)
             let currentRadius = currentSetting?.radius
             let queryRadius = currentRadius != nil ? currentRadius! : Constant.GeoQuery_Radius_Default
             currentGeoQuery = startQueryForParkingZone(centerLocation: location!, radius: queryRadius)
             geoFireStartObserve = true
         }
+    }
+        
+    func drawRadiusQuery(coordinate: CLLocationCoordinate2D) {
+        if let cirleQuery = cirleQuery {
+            cirleQuery.map = nil
+        }
+        var radius: Float = Constant.GeoQuery_Radius_Default
+        if let currentSetting = currentSetting {
+            if let radiusFromSetting = currentSetting.radius {
+                radius = radiusFromSetting
+            }
+        }
+        cirleQuery = mapView.drawCircle(coordinate: coordinate, radius: radius)
     }
 }
 
@@ -530,11 +552,13 @@ extension HomeViewController: SettingsViewControllerDelegate {
             searchGeoQuery?.removeAllObservers()
             clearSearchData()
             searchGeoQuery = startQueryForParkingZone(centerLocation: CLLocation(latitude: searedLocation!.latitude, longitude: searedLocation!.longitude), radius: queryRadius)
+            drawRadiusQuery(coordinate: searedLocation!)
         } else {
             currentGeoQuery?.removeAllObservers()
             clearCurrentShowingData()
             if let currentLocation = locationManager.location {
                 currentGeoQuery = startQueryForParkingZone(centerLocation: currentLocation, radius: queryRadius)
+                drawRadiusQuery(coordinate: currentLocation.coordinate)
             }
         }
     }

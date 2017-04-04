@@ -73,10 +73,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 //            return cell
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath ) as! SettingTimeCell
+            cell.delegate = self
             cell.timeCellLabel.text = Constant.Time_Setting_Label.localized
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "distanceCell", for: indexPath) as! SettingDistanceCell
+            cell.delegate = self
             cell.distanceLabel.text = Constant.Distance_Label
             return cell
         default:

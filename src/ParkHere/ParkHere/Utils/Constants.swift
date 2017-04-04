@@ -38,7 +38,7 @@ class Constant {
     static let Comments_Node = "comments/"
     static let Parking_Zones_Node = "parking_zones"
     // locations
-    static let GeoQuery_Radius_Default: Float = 2
+    static let GeoQuery_Radius_Default: Float = 500
     static let Locations_Node = "locations/"
     // user
     static let Current_User_Loc_Key = "current_user"

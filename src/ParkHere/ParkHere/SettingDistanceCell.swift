@@ -18,14 +18,15 @@ class SettingDistanceCell: UITableViewCell {
     @IBOutlet var distanceSlider: UISlider!
     
     @IBAction func onSlideChanged(_ sender: UISlider) {
-        self.distanceValueLabel.text = String(format: "%.1f", sender.value) + "km"
+        self.distanceValueLabel.text = String(format: "%d", Int(sender.value)) + "m"
         self.delegate?.onDistanceChanged(radius: sender.value)
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         distanceLabel.text = Constant.Distance_Label.localized
-        self.distanceValueLabel.text = String(format: "%.2f", distanceSlider.value) + "km"
+        distanceSlider.value = 500
+        self.distanceValueLabel.text = String(format: "%d", Int(distanceSlider.value)) + "m"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -92,6 +92,17 @@ class MapView: UIView {
         return routePolynline
     }
     
+    func drawCircle(coordinate: CLLocationCoordinate2D, radius: Float) -> GMSCircle {
+        let circle = GMSCircle()
+        circle.radius = CLLocationDistance(radius) // in meter
+        circle.fillColor = UIColor.init(red: 0, green: 116 / 255, blue: 255 / 255, alpha: 0.33)
+        circle.position = coordinate
+        circle.strokeWidth = 2
+        circle.strokeColor = UIColor.init(red: 0, green: 116 / 255, blue: 255 / 255, alpha: 0.75)
+        circle.map = showingMap
+        return circle
+    }
+    
     func moveCamera(inputLocation: CLLocationCoordinate2D, animate: Bool) {
         let positionCamera = GMSCameraPosition.camera(withLatitude: inputLocation.latitude, longitude: inputLocation.longitude, zoom: Constant.Normal_Zoom_Ratio)
         if animate {
