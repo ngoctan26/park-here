@@ -310,7 +310,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="100" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="LH4-5S-9E6">
+                                                <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="100" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="LH4-5S-9E6">
                                                     <rect key="frame" x="121" y="6" width="150" height="31"/>
                                                     <connections>
                                                         <action selector="onSlideChanged:" destination="uUP-EU-jMh" eventType="valueChanged" id="wse-Vw-C5c"/>

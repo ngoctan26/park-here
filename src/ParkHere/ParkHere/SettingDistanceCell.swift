@@ -9,6 +9,7 @@
 import UIKit
 
 class SettingDistanceCell: UITableViewCell {
+    let Slider_Step:Float = 100
     
     weak var delegate: SettingCellDelegate?
     
@@ -18,8 +19,10 @@ class SettingDistanceCell: UITableViewCell {
     @IBOutlet var distanceSlider: UISlider!
     
     @IBAction func onSlideChanged(_ sender: UISlider) {
-        self.distanceValueLabel.text = String(format: "%d", Int(sender.value)) + "m"
-        self.delegate?.onDistanceChanged(radius: sender.value)
+        let roundedValue = round(sender.value / Slider_Step) * Slider_Step
+        self.distanceSlider.value = roundedValue
+        self.distanceValueLabel.text = String(format: "%d", Int(roundedValue)) + "m"
+        self.delegate?.onDistanceChanged(radius: roundedValue)
     }
 
     override func awakeFromNib() {
