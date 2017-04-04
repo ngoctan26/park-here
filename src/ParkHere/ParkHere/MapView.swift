@@ -95,10 +95,10 @@ class MapView: UIView {
     func drawCircle(coordinate: CLLocationCoordinate2D, radius: Float) -> GMSCircle {
         let circle = GMSCircle()
         circle.radius = CLLocationDistance(radius) // in meter
-        circle.fillColor = UIColor.init(red: 0, green: 116 / 255, blue: 255 / 255, alpha: 0.33)
+        circle.fillColor = UIColor.init(red: 204 / 255, green: 235 / 255, blue: 255 / 255, alpha: 0.45)
         circle.position = coordinate
         circle.strokeWidth = 2
-        circle.strokeColor = UIColor.init(red: 0, green: 116 / 255, blue: 255 / 255, alpha: 0.75)
+        circle.strokeColor = UIColor.init(red: 102 / 255, green: 194 / 255, blue: 255 / 255, alpha: 0.75)
         circle.map = showingMap
         return circle
     }
