@@ -301,7 +301,8 @@ class HomeViewController: UIViewController {
 //        } else if types != nil && types![0] == .Motorbike {
 //            icDisplay = #imageLiteral(resourceName: "ic_moto_parking")
 //        }
-        let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_parking"))[0]
+        
+        let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: ImageUtil.resizeImage(image: #imageLiteral(resourceName: "ic_parking"), newWidth: 48))[0]
         addedMarker.userData = parkingModel
         parkingModel.markerRef = markersRef.count
         markersRef.append(addedMarker)
