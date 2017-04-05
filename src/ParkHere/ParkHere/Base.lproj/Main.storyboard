@@ -44,13 +44,6 @@
                                             <action selector="onMenu:" destination="lIV-ba-IPq" eventType="touchUpInside" id="Ihq-Io-cBs"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkhere" translatesAutoresizingMaskIntoConstraints="NO" id="i2W-hm-dBn">
-                                        <rect key="frame" x="135" y="5" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="mzS-65-HHj"/>
-                                            <constraint firstAttribute="width" constant="30" id="yGf-x3-exY"/>
-                                        </constraints>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylk-IA-OOv">
                                         <rect key="frame" x="267" y="6" width="28" height="28"/>
                                         <constraints>
@@ -83,9 +76,7 @@
                                     <constraint firstItem="BPX-3j-W5J" firstAttribute="leading" secondItem="XGT-AE-kwL" secondAttribute="leading" constant="10" id="CSC-vF-FZa"/>
                                     <constraint firstAttribute="trailing" secondItem="DIT-Vd-B5M" secondAttribute="trailing" constant="5" id="JpA-Ab-XcG"/>
                                     <constraint firstItem="ylk-IA-OOv" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="S3y-gI-S60"/>
-                                    <constraint firstItem="i2W-hm-dBn" firstAttribute="centerX" secondItem="XGT-AE-kwL" secondAttribute="centerX" id="Vw5-Mo-KBb"/>
                                     <constraint firstItem="BPX-3j-W5J" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="fvv-Ld-BSB"/>
-                                    <constraint firstItem="i2W-hm-dBn" firstAttribute="centerY" secondItem="XGT-AE-kwL" secondAttribute="centerY" id="hpF-zN-7mH"/>
                                     <constraint firstAttribute="trailing" secondItem="ylk-IA-OOv" secondAttribute="trailing" constant="5" id="jVX-aq-8r0"/>
                                     <constraint firstAttribute="height" constant="40" id="rBU-FL-jJQ"/>
                                 </constraints>
@@ -110,7 +101,6 @@
                         <outlet property="headerView" destination="XGT-AE-kwL" id="QAj-qP-idr"/>
                         <outlet property="leftMarginConstraint" destination="mKy-Ns-1QP" id="bbs-xt-kSh"/>
                         <outlet property="leftMarginConstraintHeaderView" destination="ytp-tf-24M" id="QVh-hg-bE3"/>
-                        <outlet property="logo" destination="i2W-hm-dBn" id="eW7-Lq-bS1"/>
                         <outlet property="menuIcon" destination="BPX-3j-W5J" id="BDa-Pm-e78"/>
                         <outlet property="menuView" destination="Hsf-BE-OEb" id="DJV-4X-urS"/>
                         <outlet property="saveBtn" destination="DIT-Vd-B5M" id="In9-sU-CQQ"/>
@@ -423,7 +413,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sx6-hT-0ih" customClass="CosmosView" customModule="Cosmos">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sx6-hT-0ih" customClass="CosmosView" customModule="Cosmos">
                                                     <rect key="frame" x="8" y="32" width="120" height="22.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -490,7 +480,7 @@
                                                         <action selector="onSignInButton:" destination="oDV-2O-smo" eventType="touchUpInside" id="TT8-Tb-cAw"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f23-e6-ycI" customClass="CosmosView" customModule="Cosmos">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f23-e6-ycI" customClass="CosmosView" customModule="Cosmos">
                                                     <rect key="frame" x="8" y="95" width="120" height="20.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -724,13 +714,6 @@
                                     <action selector="onUnrouteBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GBs-H1-3EU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOr-0W-SkI">
-                                <rect key="frame" x="16" y="20" width="149" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1450980392" green="0.58039215690000001" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -750,7 +733,6 @@
                     <navigationItem key="navigationItem" id="CR5-kU-94j"/>
                     <connections>
                         <outlet property="actionBar" destination="XcG-ae-ZJP" id="xB9-ZM-Rhv"/>
-                        <outlet property="lblTestMultilingual" destination="fOr-0W-SkI" id="l6i-As-KEc"/>
                         <outlet property="mapView" destination="AH2-PX-TZB" id="FIM-XK-Yhn"/>
                         <segue destination="HaG-oP-Z4b" kind="showDetail" identifier="CommentSegue" id="2og-RE-kTX"/>
                     </connections>
@@ -934,7 +916,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5cr-PT-FuI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vpS-O3-RAD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vpS-O3-RAD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -975,7 +957,6 @@
         <image name="ic_search" width="32" height="32"/>
         <image name="ic_unroute" width="64" height="64"/>
         <image name="iconMenuBar" width="24" height="24"/>
-        <image name="parkhere" width="114" height="114"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eXo-HU-ZAv"/>

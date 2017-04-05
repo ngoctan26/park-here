@@ -17,7 +17,6 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftMarginConstraintHeaderView: NSLayoutConstraint!
     
-    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet var searchBtn: UIButton!
     @IBOutlet var menuIcon: UIButton!
@@ -71,11 +70,9 @@ class HamburgerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         leftMarginConstraintHeaderView.constant = 10
-        headerView.backgroundColor = Constant.Header_View_Background_Color
+        headerView.backgroundColor = UIColor.clear
         headerView.layer.cornerRadius = 7
         saveBtn.isHidden = true
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,11 +85,6 @@ class HamburgerViewController: UIViewController {
             self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: sender)
             self.isMenuOpen = !self.isMenuOpen
             self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - self.view.frame.size.width/2
-            if self.leftMarginConstraint.constant != 0 && self.view.frame.size.width / 2 < CGFloat(Constant.Width_Of_Space_For_Icon_On_Header_View) {
-                self.logo.isHidden = true
-            } else {
-                self.logo.isHidden = false
-            }
             self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant == 0 ? 10 : self.leftMarginConstraint.constant
             self.view.layoutIfNeeded()
         }

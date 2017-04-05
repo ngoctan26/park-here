@@ -127,6 +127,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
+        
+        cell.layer.backgroundColor = UIColor.clear.cgColor
+        
         return cell
     }
     

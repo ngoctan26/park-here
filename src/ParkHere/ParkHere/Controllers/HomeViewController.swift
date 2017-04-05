@@ -14,7 +14,6 @@ import PopupDialog
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var lblTestMultilingual: UILabel!
     @IBOutlet var mapView: MapView!
     @IBOutlet var actionBar: MapActionBarView!
     
@@ -64,7 +63,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        lblTestMultilingual.text = "lang".localized
         actionBar.delegate = self
         initMapView()
     }
