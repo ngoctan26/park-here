@@ -52,5 +52,11 @@
 	<string>Mô tả:</string>
 	<key>hour</key>
 	<string>Giờ</string>
+	<key>close</key>
+	<string>Đóng</string>
+	<key>showRoute</key>
+	<string>Hướng dẫn đường đi</string>
+	<key>detail</key>
+	<string>Xem thông tin chi tiết</string>
 </dict>
 </plist>

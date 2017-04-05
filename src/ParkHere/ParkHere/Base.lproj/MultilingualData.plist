@@ -52,5 +52,11 @@
 	<string>Description:</string>
 	<key>hour</key>
 	<string>o&apos;clock</string>
+	<key>close</key>
+	<string>Close</string>
+	<key>showRoute</key>
+	<string>Show Direction From Current</string>
+	<key>detail</key>
+	<string>Details</string>
 </dict>
 </plist>

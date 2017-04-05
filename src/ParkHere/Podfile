@@ -20,6 +20,7 @@ target 'ParkHere' do
   pod 'GoogleSignIn'
   # to fix error [Permission denied]
   pod 'Alamofire', '~> 4.4'
+  pod 'AlamofireImage'
   pod 'NSDate+TimeAgo'
   # extra input controls
   pod 'TextFieldEffects'
@@ -38,4 +39,6 @@ target 'ParkHere' do
   pod 'WARangeSlider'
   pod 'MARKRangeSlider'
   pod 'SkyFloatingLabelTextField', '~> 2.0.0'
+  # popup
+  pod 'PopupDialog', '~> 0.5'
 end

@@ -10,9 +10,10 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 import GeoFire
+import PopupDialog
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var lblTestMultilingual: UILabel!
     @IBOutlet var mapView: MapView!
     @IBOutlet var actionBar: MapActionBarView!
@@ -61,13 +62,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         lblTestMultilingual.text = "lang".localized
         actionBar.delegate = self
         initMapView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -79,7 +80,7 @@ class HomeViewController: UIViewController {
         commentVC.parkingZone = selectedMarker?.userData as? ParkingZoneModel
         
     }
-
+    
     func initMapView() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -99,7 +100,7 @@ class HomeViewController: UIViewController {
             mapView.moveCamera(inputLocation: currentLocation.coordinate, animate: animate)
         }
     }
- 
+    
     // TODO: Remove sample when finished test
     func createSampleForTest() {
         addSampleParkingZone()
@@ -171,59 +172,61 @@ class HomeViewController: UIViewController {
     }
     
     func startQueryForParkingZone(centerLocation: CLLocation, radius: Float) -> GFCircleQuery? {
-            // input radius is meter
-            let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(radius / 1000))
-            if let geoQuery = geoQuery {
-                geoQuery.observeReady({
-                    print("All initial data has been loaded and events have been fired!")
-                })
-                geoQuery.observe(.keyEntered, with: { (key, parkingLocation) in
-                    if key != Constant.Current_User_Loc_Key {
-                        FirebaseService.getInstance().getParkingZonesById(parkingZoneId: key!, success: { (parkingModel) in
-                            if let parkingModel = parkingModel {
-                                // Set id for model
-                                parkingModel.id = key
-                                self.parkingZones[key!] = parkingModel
-                                self.updateShowingParkingByState(state: self.filterState, parkingModel: parkingModel, key: key!)
-                            }
-                        })
-                    }
-                })
-                geoQuery.observe(.keyExited, with: { (key, parkingLocation) in
-                    if key != Constant.Current_User_Loc_Key {
-                        // Get maker and Model reference by key
-                        self.parkingZones.removeValue(forKey: key!)
-                        let showingModel = self.filteredParkingZones[key!]
-                        if let showingModel = showingModel {
-                            // Data is in showing model. Removing it and marker
-                            let markerPos = showingModel.markerRef
-                            let showingMarker = self.markersRef[markerPos!]
-                            showingMarker.map = nil
-                            
-                            // Remove in all reference list
-                            self.filteredParkingZones.removeValue(forKey: key!)
-                            self.markersRef.remove(at: markerPos!)
+        GuiUtil.showLoadingIndicator()
+        // input radius is meter
+        let geoQuery = FirebaseService.getInstance().getCircleQuery(centerLocation: centerLocation, radius: Double(radius / 1000))
+        if let geoQuery = geoQuery {
+            geoQuery.observeReady({
+                print("All initial data has been loaded and events have been fired!")
+            })
+            geoQuery.observe(.keyEntered, with: { (key, parkingLocation) in
+                if key != Constant.Current_User_Loc_Key {
+                    FirebaseService.getInstance().getParkingZonesById(parkingZoneId: key!, success: { (parkingModel) in
+                        if let parkingModel = parkingModel {
+                            // Set id for model
+                            parkingModel.id = key
+                            self.parkingZones[key!] = parkingModel
+                            self.updateShowingParkingByState(state: self.filterState, parkingModel: parkingModel, key: key!)
+                            GuiUtil.dismissLoadingIndicator()
                         }
+                    })
+                }
+            })
+            geoQuery.observe(.keyExited, with: { (key, parkingLocation) in
+                if key != Constant.Current_User_Loc_Key {
+                    // Get maker and Model reference by key
+                    self.parkingZones.removeValue(forKey: key!)
+                    let showingModel = self.filteredParkingZones[key!]
+                    if let showingModel = showingModel {
+                        // Data is in showing model. Removing it and marker
+                        let markerPos = showingModel.markerRef
+                        let showingMarker = self.markersRef[markerPos!]
+                        showingMarker.map = nil
+                        
+                        // Remove in all reference list
+                        self.filteredParkingZones.removeValue(forKey: key!)
+                        self.markersRef.remove(at: markerPos!)
                     }
-                })
-                geoQuery.observe(.keyMoved, with: { (key, parkingLocation) in
-                    if key != Constant.Current_User_Loc_Key {
-                        // Get maker and Model reference by key
-                        let parkingModel = self.parkingZones[key!]
-                        parkingModel?.latitude = parkingLocation?.coordinate.latitude
-                        parkingModel?.longitude = parkingLocation?.coordinate.longitude
-                        // Update if this parking zone is in showing list
-                        let showingModel = self.filteredParkingZones[key!]
-                        if let showingModel = showingModel {
-                            showingModel.latitude = parkingLocation?.coordinate.latitude
-                            showingModel.longitude = parkingLocation?.coordinate.longitude
-                            let markerPos = showingModel.markerRef
-                            let marker = self.markersRef[markerPos!]
-                            marker.position = CLLocationCoordinate2D(latitude: (parkingLocation?.coordinate.latitude)!, longitude: (parkingLocation?.coordinate.longitude)!)
-                        }
+                }
+            })
+            geoQuery.observe(.keyMoved, with: { (key, parkingLocation) in
+                if key != Constant.Current_User_Loc_Key {
+                    // Get maker and Model reference by key
+                    let parkingModel = self.parkingZones[key!]
+                    parkingModel?.latitude = parkingLocation?.coordinate.latitude
+                    parkingModel?.longitude = parkingLocation?.coordinate.longitude
+                    // Update if this parking zone is in showing list
+                    let showingModel = self.filteredParkingZones[key!]
+                    if let showingModel = showingModel {
+                        showingModel.latitude = parkingLocation?.coordinate.latitude
+                        showingModel.longitude = parkingLocation?.coordinate.longitude
+                        let markerPos = showingModel.markerRef
+                        let marker = self.markersRef[markerPos!]
+                        marker.position = CLLocationCoordinate2D(latitude: (parkingLocation?.coordinate.latitude)!, longitude: (parkingLocation?.coordinate.longitude)!)
                     }
-                })
-            }
+                }
+            })
+        }
         return geoQuery
     }
     
@@ -290,17 +293,17 @@ class HomeViewController: UIViewController {
     }
     
     func addMarker(parkingModel: ParkingZoneModel) {
-//        let types = parkingModel.transportTypes
-//        var icDisplay: UIImage?
-//        if types != nil && (types?.count)! > 1 {
-//            icDisplay = #imageLiteral(resourceName: "ic_parking")
-//        } else if types != nil && types![0] == .Bicycle {
-//            icDisplay = #imageLiteral(resourceName: "ic_bike_parking")
-//        } else if types != nil && types![0] == .Car {
-//            icDisplay = #imageLiteral(resourceName: "ic_car_parking")
-//        } else if types != nil && types![0] == .Motorbike {
-//            icDisplay = #imageLiteral(resourceName: "ic_moto_parking")
-//        }
+        //        let types = parkingModel.transportTypes
+        //        var icDisplay: UIImage?
+        //        if types != nil && (types?.count)! > 1 {
+        //            icDisplay = #imageLiteral(resourceName: "ic_parking")
+        //        } else if types != nil && types![0] == .Bicycle {
+        //            icDisplay = #imageLiteral(resourceName: "ic_bike_parking")
+        //        } else if types != nil && types![0] == .Car {
+        //            icDisplay = #imageLiteral(resourceName: "ic_car_parking")
+        //        } else if types != nil && types![0] == .Motorbike {
+        //            icDisplay = #imageLiteral(resourceName: "ic_moto_parking")
+        //        }
         
         let addedMarker = mapView.addMarker(parkingZones: [parkingModel], textInfo: nil, markerIcon: ImageUtil.resizeImage(image: #imageLiteral(resourceName: "ic_parking"), newWidth: 48))[0]
         addedMarker.userData = parkingModel
@@ -374,10 +377,10 @@ class HomeViewController: UIViewController {
     func isValidData(parkingZone: ParkingZoneModel, currentLocation: CLLocation?) -> Bool {
         var isValid = true
         // FIXME: confusing between setting and filter at home
-//        let settingTransport = currentSetting?.transportType
-//        if settingTransport != nil && settingTransport != TransportTypeEnum.All {
-//            isValid = (parkingZone.transportTypes?.contains(settingTransport!))!
-//        }
+        //        let settingTransport = currentSetting?.transportType
+        //        if settingTransport != nil && settingTransport != TransportTypeEnum.All {
+        //            isValid = (parkingZone.transportTypes?.contains(settingTransport!))!
+        //        }
         let openTime = currentSetting?.openTime
         let closedTime = currentSetting?.closedTime
         if openTime != nil {
@@ -426,7 +429,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             geoFireStartObserve = true
         }
     }
-        
+    
     func drawRadiusQuery(coordinate: CLLocationCoordinate2D) {
         if let cirleQuery = cirleQuery {
             cirleQuery.map = nil
@@ -470,20 +473,65 @@ extension HomeViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if selectedMarker != nil {
-            infoWindow.removeFromSuperview()
-            selectedMarker = nil
-        }
+        
         let parkingModel = marker.userData as? ParkingZoneModel
-        if let parkingModel = parkingModel {
-            infoWindow.removeFromSuperview()
-            infoWindow.delegate = self
-            infoWindow.markerInfo = parkingModel
-            infoWindow.center = mapView.projection.point(for: marker.position)
-            infoWindow.center.y -= 120 // Place infowindow above marker
-            selectedMarker = marker
-            self.view.addSubview(infoWindow)
+        
+        // Customize overlay appearance
+        let ov = PopupDialogOverlayView.appearance()
+        ov.blurEnabled = false
+        ov.blurRadius  = 30
+        ov.liveBlur    = false
+        ov.opacity     = 0.7
+        ov.color       = UIColor.black
+        
+        // Prepare the popup assets
+        let title = parkingModel?.name
+        let message = parkingModel?.address
+        var image = ImageUtil.resizeImage(image: #imageLiteral(resourceName: "ic_default_image"), newWidth: 300)
+        if let urlAsString = parkingModel?.imageUrl {
+            if let url = URL(string: urlAsString) {
+                // image = ImageUtil.resizeImage(image: ImageUtil.loadImage(imageUrl: url.absoluteString), newWidth: 300)
+            }
         }
+        
+        // Create the dialog
+        let popup = PopupDialog(title: title, message: message, image: image)
+        
+        // Create first button
+        let buttonOne = CancelButton(title: Constant.Close.localized) {
+        }
+        
+        // Create second button
+        let buttonTwo = DefaultButton(title: Constant.Show_Route.localized) {
+            self.onBtnDrawRouteClicked(desLat: (parkingModel?.latitude)!, desLng: (parkingModel?.longitude)!)
+        }
+        
+        // Create third button
+        let buttonThree = DefaultButton(title: Constant.Detail.localized) {
+            self.onBtnDetailClicked()
+        }
+        
+        // Add buttons to dialog
+        popup.addButtons([buttonOne, buttonTwo, buttonThree])
+        
+        // Present dialog
+        self.present(popup, animated: true, completion: nil)
+        /*
+         if selectedMarker != nil {
+         infoWindow.removeFromSuperview()
+         selectedMarker = nil
+         }
+         let parkingModel = marker.userData as? ParkingZoneModel
+         if let parkingModel = parkingModel {
+         infoWindow.removeFromSuperview()
+         infoWindow.delegate = self
+         infoWindow.markerInfo = parkingModel
+         infoWindow.center = mapView.projection.point(for: marker.position)
+         infoWindow.center.y -= 120 // Place infowindow above marker
+         selectedMarker = marker
+         self.view.addSubview(infoWindow)
+         }
+         */
         return false
     }
     

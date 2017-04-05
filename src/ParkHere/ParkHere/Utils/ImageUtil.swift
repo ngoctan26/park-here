@@ -8,6 +8,8 @@
 
 import Foundation
 import AFNetworking
+import Alamofire
+import AlamofireImage
 
 class ImageUtil {
     
@@ -87,5 +89,15 @@ class ImageUtil {
         UIGraphicsEndImageContext()
         
         return newImage!
+    }
+    
+    static func loadImage(imageUrl: String) -> UIImage {
+        var result = UIImage()
+        Alamofire.request(imageUrl, method: .get).responseImage { response in
+            if let image = response.result.value {
+                result = image
+            }
+        }
+        return result
     }
 }

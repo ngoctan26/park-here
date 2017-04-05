@@ -75,5 +75,10 @@ class Constant {
     static let OpenTime_Title = "openTimeTitle"
     static let CloseTime_Title = "closeTimeTitle"
     static let Description_Title = "descriptionTitle"
+    
+    // Home
+    static let Close = "close"
+    static let Show_Route = "showRoute"
+    static let Detail = "detail"
 
 }
