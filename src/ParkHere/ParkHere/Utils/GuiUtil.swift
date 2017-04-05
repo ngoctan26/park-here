@@ -14,7 +14,7 @@ class GuiUtil {
     
     class func showLoadingIndicator() {
         SVProgressHUD.setBackgroundColor(UIColor.clear)
-        SVProgressHUD.setForegroundColor(UIColor.cyan)
+        SVProgressHUD.setForegroundColor(UIColor.orange)
         SVProgressHUD.show()
     }
     
