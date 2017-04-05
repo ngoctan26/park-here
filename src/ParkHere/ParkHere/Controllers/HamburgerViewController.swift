@@ -9,6 +9,7 @@
 import UIKit
 import GooglePlaces
 import Toast_Swift
+import SwiftyButton
 
 class HamburgerViewController: UIViewController {
     
@@ -73,6 +74,15 @@ class HamburgerViewController: UIViewController {
         headerView.backgroundColor = UIColor.clear
         headerView.layer.cornerRadius = 7
         saveBtn.isHidden = true
+        
+        searchBtn.setImage(ImageUtil.resizeImage(image: #imageLiteral(resourceName: "ic_search"), newWidth: 32), for: .normal)
+        //searchBtn.ra = searchBtn.frame.size.width/2
+        searchBtn.layer.shadowColor = UIColor.black.cgColor
+        searchBtn.layer.shadowOpacity = 50
+        searchBtn.layer.shadowOffset = CGSize.zero
+        searchBtn.layer.shadowRadius = 5
+        //searchBtn.layer.shouldRasterize = true
+        
     }
     
     override func didReceiveMemoryWarning() {

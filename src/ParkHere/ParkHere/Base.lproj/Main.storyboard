@@ -45,12 +45,22 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylk-IA-OOv">
-                                        <rect key="frame" x="267" y="6" width="28" height="28"/>
+                                        <rect key="frame" x="245" y="-5" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="28" id="3xg-dc-sw2"/>
-                                            <constraint firstAttribute="height" constant="28" id="QdQ-Ef-pC7"/>
+                                            <constraint firstAttribute="width" constant="50" id="3xg-dc-sw2"/>
+                                            <constraint firstAttribute="height" constant="50" id="QdQ-Ef-pC7"/>
                                         </constraints>
-                                        <state key="normal" image="ic_search"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
+                                                <color key="value" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                                <color key="value" red="0.21176470589999999" green="0.79607843140000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onSearchBtnClicked:" destination="lIV-ba-IPq" eventType="touchUpInside" id="VyW-Jf-GQB"/>
                                         </connections>
@@ -130,7 +140,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeH-0s-Dh9">
-                                <rect key="frame" x="12" y="194" width="288" height="19.5"/>
+                                <rect key="frame" x="12" y="194" width="288" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.042641351860000003" green="0.3046160262" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -568,13 +578,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8k-U4-hDk">
-                                        <rect key="frame" x="132" y="77" width="40.5" height="17"/>
+                                        <rect key="frame" x="132" y="77" width="41" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRz-s4-Le1">
-                                        <rect key="frame" x="8" y="100" width="78.5" height="17"/>
+                                        <rect key="frame" x="8" y="100" width="79" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -586,7 +596,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdG-RD-B3W">
-                                        <rect key="frame" x="178.5" y="77" width="37" height="17"/>
+                                        <rect key="frame" x="179" y="77" width="37" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -791,13 +801,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2H-6G-aBi">
-                                                    <rect key="frame" x="45" y="16" width="42" height="21"/>
+                                                    <rect key="frame" x="45" y="15" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DHx-4s-9tH">
-                                                    <rect key="frame" x="8" y="11" width="32" height="32"/>
+                                                    <rect key="frame" x="8" y="10" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="QH4-VE-Qq8"/>
                                                         <constraint firstAttribute="width" constant="32" id="fcs-A8-vID"/>
@@ -954,11 +964,10 @@
         <image name="ic_clock" width="32" height="32"/>
         <image name="ic_location" width="64" height="64"/>
         <image name="ic_motor_seg" width="24" height="24"/>
-        <image name="ic_search" width="32" height="32"/>
         <image name="ic_unroute" width="64" height="64"/>
         <image name="iconMenuBar" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eXo-HU-ZAv"/>
+        <segue reference="NId-Pk-bQO"/>
     </inferredMetricsTieBreakers>
 </document>
