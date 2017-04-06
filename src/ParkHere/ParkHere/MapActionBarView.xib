@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapActionBarView">
             <connections>
-                <outlet property="btnBike" destination="BvJ-MF-xdI" id="4fh-hC-RDn"/>
+                <outlet property="btnBike" destination="BvJ-MF-xdI" id="Pvr-cK-pXS"/>
                 <outlet property="btnCar" destination="mBY-Cp-tWu" id="N4n-Lp-SYF"/>
                 <outlet property="btnMoto" destination="LZV-Ua-pWG" id="Wqp-Zm-yc8"/>
                 <outlet property="btnNearest" destination="jzr-A5-d9v" id="1jq-kB-3iE"/>
@@ -30,52 +30,97 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5du-xC-uKw">
                             <rect key="frame" x="0.0" y="0.0" width="576" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnBike" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvJ-MF-xdI">
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnBike" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvJ-MF-xdI" customClass="PressableButton" customModule="SwiftyButton">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="BvJ-MF-xdI" secondAttribute="height" multiplier="4:4" id="xkw-bp-oFi"/>
                                     </constraints>
-                                    <state key="normal" image="ic_bike_unselect"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <state key="normal" image="ic_bike_new"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowHeight">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="s0h-2N-UBR"/>
+                                        <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="cBD-ZU-w5S"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnMoto" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Ua-pWG">
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnMoto" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Ua-pWG" customClass="PressableButton" customModule="SwiftyButton">
                                     <rect key="frame" x="131.5" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="LZV-Ua-pWG" secondAttribute="height" multiplier="4:4" id="RCx-tR-hG5"/>
                                     </constraints>
-                                    <state key="normal" image="ic_motor_unselect"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <state key="normal" image="ic_motor_new"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowHeight">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="8Sq-Zf-Tl4"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnCar" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBY-Cp-tWu">
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnCar" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBY-Cp-tWu" customClass="PressableButton" customModule="SwiftyButton">
                                     <rect key="frame" x="263" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mBY-Cp-tWu" secondAttribute="height" multiplier="4:4" id="u5l-Ap-z8o"/>
                                     </constraints>
-                                    <state key="normal" image="ic_car_unselect"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <state key="normal" image="ic_car_new"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowHeight">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="NnT-V1-SU7"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnNearest" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-A5-d9v">
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnNearest" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-A5-d9v" customClass="PressableButton" customModule="SwiftyButton">
                                     <rect key="frame" x="394.5" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="jzr-A5-d9v" secondAttribute="height" multiplier="4:4" id="jK1-dO-6aS"/>
                                     </constraints>
-                                    <state key="normal" image="ic_nearest_unselect"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <state key="normal" image="ic_near_new"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowHeight">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="6C1-bQ-Y7M"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRating" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aE-xG-b5U">
+                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnRating" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aE-xG-b5U" customClass="PressableButton" customModule="SwiftyButton">
                                     <rect key="frame" x="526" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="0aE-xG-b5U" secondAttribute="height" multiplier="4:4" id="apo-27-hu4"/>
                                     </constraints>
-                                    <state key="normal" image="ic_rating_unselect"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <state key="normal" image="ic_star_new"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowHeight">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="onBtnClicked:" destination="-1" eventType="touchUpInside" id="YHw-9Z-z8v"/>
                                     </connections>
@@ -99,10 +144,10 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_bike_unselect" width="32" height="32"/>
-        <image name="ic_car_unselect" width="32" height="32"/>
-        <image name="ic_motor_unselect" width="60" height="60"/>
-        <image name="ic_nearest_unselect" width="32" height="32"/>
-        <image name="ic_rating_unselect" width="32" height="32"/>
+        <image name="ic_bike_new" width="36" height="36"/>
+        <image name="ic_car_new" width="36" height="36"/>
+        <image name="ic_motor_new" width="36" height="36"/>
+        <image name="ic_near_new" width="18" height="18"/>
+        <image name="ic_star_new" width="18" height="18"/>
     </resources>
 </document>

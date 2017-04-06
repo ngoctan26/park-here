@@ -82,5 +82,7 @@ class Constant {
     static let Close = "close"
     static let Show_Route = "showRoute"
     static let Detail = "detail"
+    static let Button_Home_Color = UIColor(red: 225 / 255, green: 63 / 255, blue: 53 / 255, alpha: 1)
+    static let Button_Home_Shadow_Color = UIColor(red: 185 / 255, green: 45 / 255, blue: 37 / 255, alpha: 1)
 
 }
