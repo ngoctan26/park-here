@@ -94,15 +94,23 @@ class NewParkingZone: UIView {
         let newParkingZone = ParkingZoneModel()
         newParkingZone.desc = txtDesc.text
         newParkingZone.name = txtName.text
-        newParkingZone.rating = 0.0
+        newParkingZone.rating = 3.0
         
         newParkingZone.latitude = selectedPlace?.coordinate.latitude
         newParkingZone.longitude = selectedPlace?.coordinate.longitude
         newParkingZone.address = selectedPlace?.formattedAddress
         
         newParkingZone.createdAt = DateTimeUtil.stringFromDate(date: Date())
-        newParkingZone.closeTime = closeTime
-        newParkingZone.openTime = openTime
+        if closeTime == nil {
+            newParkingZone.closeTime = Constant.Default_Closed_Time
+        } else {
+            newParkingZone.closeTime = closeTime!
+        }
+        if openTime == nil {
+            newParkingZone.openTime = Constant.Default_Open_Time
+        } else {
+            newParkingZone.openTime = openTime!
+        }
         
         newParkingZone.transportTypes = transports
         

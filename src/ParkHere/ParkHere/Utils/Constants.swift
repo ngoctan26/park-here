@@ -55,6 +55,8 @@ class Constant {
     static let Desc_Place_Holder = "descPlaceHolder"
     static let Address_Place_Holder = "addressPlaceHolder"
     static let Hour = "hour"
+    static let Default_Open_Time = "05:00"
+    static let Default_Closed_Time = "22:00"
     
     // Firebase storage node
     static let Image_Storage_Node = "images/"

@@ -91,11 +91,11 @@ class ImageUtil {
         return newImage
     }
     
-    static func loadImage(imageUrl: String) -> UIImage {
-        var result = UIImage()
+    static func loadImage(imageUrl: String, success: @escaping (_ imageLoaded: UIImage) -> ()) -> UIImage {
+        let result = UIImage()
         Alamofire.request(imageUrl, method: .get).responseImage { response in
             if let image = response.result.value {
-                result = image
+                success(image)
             }
         }
         return result

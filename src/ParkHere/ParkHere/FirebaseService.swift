@@ -75,9 +75,9 @@ class FirebaseService {
                 
                 if let openTime = newParkingZone.openTime {
                     if let closeTime = newParkingZone.closeTime {
-                        let workingTime: [String : AnyObject] = [
-                            "opening_time": openTime as AnyObject,
-                            "closing_time": closeTime as AnyObject
+                        let workingTime: [String : String] = [
+                            "opening_time": openTime,
+                            "closing_time": closeTime
                         ]
                         params["working_time"] = workingTime as AnyObject?
                     }

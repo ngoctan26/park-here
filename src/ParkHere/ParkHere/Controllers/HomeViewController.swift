@@ -490,35 +490,35 @@ extension HomeViewController: GMSMapViewDelegate {
         var image = ImageUtil.resizeImage(image: #imageLiteral(resourceName: "ic_default_image"), newWidth: 300)
         if let urlAsString = parkingModel?.imageUrl {
             if let url = URL(string: urlAsString) {
-                if let imageResized = ImageUtil.resizeImage(image: ImageUtil.loadImage(imageUrl: url.absoluteString), newWidth: 300) {
-                    image = imageResized
-                }
-                
+                _ = ImageUtil.loadImage(imageUrl: url.absoluteString, success: { (downloadedImage) in
+                    if let imageResized = ImageUtil.resizeImage(image: downloadedImage, newWidth: 300) {
+                        image = imageResized
+                        // Create the dialog
+                        let popup = PopupDialog(title: title, message: message, image: image)
+                        
+                        // Create first button
+                        let buttonOne = CancelButton(title: Constant.Close.localized) {
+                        }
+                        
+                        // Create second button
+                        let buttonTwo = DefaultButton(title: Constant.Show_Route.localized) {
+                            self.onBtnDrawRouteClicked(desLat: (parkingModel?.latitude)!, desLng: (parkingModel?.longitude)!)
+                        }
+                        
+                        // Create third button
+                        let buttonThree = DefaultButton(title: Constant.Detail.localized) {
+                            self.onBtnDetailClicked()
+                        }
+                        
+                        // Add buttons to dialog
+                        popup.addButtons([buttonOne, buttonTwo, buttonThree])
+                        
+                        // Present dialog
+                        self.present(popup, animated: true, completion: nil)
+                    }
+                })
             }
         }
-        
-        // Create the dialog
-        let popup = PopupDialog(title: title, message: message, image: image)
-        
-        // Create first button
-        let buttonOne = CancelButton(title: Constant.Close.localized) {
-        }
-        
-        // Create second button
-        let buttonTwo = DefaultButton(title: Constant.Show_Route.localized) {
-            self.onBtnDrawRouteClicked(desLat: (parkingModel?.latitude)!, desLng: (parkingModel?.longitude)!)
-        }
-        
-        // Create third button
-        let buttonThree = DefaultButton(title: Constant.Detail.localized) {
-            self.onBtnDetailClicked()
-        }
-        
-        // Add buttons to dialog
-        popup.addButtons([buttonOne, buttonTwo, buttonThree])
-        
-        // Present dialog
-        self.present(popup, animated: true, completion: nil)
         /*
          if selectedMarker != nil {
          infoWindow.removeFromSuperview()
