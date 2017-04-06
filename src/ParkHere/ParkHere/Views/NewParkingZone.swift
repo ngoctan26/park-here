@@ -41,7 +41,13 @@ class NewParkingZone: UIView {
     @IBOutlet weak var btnPost: UIButton!
     
     var searchMarker: GMSMarker?
-    var locationManager: CLLocationManager?
+    var currentLocation: CLLocationCoordinate2D? {
+        didSet {
+            if let currentLocation = currentLocation {
+                mapView.moveCamera(inputLocation: currentLocation, animate: true)
+            }
+        }
+    }
     
     var selectedPlace: GMSPlace? {
         didSet {
@@ -144,12 +150,6 @@ extension NewParkingZone {
         nib.instantiate(withOwner: self, options: nil)
         containerCtrlView.frame = bounds
         mapView.mapViewDelegate = self
-        if let locationManager = locationManager {
-            let currentlocation = locationManager.location
-            if let currentlocation = currentlocation {
-                mapView.moveCamera(inputLocation: currentlocation.coordinate, animate: true)
-            }
-        }
         addSubview(containerCtrlView)
     }
     

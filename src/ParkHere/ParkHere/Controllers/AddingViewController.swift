@@ -28,7 +28,9 @@ class AddingViewController: UIViewController {
         // Do any additional setup after loading the view.
         newParkingZoneView.layoutIfNeeded()
         if let homeVC = homeNavController as? HomeViewController {
-            newParkingZoneSubView.locationManager = homeVC.locationManager
+            if let currentLocation = homeVC.locationManager.location {
+                newParkingZoneSubView.currentLocation = currentLocation.coordinate
+            }
         }
         newParkingZoneSubView.delegate = self
         newParkingZoneSubView.frame.size.width = newParkingZoneView.frame.size.width
