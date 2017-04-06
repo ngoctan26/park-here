@@ -51,7 +51,7 @@ class MapActionBarView: UIView {
         addSubview(containerView)
 //        containerView.layer.cornerRadius = 15
 //        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        setColor(buttons: [btnBike, btnCar, btnMoto, btnNearest, btnRating])
+//        setColor(buttons: [btnBike, btnCar, btnMoto, btnNearest, btnRating])
         
         self.backgroundColor = UIColor.clear
     }
