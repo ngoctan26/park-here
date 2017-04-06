@@ -31,6 +31,7 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
     
     
     var parkingZone: ParkingZoneModel?
+    var zoneMarker: GMSMarker?
     
     var comments: [CommentModel]?
     
@@ -61,9 +62,10 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
     
     func initMapView() {
         if parkingZone != nil {
+            commentMapView.showHideSearchBtn(isHide: true)
             let currentLocation = CLLocationCoordinate2D(latitude: (parkingZone?.latitude)!, longitude: (parkingZone?.longitude)!)
             commentMapView.moveCamera(inputLocation: currentLocation, animate: false)
-            commentMapView.addMarker(lat: currentLocation.latitude, long: currentLocation.longitude, textInfo: nil, markerIcon: nil)
+            zoneMarker = commentMapView.addMarker(lat: currentLocation.latitude, long: currentLocation.longitude, textInfo: nil, markerIcon: nil)
         }
     }
     
@@ -72,7 +74,7 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
             
             var vehicle: String = ""
             if parkingZone?.transportTypes != nil {
-                for (index, element) in (parkingZone?.transportTypes!.enumerated())! {
+                for (_, element) in (parkingZone?.transportTypes!.enumerated())! {
                     vehicle += element.rawValue + ", "
                 }
                 

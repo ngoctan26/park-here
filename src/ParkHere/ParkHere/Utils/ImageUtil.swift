@@ -76,7 +76,7 @@ class ImageUtil {
         })
     }
     
-    static func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    static func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
         
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
@@ -88,7 +88,7 @@ class ImageUtil {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage!
+        return newImage
     }
     
     static func loadImage(imageUrl: String) -> UIImage {

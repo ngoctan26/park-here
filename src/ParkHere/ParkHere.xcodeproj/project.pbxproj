@@ -297,7 +297,7 @@
 				TargetAttributes = {
 					8624AC681E71BF8900B92710 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = B77T45EXXL;
+						DevelopmentTeam = V7Z27TG6NM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -567,11 +567,11 @@
 			baseConfigurationReference = BAC60DB708D51CDE4D17F2BC /* Pods-ParkHere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B77T45EXXL;
+				DEVELOPMENT_TEAM = V7Z27TG6NM;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -584,11 +584,11 @@
 			baseConfigurationReference = 610D6FF33A26892FD4B380EE /* Pods-ParkHere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B77T45EXXL;
+				DEVELOPMENT_TEAM = V7Z27TG6NM;
 				INFOPLIST_FILE = ParkHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toicodedoec.ParkHere;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ParkHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

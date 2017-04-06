@@ -471,7 +471,8 @@ extension HomeViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
+        // Keep selected marker for perform segue to Comment view
+        selectedMarker = marker
         let parkingModel = marker.userData as? ParkingZoneModel
         
         // Customize overlay appearance
@@ -488,7 +489,10 @@ extension HomeViewController: GMSMapViewDelegate {
         var image = ImageUtil.resizeImage(image: #imageLiteral(resourceName: "ic_default_image"), newWidth: 300)
         if let urlAsString = parkingModel?.imageUrl {
             if let url = URL(string: urlAsString) {
-                // image = ImageUtil.resizeImage(image: ImageUtil.loadImage(imageUrl: url.absoluteString), newWidth: 300)
+                if let imageResized = ImageUtil.resizeImage(image: ImageUtil.loadImage(imageUrl: url.absoluteString), newWidth: 300) {
+                    image = imageResized
+                }
+                
             }
         }
         
