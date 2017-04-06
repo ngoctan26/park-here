@@ -176,6 +176,7 @@ class HomeViewController: UIViewController {
         if let geoQuery = geoQuery {
             geoQuery.observeReady({
                 print("All initial data has been loaded and events have been fired!")
+                GuiUtil.dismissLoadingIndicator()
             })
             geoQuery.observe(.keyEntered, with: { (key, parkingLocation) in
                 if key != Constant.Current_User_Loc_Key {
