@@ -22,13 +22,14 @@ class AddCommentViewCell: UITableViewCell {
     @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet var baseConstraint: NSLayoutConstraint!
     
     var delegate: AddCommentViewCellDelagate!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        contentTextField.delegate = self
         // Define identifier
         let signInNotificationName = Notification.Name(Constant.UserDidSignInNotification)
         // Register to receive notification
@@ -60,5 +61,12 @@ class AddCommentViewCell: UITableViewCell {
     @IBAction func onAddCommentButton(_ sender: UIButton) {
         delegate.addCommentViewCell(addCommentViewCell: self, didSendComment: contentTextField.text!, rating: ratingView.rating)
         contentTextField.text = ""
+    }
+}
+
+extension AddCommentViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        contentTextField.endEditing(true)
+        return false
     }
 }

@@ -12,28 +12,18 @@ import GoogleSignIn
 
 class CommentViewController: UIViewController, GIDSignInUIDelegate {
 
-    @IBOutlet weak var commentMapView: MapView!
     @IBOutlet weak var commentTableView: UITableView!
 
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet weak var addressTitleLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var vehicleTitleLabel: UILabel!
-    @IBOutlet weak var vehicleLabel: UILabel!
-    @IBOutlet weak var priceTitleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var openTitleLabel: UILabel!
-    @IBOutlet weak var openTimeLabel: UILabel!
-    @IBOutlet weak var closeTitleLabel: UILabel!
-    @IBOutlet weak var closeTimeLabel: UILabel!
-    @IBOutlet weak var descriptionTitleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
     
     var parkingZone: ParkingZoneModel?
     var zoneMarker: GMSMarker?
     
     var comments: [CommentModel]?
+    
+    @IBAction func hideKeyboardTap(_ sender: UITapGestureRecognizer) {
+        commentTableView.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,54 +33,15 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
         commentTableView.dataSource = self
         commentTableView.estimatedRowHeight = 100
         commentTableView.rowHeight = UITableViewAutomaticDimension
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         initTitle()
-        initMapView()
-        getParkingZoneDetail()
         getAllComments()
     }
     
     func initTitle() {
         backButton.title = Constant.Back_Title.localized
-        addressTitleLabel.text = Constant.Address_Title.localized
-        vehicleTitleLabel.text = Constant.Vehicle_Title.localized
-        priceTitleLabel.text = Constant.Price_Title.localized
-        openTitleLabel.text = Constant.OpenTime_Title.localized
-        closeTitleLabel.text = Constant.CloseTime_Title.localized
-        descriptionTitleLabel.text = Constant.Description_Title.localized
-    }
-    
-    func initMapView() {
-        if parkingZone != nil {
-            commentMapView.showHideSearchBtn(isHide: true)
-            let currentLocation = CLLocationCoordinate2D(latitude: (parkingZone?.latitude)!, longitude: (parkingZone?.longitude)!)
-            commentMapView.moveCamera(inputLocation: currentLocation, animate: false)
-            zoneMarker = commentMapView.addMarker(lat: currentLocation.latitude, long: currentLocation.longitude, textInfo: nil, markerIcon: nil)
-        }
-    }
-    
-    func getParkingZoneDetail() {
-        if parkingZone != nil {
-            
-            var vehicle: String = ""
-            if parkingZone?.transportTypes != nil {
-                for (_, element) in (parkingZone?.transportTypes!.enumerated())! {
-                    vehicle += element.rawValue + ", "
-                }
-                
-                let splitIndex = vehicle.index(vehicle.endIndex, offsetBy: -2)
-                vehicle = vehicle.substring(to: splitIndex)
-            }
-            
-            if parkingZone?.address != nil {
-                addressLabel.text = parkingZone?.address!
-            }
-            priceLabel.text = parkingZone?.prices?.joined(separator: ", ")
-            vehicleLabel.text = vehicle
-            openTimeLabel.text = parkingZone?.openTime
-            closeTimeLabel.text = parkingZone?.closeTime
-            descriptionLabel.text = parkingZone?.desc
-        }
     }
     
     func getAllComments() {
@@ -119,45 +70,64 @@ class CommentViewController: UIViewController, GIDSignInUIDelegate {
     @IBAction func onBackButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    */
-
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+            commentTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.2, animations: {
+            // For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
+            self.commentTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        })
+    }
 }
 
 extension CommentViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-        case 0: if comments != nil{
+        case 2: if comments != nil{
                     return comments!.count
                 }else{
                     return 0
                 }
-        case 1: return 1
-        default: return 0
+        default: return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath as NSIndexPath).section {
         case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mapCommentCell", for: indexPath) as! CommentMapCell
+            if let parkingZone = parkingZone {
+                let parkingCoordinate = CLLocationCoordinate2D(latitude: parkingZone.latitude!, longitude: parkingZone.longitude!)
+                cell.parkingLocation = parkingCoordinate
+            }
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCommentCell", for: indexPath) as! CommentInfoCell
+            if let parkingZone = parkingZone {
+                cell.parkingModel = parkingZone
+            }
+            return cell
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "commentViewCell", for: indexPath) as! CommentViewCell
             let comment = comments![indexPath.row]
             cell.contentLabel.text = comment.text
             cell.ratingView.rating = comment.rating!
             return cell
-        case 1:
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "addCommentCell", for: indexPath) as! AddCommentViewCell
             cell.delegate = self
             var userName = Constant.Anonymous
