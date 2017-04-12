@@ -26,24 +26,24 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAi-l6-SvK" customClass="FlatButton" customModule="SwiftyButton">
-                    <rect key="frame" x="5" y="60" width="50" height="50"/>
+                    <rect key="frame" x="340" y="5" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Lsg-eZ-Kdt"/>
-                        <constraint firstAttribute="width" constant="50" id="VXk-nm-8QB"/>
+                        <constraint firstAttribute="height" constant="30" id="Lsg-eZ-Kdt"/>
+                        <constraint firstAttribute="width" constant="30" id="roW-BZ-8P4"/>
                     </constraints>
                     <state key="normal" image="ic_search"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="color">
-                            <color key="value" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
-                            <color key="value" red="0.97254901959999995" green="0.84313725490000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                            <color key="value" red="0.21176470589999999" green="0.79607843140000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -54,15 +54,15 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="b3c-sf-c6O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7Nd-Ul-Sfz"/>
+                <constraint firstAttribute="trailing" secondItem="QAi-l6-SvK" secondAttribute="trailing" constant="5" id="97m-E4-KZM"/>
                 <constraint firstItem="b3c-sf-c6O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rvk-mp-WUq"/>
                 <constraint firstAttribute="bottom" secondItem="b3c-sf-c6O" secondAttribute="bottom" id="bYZ-8g-69r"/>
-                <constraint firstItem="QAi-l6-SvK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="su2-ZR-9Yb"/>
-                <constraint firstItem="QAi-l6-SvK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="wlt-Eu-VvP"/>
+                <constraint firstItem="QAi-l6-SvK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="su2-ZR-9Yb"/>
                 <constraint firstAttribute="trailing" secondItem="b3c-sf-c6O" secondAttribute="trailing" id="zbv-xG-jc5"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="ic_search" width="32" height="32"/>
+        <image name="ic_search" width="60" height="60"/>
     </resources>
 </document>

@@ -30,7 +30,6 @@ class MapView: UIView {
         mapViewDelegate?.onSearchClicked!()
     }
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSubviews()
