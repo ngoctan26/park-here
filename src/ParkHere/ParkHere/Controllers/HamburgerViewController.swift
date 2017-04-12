@@ -94,8 +94,8 @@ class HamburgerViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.toogleMenuSettingIcon(isOpen: self.isMenuOpen, button: sender)
             self.isMenuOpen = !self.isMenuOpen
-            self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : self.view.frame.size.width - self.view.frame.size.width/2
-            self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraint.constant == 0 ? 10 : self.leftMarginConstraint.constant
+            self.leftMarginConstraint.constant = self.leftMarginConstraint.constant != 0 ? 0 : 100
+            self.leftMarginConstraintHeaderView.constant = self.leftMarginConstraintHeaderView.constant == 10 ? 100 : 10
             self.view.layoutIfNeeded()
         }
     }

@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ic_setting.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_setting.png",
+      "filename" : "iconmonstr-tools-4-120-3.png",
       "scale" : "2x"
     },
     {

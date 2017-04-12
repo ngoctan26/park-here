@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ic_compose.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_compose.png",
+      "filename" : "iconmonstr-pen-4-240.png",
       "scale" : "2x"
     },
     {

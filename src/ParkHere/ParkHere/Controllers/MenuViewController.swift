@@ -85,8 +85,6 @@ class MenuViewController: UIViewController, GIDSignInUIDelegate {
             }
         }
     }
-    
-    
 }
 
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
@@ -106,22 +104,17 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             signInTitle = Constant.SignOut_Menu_Title_Key.localized
         }
         
-        let titles = [Constant.Home_Menu_Title_Key.localized, Constant.Settings_Menu_Title_Key.localized, Constant.Adding_Menu_Title_Key.localized,signInTitle]
         switch indexPath.row {
         case 0:
-            cell.lblMenuTitle.text = titles[0]
             cell.icMenu.image = #imageLiteral(resourceName: "ic_home")
             break
         case 1:
-            cell.lblMenuTitle.text = titles[1]
             cell.icMenu.image = #imageLiteral(resourceName: "ic_setting")
             break
         case 2:
-            cell.lblMenuTitle.text = titles[2]
             cell.icMenu.image = #imageLiteral(resourceName: "ic_compose")
             break
         case 3:
-            cell.lblMenuTitle.text = titles[3]
             cell.icMenu.image = #imageLiteral(resourceName: "ic_user")
             break
         default:
