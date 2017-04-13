@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController {
     }
 
     func initView() {
-        view.backgroundColor = Constant.Header_View_Background_Color
+        // view.backgroundColor = Constant.Header_View_Background_Color
         
         // Init table view
         tableView.delegate = self
