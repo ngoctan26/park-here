@@ -53,6 +53,10 @@ class AddingViewController: UIViewController {
         let searchCoordinate = place.coordinate
         newParkingZoneSubView.selectedPlace = place
         newParkingZoneSubView.mapView.moveCamera(inputLocation: place.coordinate, animate: true)
+        let searchMarked = newParkingZoneSubView.searchMarker
+        if let searchMarked = searchMarked {
+            searchMarked.map = nil
+        }
         newParkingZoneSubView.searchMarker = newParkingZoneSubView.mapView.addMarker(lat: searchCoordinate.latitude, long: searchCoordinate.longitude, textInfo: nil, markerIcon: #imageLiteral(resourceName: "ic_search_marker"))
     }
 }
